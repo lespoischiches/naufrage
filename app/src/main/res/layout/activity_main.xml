@@ -10,7 +10,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/accueilfirstlinearlayout"
-        android:orientation="horizontal"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <Button
@@ -39,6 +39,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/accueilfirstlinearlayout"
+        app:layout_constraintLeft_toLeftOf="parent"
         android:id="@+id/accueilsecondlinearlayout">
 
         <Button
@@ -57,6 +58,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/btn_accueil_spot"
         android:text="SPOTS"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/accueilsecondlinearlayout" />
 
     <Button
@@ -64,6 +66,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/btn_accueil_signaler_evenement"
         app:layout_constraintTop_toBottomOf="@id/btn_accueil_spot"
+        app:layout_constraintLeft_toLeftOf="parent"
         android:text="Signaler un évènement"/>
 
     <fragment
