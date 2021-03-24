@@ -20,6 +20,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
         >
         <TextView
             android:layout_width="fill_parent"
@@ -27,7 +28,7 @@
             android:text="Météo"
             android:textAlignment="center"
             android:textStyle="bold"
-            android:textSize="50dp"/>
+            android:textSize="50sp"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
