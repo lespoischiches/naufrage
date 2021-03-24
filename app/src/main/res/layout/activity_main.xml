@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/accueilfirstlinearlayout"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/btn_accueil_meteo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:drawableLeft="@drawable/cloud_icon"
+            android:text="Nuageux\nTemp: -1°C\nHum: 80%"
+            android:textAlignment="textStart"
+            android:textColor="@color/black"
+            android:textSize="15dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/black"
+            android:textSize="15dp"
+            android:text="Coin des [...]" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/accueilfirstlinearlayout"
+        android:id="@+id/accueilsecondlinearlayout">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Carte"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rechercher des evenements"/>
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_accueil_spot"
+        android:text="SPOTS"
+        app:layout_constraintTop_toBottomOf="@id/accueilsecondlinearlayout" />
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_accueil_signaler_evenement"
+        app:layout_constraintTop_toBottomOf="@id/btn_accueil_spot"
+        android:text="Signaler un évènement"/>
+
+    <fragment
+        android:id="@+id/accueil_fragment_evenements"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/btn_accueil_signaler_evenement"
+        android:name="com.thomas.bateau.EvenementAccueilFragment"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
