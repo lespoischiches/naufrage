@@ -47,6 +47,7 @@
         android:id="@+id/accueilsecondlinearlayout">
 
         <Button
+            android:id="@+id/btn_accueil_carte"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/white"
