@@ -1,6 +1,8 @@
 package com.thomas.bateau;
 
 import androidx.appcompat.app.AppCompatActivity;
+import android.app.Fragment;
+import androidx.lifecycle.ReportFragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,7 +10,8 @@ import android.widget.Button;
 
 public class ReportActivity extends AppCompatActivity {
 
-    private Button btnBack;
+    private Button btnBack, btnMode;
+    private boolean mode = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +20,19 @@ public class ReportActivity extends AppCompatActivity {
         btnBack = findViewById(R.id.btn_retour_signalement);
         btnBack.setOnClickListener(click ->{
             finish();
+        });
+        Fragment frag = new com.thomas.bateau.ReportFragment();
+        getFragmentManager().beginTransaction().replace(R.id.test, frag).commit();
+        btnMode = findViewById(R.id.mode);
+        btnMode.setOnClickListener(click ->{
+            if(!mode){
+                Fragment fragmentDeuxMain = new com.thomas.bateau.ReportFragment();
+                getFragmentManager().beginTransaction().replace(R.id.test, fragmentDeuxMain).commit();
+            }else{
+                Fragment fragmentUneMain = new ReportFragmentUneMain();
+                getFragmentManager().beginTransaction().replace(R.id.test, fragmentUneMain).commit();
+            }
+            mode = !mode;
         });
     }
 }
