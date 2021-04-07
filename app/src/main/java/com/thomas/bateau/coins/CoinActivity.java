@@ -7,6 +7,8 @@ import com.thomas.bateau.R;
 import com.thomas.bateau.coins.kitesurfer.CoinKitesurferFactory;
 import com.thomas.bateau.coins.pecheur.CoinPecheurFactory;
 import com.thomas.bateau.coins.plongeur.CoinPlongeurFactory;
+import com.thomas.bateau.coins.scientifique.CoinScientifiqueFactory;
+import com.thomas.bateau.coins.skippeur.CoinSkippeurFactory;
 
 import android.os.Bundle;
 
@@ -27,6 +29,12 @@ public class CoinActivity extends AppCompatActivity {
                 break;
             case KITTER:
                 coinsFactory=new CoinKitesurferFactory();
+                break;
+            case SCIENTIFIQUE:
+                coinsFactory=new CoinScientifiqueFactory();
+                break;
+            case SKIPPER:
+                coinsFactory=new CoinSkippeurFactory();
                 break;
             default: // ???
                 coinsFactory=new CoinPecheurFactory();
