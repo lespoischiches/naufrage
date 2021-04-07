@@ -48,7 +48,7 @@ public class EvenementAccueilFragment extends Fragment {
     }
 
     private void sendNotificationOnChannel(String title, String message, String channelId, int priority) {
-        NotificationCompat.Builder notification = new NotificationCompat.Builder(getActivity().getApplicationContext(), channelId).setContentTitle(title).setSmallIcon(R.drawable.cloud_icon).setContentText(message).setPriority(priority).setTimeoutAfter(2000);
+        NotificationCompat.Builder notification = new NotificationCompat.Builder(getActivity().getApplicationContext(), channelId).setContentTitle(title).setSmallIcon(R.drawable.cloud_icon).setContentText(message).setPriority(priority).setTimeoutAfter(5000);
         NotificationManagerCompat.from(getActivity()).notify(++notificationId, notification.build());
     }
 }
