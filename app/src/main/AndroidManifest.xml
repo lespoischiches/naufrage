@@ -15,7 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Bateau">
-        <activity android:name=".coins.CoinActivity"></activity>
+        <activity android:name=".ParamsActivity"></activity>
+        <activity android:name=".coins.CoinActivity" />
         <activity android:name=".ReportActivity" />
         <activity android:name=".CarteActivity" />
         <activity android:name=".MeteoActivity" />

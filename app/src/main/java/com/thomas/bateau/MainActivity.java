@@ -36,6 +36,10 @@ public class MainActivity extends AppCompatActivity {
             Intent intent=new Intent(getApplicationContext(), CoinActivity.class);
             startActivity(intent);
         });
+        findViewById(R.id.accueil_btn_params).setOnClickListener(c -> {
+            Intent intent=new Intent(getApplicationContext(), ParamsActivity.class);
+            startActivity(intent);
+        });
         //getFragmentManager().beginTransaction().replace(R.id.accueil_fragment_evenements, (android.app.Fragment)new EvenementAccueilFragment()).addToBackStack(null).commit();
     }
 }
