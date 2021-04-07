@@ -6,4 +6,38 @@
     android:layout_height="match_parent"
     tools:context=".ParamsActivity">
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Retour"
+        android:id="@+id/params_btn_retour"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/params_btn_retour"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:id="@+id/params_je_suis"
+        android:text="Je suis:" />
+
+    <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/params_je_suis"
+        android:orientation="vertical">
+        <RadioButton android:id="@+id/params_radio_pecheur"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Un pêcheur"
+            android:checked="true"
+            android:onClick="onChangeRoleClicked"/>
+        <RadioButton android:id="@+id/params_radio_scientifique"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Un scientifique"
+            android:onClick="onChangeRoleClicked"/>
+    </RadioGroup>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,6 +13,7 @@ public class BateauApplication extends Application {
     public static final String CHANNEL_2_ID="channel default";
     public static final String CHANNEL_3_ID="channel high";
     private static NotificationManager notificationManager;
+    public static TypeUtilisateurs typeUtilisateurs=TypeUtilisateurs.PECHEUR;
 
     private void createNotificationChannel() {
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
