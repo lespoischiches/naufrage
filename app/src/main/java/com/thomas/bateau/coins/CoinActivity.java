@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.thomas.bateau.BateauApplication;
 import com.thomas.bateau.R;
+import com.thomas.bateau.coins.kitesurfer.CoinKitesurferFactory;
 import com.thomas.bateau.coins.pecheur.CoinPecheurFactory;
 import com.thomas.bateau.coins.plongeur.CoinPlongeurFactory;
 
@@ -23,6 +24,9 @@ public class CoinActivity extends AppCompatActivity {
                 break;
             case PLONGEUR:
                 coinsFactory=new CoinPlongeurFactory();
+                break;
+            case KITTER:
+                coinsFactory=new CoinKitesurferFactory();
                 break;
             default: // ???
                 coinsFactory=new CoinPecheurFactory();
