@@ -38,6 +38,11 @@
             android:layout_height="wrap_content"
             android:text="Un scientifique"
             android:onClick="onChangeRoleClicked"/>
+        <RadioButton android:id="@+id/params_radio_plongeur"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Un plongeur"
+            android:onClick="onChangeRoleClicked"/>
     </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

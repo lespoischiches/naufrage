@@ -33,6 +33,8 @@ public class ParamsActivity extends AppCompatActivity {
                 Log.d("D", "Scientifique");
                 BateauApplication.typeUtilisateurs=TypeUtilisateurs.SCIENTIFIQUE;
                 break;
+            case R.id.params_radio_plongeur:
+                BateauApplication.typeUtilisateurs=TypeUtilisateurs.PLONGEUR;
         }
     }
 }
