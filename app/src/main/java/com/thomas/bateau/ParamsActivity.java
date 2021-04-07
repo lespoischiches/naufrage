@@ -2,6 +2,7 @@ package com.thomas.bateau;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -35,6 +36,10 @@ public class ParamsActivity extends AppCompatActivity {
                 break;
             case R.id.params_radio_plongeur:
                 BateauApplication.typeUtilisateurs=TypeUtilisateurs.PLONGEUR;
+        }
+        Activity parentActivity=getParent();
+        if(parentActivity instanceof MainActivity) {
+            ((MainActivity)parentActivity).reloadBtn();
         }
     }
 }

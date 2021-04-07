@@ -10,7 +10,7 @@ import com.thomas.bateau.coins.CoinActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button btnMeteo, btnCarte, btnReport;
+    private Button btnMeteo, btnCarte, btnReport, btnAccueilCoin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
         btnMeteo=findViewById(R.id.btn_accueil_meteo);
         btnCarte=findViewById(R.id.btn_accueil_carte);
         btnReport=findViewById(R.id.btn_accueil_signaler_evenement);
+        btnAccueilCoin=findViewById(R.id.btn_accueil_coin);
         btnMeteo.setOnClickListener(click -> {
             Intent intent=new Intent(getApplicationContext(), MeteoActivity.class);
             startActivity(intent);
@@ -32,7 +33,8 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), ReportActivity.class);
             startActivity(intent);
         });
-        findViewById(R.id.btn_accueil_coin).setOnClickListener(c -> {
+        btnAccueilCoin.setText("Coin des "+BateauApplication.typeUtilisateurs.getString());
+        btnAccueilCoin.setOnClickListener(c -> {
             Intent intent=new Intent(getApplicationContext(), CoinActivity.class);
             startActivity(intent);
         });
@@ -41,5 +43,9 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
         //getFragmentManager().beginTransaction().replace(R.id.accueil_fragment_evenements, (android.app.Fragment)new EvenementAccueilFragment()).addToBackStack(null).commit();
+    }
+
+    public void reloadBtn() {
+        btnAccueilCoin.setText("Coin des "+BateauApplication.typeUtilisateurs.getString());
     }
 }
