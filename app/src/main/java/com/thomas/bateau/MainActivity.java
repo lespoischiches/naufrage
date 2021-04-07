@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
         btnCarte=findViewById(R.id.btn_accueil_carte);
         btnReport=findViewById(R.id.btn_accueil_signaler_evenement);
         btnAccueilCoin=findViewById(R.id.btn_accueil_coin);
+        BateauApplication.mainActivityInstance=this;
         btnMeteo.setOnClickListener(click -> {
             Intent intent=new Intent(getApplicationContext(), MeteoActivity.class);
             startActivity(intent);

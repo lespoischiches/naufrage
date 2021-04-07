@@ -31,7 +31,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Un pêcheur"
-            android:checked="true"
             android:onClick="onChangeRoleClicked"/>
         <RadioButton android:id="@+id/params_radio_scientifique"
             android:layout_width="wrap_content"
@@ -42,6 +41,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Un plongeur"
+            android:onClick="onChangeRoleClicked"/>
+        <RadioButton android:id="@+id/params_radio_skipper"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Un skipper"
+            android:onClick="onChangeRoleClicked"/>
+        <RadioButton android:id="@+id/params_radio_kitter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Un kitter"
             android:onClick="onChangeRoleClicked"/>
     </RadioGroup>
 
