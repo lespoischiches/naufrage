@@ -1,5 +1,6 @@
 package com.thomas.bateau.coins;
 
 public abstract class CoinsFactory {
-    public abstract CoinFragmentResults createFragmentResults();
+    public abstract ResultCoinFragment createFragmentResults();
+    public abstract SearchCoinFragment createFragmentSearch();
 }

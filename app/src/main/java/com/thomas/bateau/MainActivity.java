@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
+import com.thomas.bateau.coins.CoinActivity;
+
 public class MainActivity extends AppCompatActivity {
 
     private Button btnMeteo, btnCarte, btnReport;
@@ -30,5 +32,10 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), ReportActivity.class);
             startActivity(intent);
         });
+        findViewById(R.id.btn_accueil_coin).setOnClickListener(c -> {
+            Intent intent=new Intent(getApplicationContext(), CoinActivity.class);
+            startActivity(intent);
+        });
+        //getFragmentManager().beginTransaction().replace(R.id.accueil_fragment_evenements, (android.app.Fragment)new EvenementAccueilFragment()).addToBackStack(null).commit();
     }
 }

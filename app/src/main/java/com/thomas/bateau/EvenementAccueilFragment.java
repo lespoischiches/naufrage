@@ -22,7 +22,7 @@ import java.util.List;
 
 import static com.thomas.bateau.BateauApplication.CHANNEL_1_ID;
 
-public class EvenementAccueilFragment extends Fragment {
+public class EvenementAccueilFragment extends android.app.Fragment {
 
     private View fragView;
     private int notificationId=0;
