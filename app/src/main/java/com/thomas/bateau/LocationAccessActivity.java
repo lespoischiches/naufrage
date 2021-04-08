@@ -31,6 +31,7 @@ public abstract class LocationAccessActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
+        Log.d("A", "onstart");
         myLocationService=new MyLocationService(this);
         permissionsToRequest = findUnAskedPermissions(permissions);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -53,8 +54,8 @@ public abstract class LocationAccessActivity extends AppCompatActivity {
     }
 
 
-    private ArrayList findUnAskedPermissions(ArrayList<String> wanted) {
-        ArrayList result = new ArrayList();
+    private ArrayList<String> findUnAskedPermissions(ArrayList<String> wanted) {
+        ArrayList<String> result = new ArrayList();
         for (String perm : wanted) {
             if (!hasPermission(perm)) {
                 result.add(perm);
@@ -84,8 +85,21 @@ public abstract class LocationAccessActivity extends AppCompatActivity {
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        Log.d("A", "result");
         switch (requestCode) {
             case ALL_PERMISSIONS_RESULT:
+                /*if(grantResults[0]==PackageManager.PERMISSION_GRANTED || grantResults[1]==PackageManager.PERMISSION_GRANTED) {
+                    onNewLocationAvailable();
+                } else {
+                    showMessageOKCancel("These permissions are mandatory for the application. Please allow access.", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                                requestPermissions(permissionsRejected.toArray(new String[permissionsRejected.size()]), ALL_PERMISSIONS_RESULT);
+                            }
+                        }
+                    });
+                }*/
                 for (String perms : permissionsToRequest) {
                     if (!hasPermission(perms)) {
                         permissionsRejected.add(perms);

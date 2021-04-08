@@ -1,6 +1,7 @@
 package com.thomas.bateau;
 
 import android.Manifest;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Service;
 import android.content.Context;
@@ -16,6 +17,7 @@ import android.provider.Settings;
 import android.widget.Toast;
 
 import androidx.core.app.ActivityCompat;
+
 
 /**
  * https://www.journaldev.com/13325/android-location-api-tracking-gps
@@ -67,6 +69,7 @@ public class MyLocationService extends Service implements LocationListener {
                         // to handle the case where the user grants the permission. See the documentation
                         // for ActivityCompat#requestPermissions for more details.
                         //ActivityCompat.requestPermissions(mContext, Manifest.permission.ACCESS_FINE_LOCATION);
+                        //ActivityCompat.requestPermissions((Activity)mContext, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 101);
                     }
                     locationManager.requestLocationUpdates(
                             LocationManager.GPS_PROVIDER,
@@ -96,6 +99,7 @@ public class MyLocationService extends Service implements LocationListener {
                         //                                          int[] grantResults)
                         // to handle the case where the user grants the permission. See the documentation
                         // for ActivityCompat#requestPermissions for more details.
+                        //ActivityCompat.requestPermissions((Activity)mContext, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 101);
                     }
                     locationManager.requestLocationUpdates(
                             LocationManager.NETWORK_PROVIDER,
@@ -211,4 +215,5 @@ public class MyLocationService extends Service implements LocationListener {
     public void onProviderDisabled(String s) {
 
     }
+
 }
