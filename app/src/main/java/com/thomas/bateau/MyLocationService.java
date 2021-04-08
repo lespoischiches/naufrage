@@ -53,7 +53,7 @@ public class MyLocationService extends Service implements LocationListener {
             checkNetwork = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
 
             if (!checkGPS && !checkNetwork) {
-                Toast.makeText(mContext, "No Service Provider is available", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, "Le GPS est desactive sur ce telephone", Toast.LENGTH_SHORT).show();
             } else {
                 this.canGetLocation = true;
 

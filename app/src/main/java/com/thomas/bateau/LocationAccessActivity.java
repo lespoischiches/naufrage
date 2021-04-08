@@ -2,8 +2,10 @@ package com.thomas.bateau;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.util.Log;
@@ -88,18 +90,6 @@ public abstract class LocationAccessActivity extends AppCompatActivity {
         Log.d("A", "result");
         switch (requestCode) {
             case ALL_PERMISSIONS_RESULT:
-                /*if(grantResults[0]==PackageManager.PERMISSION_GRANTED || grantResults[1]==PackageManager.PERMISSION_GRANTED) {
-                    onNewLocationAvailable();
-                } else {
-                    showMessageOKCancel("These permissions are mandatory for the application. Please allow access.", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                                requestPermissions(permissionsRejected.toArray(new String[permissionsRejected.size()]), ALL_PERMISSIONS_RESULT);
-                            }
-                        }
-                    });
-                }*/
                 for (String perms : permissionsToRequest) {
                     if (!hasPermission(perms)) {
                         permissionsRejected.add(perms);
@@ -108,26 +98,48 @@ public abstract class LocationAccessActivity extends AppCompatActivity {
                 if (permissionsRejected.size() > 0) {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                         if (shouldShowRequestPermissionRationale(permissionsRejected.get(0))) {
-                            showMessageOKCancel("These permissions are mandatory for the application. Please allow access.", new DialogInterface.OnClickListener() {
+                            showMessageOKCancel("S'il vous plait autorisez l'acces a la localisation pour cette application", new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {
                                             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                                                 requestPermissions(permissionsRejected.toArray(new String[permissionsRejected.size()]), ALL_PERMISSIONS_RESULT);
                                             }
                                         }
-                                    });
+                                    }, true);
+                            return;
+                        } else {
+                            showMessageOKCancel("S'il vous plait autorisez l'acces a la localisation pour cette application dans les parametres", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                                        requestPermissions(permissionsRejected.toArray(new String[permissionsRejected.size()]), ALL_PERMISSIONS_RESULT);
+                                        restartActivity();
+                                    }
+                                }
+                            }, false);
                             return;
                         }
                     }
                 } else {
-                    onNewLocationAvailable();
+                    restartActivity();
+                    //onNewLocationAvailable();
                 }
                 break;
         }
     }
 
-    private void showMessageOKCancel(String message, DialogInterface.OnClickListener okListener) {
-        new AlertDialog.Builder(this).setMessage(message).setPositiveButton("OK", okListener).setNegativeButton("Cancel", null).create().show();
+    private void showMessageOKCancel(String message, DialogInterface.OnClickListener okListener, boolean cancel) {
+        AlertDialog.Builder b=new AlertDialog.Builder(this).setMessage(message).setPositiveButton("OK", okListener);
+        if(cancel) {
+            b.setNegativeButton("Cancel", null);
+        }
+        b.create().show();
+    }
+
+    private void restartActivity() {
+        Intent intent = getIntent();
+        finish();
+        startActivity(intent);
     }
 
     public void onNewLocationAvailable() {}
