@@ -3,6 +3,7 @@
     package="com.thomas.bateau">
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -10,9 +11,9 @@
     <application
         android:name=".BateauApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/bateau"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/bateau_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Bateau">
         <activity android:name=".ParamsActivity"></activity>
@@ -27,6 +28,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!-- <service android:name="MyNavigationService" android:foregroundServiceType="location"></service> -->
     </application>
 
 </manifest>
