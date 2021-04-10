@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.Location;
 import android.os.Build;
 import android.util.Log;
 
@@ -35,6 +36,7 @@ public abstract class LocationAccessActivity extends AppCompatActivity {
         super.onStart();
         Log.d("A", "onstart");
         myLocationService=new MyLocationService(this);
+        myLocationService.setOnLocationChanged(l -> {this.onLocationChanged(l);});
         permissionsToRequest = findUnAskedPermissions(permissions);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
 
@@ -143,6 +145,8 @@ public abstract class LocationAccessActivity extends AppCompatActivity {
     }
 
     public void onNewLocationAvailable() {}
+
+    public void onLocationChanged(Location location) {}
 
 
 }

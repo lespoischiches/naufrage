@@ -18,6 +18,8 @@ import android.widget.Toast;
 
 import androidx.core.app.ActivityCompat;
 
+import java.util.function.Consumer;
+
 
 /**
  * https://www.journaldev.com/13325/android-location-api-tracking-gps
@@ -35,6 +37,7 @@ public class MyLocationService extends Service implements LocationListener {
     private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 10;
     private static final long MIN_TIME_BW_UPDATES = 1000 * 60 * 1;
     protected LocationManager locationManager;
+    private Consumer<Location> locationChanged;
 
     public MyLocationService(Context mContext) {
         this.mContext = mContext;
@@ -198,7 +201,7 @@ public class MyLocationService extends Service implements LocationListener {
 
     @Override
     public void onLocationChanged(Location location) {
-
+        locationChanged.accept(location);
     }
 
     @Override
@@ -214,6 +217,10 @@ public class MyLocationService extends Service implements LocationListener {
     @Override
     public void onProviderDisabled(String s) {
 
+    }
+
+    public void setOnLocationChanged(Consumer<Location> locationChanged) {
+        this.locationChanged=locationChanged;
     }
 
 }

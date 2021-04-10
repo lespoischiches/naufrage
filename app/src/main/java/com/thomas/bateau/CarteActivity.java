@@ -12,6 +12,7 @@ import org.osmdroid.views.overlay.ItemizedIconOverlay;
 import org.osmdroid.views.overlay.ItemizedOverlayWithFocus;
 import org.osmdroid.views.overlay.OverlayItem;
 
+import android.location.Location;
 import android.os.Bundle;
 import android.widget.Button;
 
@@ -22,6 +23,8 @@ public class CarteActivity extends LocationAccessActivity {
     private MapView map;
     private Button btnRetour;
     private IMapController mapController;
+    private OverlayItem yourLocationItem;
+    private ItemizedOverlayWithFocus<OverlayItem> mOverlay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +42,19 @@ public class CarteActivity extends LocationAccessActivity {
 
         mapController=map.getController();
         mapController.setZoom(18d);
+        mOverlay=new ItemizedOverlayWithFocus<OverlayItem>(getApplicationContext(), new ArrayList<>(), new ItemizedIconOverlay.OnItemGestureListener<OverlayItem>() {
+            @Override
+            public boolean onItemSingleTapUp(int index, OverlayItem item) {
+                return true;
+            }
+
+            @Override
+            public boolean onItemLongPress(int index, OverlayItem item) {
+                return false;
+            }
+        });
+        mOverlay.setFocusItemsOnTap(true);
+        map.getOverlays().add(mOverlay);
     }
 
     @Override
@@ -57,22 +73,9 @@ public class CarteActivity extends LocationAccessActivity {
         GeoPoint startPoint=new GeoPoint(location[0], location[1]);
         mapController.setCenter(startPoint);
         ArrayList<OverlayItem> items=new ArrayList<>();
-        items.add(new OverlayItem("Your location", "You're here !", startPoint));
-
-        ItemizedOverlayWithFocus<OverlayItem> mOverlay=new ItemizedOverlayWithFocus<OverlayItem>(getApplicationContext(), items, new ItemizedIconOverlay.OnItemGestureListener<OverlayItem>() {
-            @Override
-            public boolean onItemSingleTapUp(int index, OverlayItem item) {
-                return true;
-            }
-
-            @Override
-            public boolean onItemLongPress(int index, OverlayItem item) {
-                return false;
-            }
-        });
-
-        mOverlay.setFocusItemsOnTap(true);
-        map.getOverlays().add(mOverlay);
+        yourLocationItem=new OverlayItem("Your location", "You're here !", startPoint);
+        //items.add(yourLocationItem);
+        mOverlay.addItem(yourLocationItem);
     }
 
     @Override
@@ -82,5 +85,14 @@ public class CarteActivity extends LocationAccessActivity {
             location=new Double[]{39.5711111, 126.05555555555556};
         }
         addLocationOverlayToMap(location);
+    }
+
+    @Override
+    public void onLocationChanged(Location location) {
+        mOverlay.removeItem(yourLocationItem);
+        GeoPoint startPoint=new GeoPoint(location.getLatitude(), location.getLongitude());
+        yourLocationItem=new OverlayItem("Your location", "You're here !", startPoint);
+        mOverlay.addItem(yourLocationItem);
+        mapController.setCenter(startPoint);
     }
 }
