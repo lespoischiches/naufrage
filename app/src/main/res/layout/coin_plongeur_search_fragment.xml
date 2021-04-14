@@ -1,12 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
+        <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="PLONGEUR"
-        />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:text="LE COIN DES PECHEUR - RECHERCHE !!!"
+            />
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/LeCoinDesPolongeursRechercheSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Le coin des plongeurs"
+            android:textSize="36sp"
+            tools:layout_editor_absoluteX="29dp"
+            tools:layout_editor_absoluteY="155dp" />
+
+        <Button
+        android:id="@+id/LeCoinDesPolongeursRechercheBt1Search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        tools:layout_editor_absoluteX="152dp"
+        tools:layout_editor_absoluteY="247dp" />
+
+        <Button
+        android:id="@+id/LeCoinDesPolongeursRechercheBt2Search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        tools:layout_editor_absoluteX="153dp"
+        tools:layout_editor_absoluteY="317dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

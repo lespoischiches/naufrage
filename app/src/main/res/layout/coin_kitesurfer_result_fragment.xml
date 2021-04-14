@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -11,5 +12,30 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:text="COIN DES KITES - RECHERCHE !!!"
         />
+
+    <TextView
+        android:id="@+id/LeCoinDesKitesurfersResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Le coin des Kitesurfers"
+        android:textSize="36sp"
+        tools:layout_editor_absoluteX="21dp"
+        tools:layout_editor_absoluteY="121dp" />
+
+    <Button
+        android:id="@+id/btRechercheUnClubDesKitesurfersResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Recherche un club de Kitesurfers"
+        tools:layout_editor_absoluteX="45dp"
+        tools:layout_editor_absoluteY="183dp" />
+
+    <Button
+        android:id="@+id/btRechercheUnSpotDesKitesurfersResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Recherche un spot de Kitesurfers"
+        tools:layout_editor_absoluteX="45dp"
+        tools:layout_editor_absoluteY="231dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

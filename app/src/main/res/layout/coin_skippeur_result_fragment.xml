@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+xmlns:app="http://schemas.android.com/apk/res-auto">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -11,5 +11,30 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:text="COIN DES SKIPPEURS  - RESULTAT !!!"
         />
+
+    <TextView
+        android:id="@+id/leCoinDesSkippeursResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Le coin des skippeurs"
+        android:textSize="36sp"
+        tools:layout_editor_absoluteX="31dp"
+        tools:layout_editor_absoluteY="136dp" />
+
+    <Button
+        android:id="@+id/leCoinDesSkippeursBt1Result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        tools:layout_editor_absoluteX="159dp"
+        tools:layout_editor_absoluteY="209dp" />
+
+    <Button
+        android:id="@+id/leCoinDesSkippeursBt2Result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        tools:layout_editor_absoluteX="159dp"
+        tools:layout_editor_absoluteY="283dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

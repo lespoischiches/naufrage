@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
         android:layout_width="wrap_content"
@@ -11,5 +12,30 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:text="COIN DES SCIENTIFIQUES - RECHERCHE !!!"
         />
+
+    <TextView
+        android:id="@+id/LeCoinDesScinetifiquesSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Le coin des scientifiques"
+        android:textSize="36sp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="128dp" />
+
+    <Button
+        android:id="@+id/LeCoinDesScinetifiquesClubSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Recherche un club scientifique"
+        tools:layout_editor_absoluteX="56dp"
+        tools:layout_editor_absoluteY="193dp" />
+
+    <Button
+        android:id="@+id/LeCoinDesScinetifiquesSpotSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Recherche un spot scientifique"
+        tools:layout_editor_absoluteX="55dp"
+        tools:layout_editor_absoluteY="272dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

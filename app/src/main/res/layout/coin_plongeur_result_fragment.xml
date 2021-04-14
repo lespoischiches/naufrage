@@ -1,6 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-</LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:text="LE COIN DES PECHEUR - RESULTAT !!!"
+        />
+
+    <TextView
+        android:id="@+id/LeCoinDesPlongeursResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Le coin des plongeurs"
+        android:textSize="36sp"
+        tools:layout_editor_absoluteX="147dp"
+        tools:layout_editor_absoluteY="155dp" />
+
+    <Button
+        android:id="@+id/btRechercheUnClubDePecheResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Recherche d'un club de pêche"
+        tools:layout_editor_absoluteX="152dp"
+        tools:layout_editor_absoluteY="247dp" />
+
+    <Button
+        android:id="@+id/btRechercheUnSpotDePecheResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Recherche d'un spot de pêche"
+        tools:layout_editor_absoluteX="153dp"
+        tools:layout_editor_absoluteY="317dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

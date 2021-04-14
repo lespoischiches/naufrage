@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
 xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -9,7 +9,32 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
     android:layout_height="wrap_content"
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintLeft_toLeftOf="parent"
-    android:text="COIN DES KITESURFER - RECHERCHE !!!"
+    android:text="COIN DES KITESURFERS - RECHERCHE !!!"
     />
+
+    <TextView
+        android:id="@+id/LeCoinDesKitesurfersSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Le coin des kitesurfers"
+        android:textSize="36sp"
+        tools:layout_editor_absoluteX="28dp"
+        tools:layout_editor_absoluteY="152dp" />
+
+    <Button
+        android:id="@+id/btRechercheUnClubDeKitesurfersSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Recherche un club de Kitesurfers"
+        tools:layout_editor_absoluteX="48dp"
+        tools:layout_editor_absoluteY="214dp" />
+
+    <Button
+        android:id="@+id/btRechercheUnSpotDeKitesurfersSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Recherche  un spot de Kitesurfers"
+        tools:layout_editor_absoluteX="28dp"
+        tools:layout_editor_absoluteY="280dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
