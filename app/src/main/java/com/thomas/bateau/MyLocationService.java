@@ -39,6 +39,11 @@ public class MyLocationService extends Service implements LocationListener {
     protected LocationManager locationManager;
     private Consumer<Location> locationChanged;
 
+    public MyLocationService() {
+        super();
+        mContext=getApplicationContext();
+    }
+
     public MyLocationService(Context mContext) {
         this.mContext = mContext;
         getLocation();
