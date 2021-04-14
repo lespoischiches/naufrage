@@ -21,18 +21,29 @@ public class ReportActivity extends AppCompatActivity {
         btnBack.setOnClickListener(click ->{
             finish();
         });
-        Fragment frag = new com.thomas.bateau.ReportFragment();
-        getFragmentManager().beginTransaction().replace(R.id.test, frag).commit();
+
         btnMode = findViewById(R.id.mode);
-        btnMode.setOnClickListener(click ->{
-            if(!mode){
-                Fragment fragmentDeuxMain = new com.thomas.bateau.ReportFragment();
-                getFragmentManager().beginTransaction().replace(R.id.test, fragmentDeuxMain).commit();
-            }else{
-                Fragment fragmentUneMain = new ReportFragmentUneMain();
-                getFragmentManager().beginTransaction().replace(R.id.test, fragmentUneMain).commit();
-            }
-            mode = !mode;
-        });
+
+
+        if(findViewById(R.id.reportPort) != null) {
+            Fragment frag = new com.thomas.bateau.ReportFragment();
+            getFragmentManager().beginTransaction().replace(R.id.test, frag).commit();
+            btnMode.setOnClickListener(click -> {
+                if (!mode) {
+                    Fragment fragmentDeuxMain = new com.thomas.bateau.ReportFragment();
+                    getFragmentManager().beginTransaction().replace(R.id.test, fragmentDeuxMain).commit();
+                } else {
+                    Fragment fragmentUneMain = new ReportFragmentUneMain();
+                    getFragmentManager().beginTransaction().replace(R.id.test, fragmentUneMain).commit();
+                }
+                mode = !mode;
+            });
+        }
+
+        if(findViewById(R.id.reportLands) != null){
+
+            Fragment fragmentUneMain = new ReportFragmentUneMain();
+            getFragmentManager().beginTransaction().replace(R.id.test, fragmentUneMain).commit();
+        }
     }
 }
