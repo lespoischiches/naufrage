@@ -1,9 +1,11 @@
-package com.thomas.bateau;
+package com.thomas.bateau.meteo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.Button;
+
+import com.thomas.bateau.R;
 
 public class MeteoActivity extends AppCompatActivity {
 
