@@ -15,7 +15,7 @@ public class MeteoActivity extends AppCompatActivity implements Observer {
 
     private Button btnRetour, btnSwitchModeShoreOffShore;
     private TextView textTemp;
-    private MeteoModel meteoModel=new MeteoModel();
+    private MeteoModel meteoModel=MeteoModel.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

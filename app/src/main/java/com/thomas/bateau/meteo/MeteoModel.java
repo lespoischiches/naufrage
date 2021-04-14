@@ -8,7 +8,16 @@ public class MeteoModel extends Observable {
     private MeteoType meteoType=MeteoType.METEO_MARINE;
     private Map<MeteoType, Float> listTemperatures=new HashMap<>();
 
-    public MeteoModel() {
+    private static MeteoModel meteoModel=null;
+
+    public static MeteoModel getInstance() {
+        if(meteoModel==null) {
+            meteoModel=new MeteoModel();
+        }
+        return meteoModel;
+    }
+
+    private MeteoModel() {
         listTemperatures.put(MeteoType.METEO_COTIERE, new Float(15.0));
         listTemperatures.put(MeteoType.METEO_MARINE, new Float(10.0));
     }
