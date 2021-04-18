@@ -16,7 +16,7 @@ public class MeteoActivity extends AppCompatActivity implements Observer {
     private Button btnRetour, btnSwitchModeShoreOffShore;
     private TextView textTemp;
     private MeteoModel meteoModel=MeteoModel.getInstance();
-
+    private Button meteoSharing; 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +33,9 @@ public class MeteoActivity extends AppCompatActivity implements Observer {
         });
         btnSwitchModeShoreOffShore.setText(meteoModel.getMeteoType().toString());
         textTemp.setText(String.valueOf(meteoModel.getTemperature()));
+        
+        //meteoSharing = findViewById(R.id.sharingMeteo);
+
     }
 
     @Override

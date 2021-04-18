@@ -2,11 +2,12 @@ package com.thomas.bateau;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.app.Fragment;
-import androidx.lifecycle.ReportFragment;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+
+import com.thomas.bateau.meteo.MeteoActivity;
 
 public class ReportActivity extends AppCompatActivity {
 
@@ -30,10 +31,11 @@ public class ReportActivity extends AppCompatActivity {
             getFragmentManager().beginTransaction().replace(R.id.test, frag).commit();
             btnMode.setOnClickListener(click -> {
                 if (!mode) {
-                    Fragment fragmentDeuxMain = new com.thomas.bateau.ReportFragment();
+                    ReportFragment fragmentDeuxMain = new com.thomas.bateau.ReportFragment();
+
                     getFragmentManager().beginTransaction().replace(R.id.test, fragmentDeuxMain).commit();
                 } else {
-                    Fragment fragmentUneMain = new ReportFragmentUneMain();
+                    ReportFragmentUneMain fragmentUneMain = new ReportFragmentUneMain();
                     getFragmentManager().beginTransaction().replace(R.id.test, fragmentUneMain).commit();
                 }
                 mode = !mode;
@@ -42,7 +44,7 @@ public class ReportActivity extends AppCompatActivity {
 
         if(findViewById(R.id.reportLands) != null){
 
-            Fragment fragmentUneMain = new ReportFragmentUneMain();
+            ReportFragmentUneMain fragmentUneMain = new ReportFragmentUneMain();
             getFragmentManager().beginTransaction().replace(R.id.test, fragmentUneMain).commit();
         }
     }

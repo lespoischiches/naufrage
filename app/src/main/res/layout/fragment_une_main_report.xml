@@ -16,13 +16,13 @@
             android:orientation="vertical">
 
                 <Button
-                    android:id="@+id/button"
+                    android:id="@+id/emergency"
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
                     android:text="Signalement 1 \n ce bouton effectue le signalement 1"/>
 
                 <Button
-                    android:id="@+id/button2"
+                    android:id="@+id/naufrage"
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
                     android:text="Signalement 2 \n ce bouton effectue le signalement 2"

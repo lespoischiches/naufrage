@@ -19,15 +19,15 @@
         android:layout_height="wrap_content">
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/emergency"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:text="Signalement 1"
+            android:text="Emergency"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="15dp"/>
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/naufrage"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:text="Signalement 2"
