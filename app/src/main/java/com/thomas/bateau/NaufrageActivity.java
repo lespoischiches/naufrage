@@ -1,12 +1,13 @@
 package com.thomas.bateau;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class NaufrageActivity extends AppCompatActivity {
+public class NaufrageActivity extends LocationAccessActivity {
 
 
     Button sharingNaufrage, buttonBack ;
@@ -21,5 +22,23 @@ public class NaufrageActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        sharingNaufrage =findViewById(R.id.sharePosition);
+        sharingNaufrage.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(Intent.ACTION_SEND);
+                        intent.setType("text/plain");
+                        Double[] positions  = getLocation();
+                        String shareBody = " "+positions[0]+", "+ positions[1];
+                        String shareSub = "Share Position";
+                        intent.putExtra(Intent.EXTRA_SUBJECT,shareSub);
+                        intent.putExtra(Intent.EXTRA_TEXT,shareBody);
+                        startActivity(Intent.createChooser(intent,"Share Using"));
+                    }
+                });
+
     }
+
+
 }

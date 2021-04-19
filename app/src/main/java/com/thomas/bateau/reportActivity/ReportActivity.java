@@ -1,31 +1,27 @@
 package com.thomas.bateau.reportActivity;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.app.Fragment;
-
-import android.os.Bundle;
 import android.widget.Button;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.thomas.bateau.R;
+import com.thomas.bateau.reportActivity.reportFragment.ReportFragmentDeuxMain;
+import com.thomas.bateau.reportActivity.reportFragment.ReportFragmentUneMain;
 
-public class ReportActivity extends AppCompatActivity {
+public abstract class ReportActivity extends AppCompatActivity {
 
-    private Button btnBack, btnMode;
-    private boolean mode = true;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.report_activity);
-        btnBack = findViewById(R.id.btn_retour_signalement);
-        btnBack.setOnClickListener(click ->{
-            finish();
-        });
+    protected Button btnBack, btnMode;
+    protected boolean mode = true;
+
+    protected void initLayout(int portID, int landID)
+    {
 
         btnMode = findViewById(R.id.mode);
 
 
-        if(findViewById(R.id.reportPort) != null) {
+        if(findViewById(portID) != null) {
             Fragment frag = new ReportFragmentDeuxMain();
             getFragmentManager().beginTransaction().replace(R.id.test, frag).commit();
             btnMode.setOnClickListener(click -> {
@@ -35,10 +31,18 @@ public class ReportActivity extends AppCompatActivity {
             });
         }
 
-        if(findViewById(R.id.reportLands) != null){
+        if(findViewById(landID)!= null){
 
             ReportFragmentUneMain fragmentUneMain = new ReportFragmentUneMain();
             getFragmentManager().beginTransaction().replace(R.id.test, fragmentUneMain).commit();
         }
     }
+    protected void initReturnBack(int backID)
+    {
+        btnBack = findViewById(backID);
+        btnBack.setOnClickListener(click ->{
+            finish();
+        });
+    }
+
 }

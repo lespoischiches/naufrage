@@ -1,4 +1,4 @@
-package com.thomas.bateau.reportActivity;
+package com.thomas.bateau.reportActivity.reportFragment;
 
 import android.content.Intent;
 import android.net.Uri;
