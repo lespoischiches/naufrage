@@ -1,13 +1,12 @@
-package com.thomas.bateau;
+package com.thomas.bateau.reportActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.app.Fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
-import com.thomas.bateau.meteo.MeteoActivity;
+import com.thomas.bateau.R;
 
 public class ReportActivity extends AppCompatActivity {
 
@@ -27,17 +26,11 @@ public class ReportActivity extends AppCompatActivity {
 
 
         if(findViewById(R.id.reportPort) != null) {
-            Fragment frag = new com.thomas.bateau.ReportFragment();
+            Fragment frag = new ReportFragmentDeuxMain();
             getFragmentManager().beginTransaction().replace(R.id.test, frag).commit();
             btnMode.setOnClickListener(click -> {
-                if (!mode) {
-                    ReportFragment fragmentDeuxMain = new com.thomas.bateau.ReportFragment();
-
-                    getFragmentManager().beginTransaction().replace(R.id.test, fragmentDeuxMain).commit();
-                } else {
-                    ReportFragmentUneMain fragmentUneMain = new ReportFragmentUneMain();
-                    getFragmentManager().beginTransaction().replace(R.id.test, fragmentUneMain).commit();
-                }
+                if (!mode) getFragmentManager().beginTransaction().replace(R.id.test,  new ReportFragmentDeuxMain()).commit();
+                else getFragmentManager().beginTransaction().replace(R.id.test, new ReportFragmentUneMain()).commit();
                 mode = !mode;
             });
         }

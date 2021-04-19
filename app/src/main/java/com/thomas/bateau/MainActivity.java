@@ -8,6 +8,7 @@ import android.widget.Button;
 
 import com.thomas.bateau.coins.CoinActivity;
 import com.thomas.bateau.meteo.MeteoActivity;
+import com.thomas.bateau.reportActivity.ReportActivity;
 
 public class MainActivity extends AppCompatActivity {
 

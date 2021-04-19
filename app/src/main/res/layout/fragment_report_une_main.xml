@@ -19,26 +19,26 @@
                     android:id="@+id/emergency"
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
-                    android:text="Signalement 1 \n ce bouton effectue le signalement 1"/>
+                    android:text="Urgence \n ce bouton effectue le Urgence"/>
 
                 <Button
                     android:id="@+id/naufrage"
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
-                    android:text="Signalement 2 \n ce bouton effectue le signalement 2"
+                    android:text="Naufrage\n ce bouton effectue le Naufrage"
                     />
 
                 <Button
                     android:id="@+id/button3"
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
-                    android:text="Signalement 3 \n ce bouton effectue le signalement 3" />
+                    android:text="Aide \n ce bouton effectue l'Aide" />
 
             <Button
                 android:id="@+id/button4"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
-                android:text="Signalement 4 \n ce bouton effectue le signalement 4" />
+                android:text="Débris \n ce bouton effectue le Débris" />
 
         </LinearLayout>
     </ScrollView>
