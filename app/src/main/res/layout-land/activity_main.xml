@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+ <LinearLayout
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+     android:orientation="vertical">
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Paramètres penché"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:id="@+id/accueil_btn_params"
+        />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/accueilfirstlinearlayout"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/accueil_btn_params"
+        android:layout_marginTop="20dp"
+        >
+
+        <Button
+            android:id="@+id/btn_accueil_meteo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:drawableLeft="@drawable/drawable_cloud"
+            android:text="Nuageux\nTemp: -1°C\nHum: 80%"
+            android:layout_margin="5dp"
+            android:textAlignment="textStart"
+            android:textColor="@color/black"
+            android:textSize="15dp" />
+
+        <Button
+            android:id="@+id/btn_accueil_coin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:layout_margin="5dp"
+            android:textColor="@color/black"
+            android:drawableLeft="@drawable/drawable_canne"
+            android:textSize="15dp"
+            android:text="Coin des [...]\nff" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/accueilfirstlinearlayout"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:id="@+id/accueilsecondlinearlayout">
+
+        <Button
+            android:id="@+id/btn_accueil_carte"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:drawableLeft="@drawable/drawable_globe"
+            android:textColor="@color/black"
+            android:layout_margin="5dp"
+            android:text="Carte"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:drawableLeft="@drawable/drawable_loupe"
+            android:layout_margin="5dp"
+            android:textColor="@color/black"
+            android:text="Rechercher des evenements"/>
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_accueil_spot"
+        android:backgroundTint="#009E0F"
+        android:text="SPOTS"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/accueilsecondlinearlayout" />
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_accueil_signaler_evenement"
+        android:backgroundTint="#CF2A27"
+        app:layout_constraintTop_toBottomOf="@id/btn_accueil_spot"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:text="Signaler un évènement"/>
+
+    <fragment
+        android:id="@+id/accueil_fragment_evenements"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/btn_accueil_signaler_evenement"
+        android:name="com.thomas.bateau.EvenementAccueilFragment"/>
+
+ </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

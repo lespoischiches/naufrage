@@ -4,29 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
-    tools:context=".coins.CoinActivity">
+    tools:context=".CarteActivity">
 
     <Button
-        android:id="@+id/coin_retour_bouton"
+        android:id="@+id/carte.btnretour"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:text="Retour" />
-
-    <FrameLayout
-        android:id="@+id/coin_search_fragment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/coin_retour_bouton" />
+        android:layout_margin="10dp"
+        android:text="RETOUR" />
 
-    <FrameLayout
-        android:id="@+id/coin_result_fragment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <org.osmdroid.views.MapView
+        android:id="@+id/carte_osm"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/coin_search_fragment" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

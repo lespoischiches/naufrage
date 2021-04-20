@@ -8,10 +8,12 @@ import android.widget.Button;
 
 import com.thomas.bateau.coins.CoinActivity;
 import com.thomas.bateau.meteo.MeteoActivity;
+import com.thomas.bateau.reportActivity.AlertActivity;
+import com.thomas.bateau.reportActivity.SpotActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button btnMeteo, btnCarte, btnReport, btnAccueilCoin;
+    private Button btnMeteo, btnCarte, btnReport, btnAccueilCoin,buttonSpot;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +24,10 @@ public class MainActivity extends AppCompatActivity {
         btnReport=findViewById(R.id.btn_accueil_signaler_evenement);
         btnAccueilCoin=findViewById(R.id.btn_accueil_coin);
         BateauApplication.mainActivityInstance=this;
+        buttonSpot = findViewById(R.id.btn_accueil_spot);
+        buttonSpot.setOnClickListener(click ->{
+            Intent intent=new Intent(getApplicationContext(), SpotActivity.class);
+            startActivity(intent);} );
         btnMeteo.setOnClickListener(click -> {
             Intent intent=new Intent(getApplicationContext(), MeteoActivity.class);
             startActivity(intent);
@@ -32,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         btnReport.setOnClickListener(click -> {
-            Intent intent = new Intent(getApplicationContext(), ReportActivity.class);
+            Intent intent = new Intent(getApplicationContext(), AlertActivity.class);
             startActivity(intent);
         });
         btnAccueilCoin.setText("Coin des "+BateauApplication.typeUtilisateurs.getString());
