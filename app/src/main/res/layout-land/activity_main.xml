@@ -108,7 +108,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_weight="2"
+        android:layout_weight="1.5"
         android:id="@+id/btn_accueil_signaler_evenement"
         app:layout_constraintLeft_toRightOf="@id/btn_accueil_spot"
         app:layout_constraintTop_toTopOf="parent"
