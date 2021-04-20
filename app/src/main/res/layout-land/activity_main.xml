@@ -33,8 +33,8 @@
 
         <Button
             android:id="@+id/btn_accueil_meteo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="250dp"
+            android:layout_height="75dp"
             android:backgroundTint="@color/white"
             android:drawableLeft="@drawable/drawable_cloud"
             android:text="Nuageux\nTemp: -1°C\nHum: 80%"
@@ -48,8 +48,8 @@
 
         <Button
             android:id="@+id/btn_accueil_coin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="250dp"
+            android:layout_height="75dp"
             android:backgroundTint="@color/white"
             android:layout_margin="5dp"
             android:textColor="@color/black"
@@ -63,8 +63,8 @@
 
         <Button
             android:id="@+id/btn_accueil_carte"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="250dp"
+            android:layout_height="75dp"
             android:backgroundTint="@color/white"
             android:drawableLeft="@drawable/drawable_globe"
             app:layout_constraintTop_toBottomOf="@id/btn_accueil_coin"
@@ -76,8 +76,8 @@
             android:text="Carte"/>
         <Button
             android:id="@+id/btn_recherche"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="250dp"
+            android:layout_height="75dp"
             android:backgroundTint="@color/white"
             app:layout_constraintLeft_toRightOf="@id/btn_accueil_carte"
             app:layout_constraintTop_toBottomOf="@id/btn_accueil_meteo"
@@ -85,7 +85,7 @@
             android:drawableLeft="@drawable/drawable_loupe"
             android:layout_margin="5dp"
             android:textColor="@color/black"
-            android:text="Rechercher des evenements"/>
+            android:text="Rechercher \ndes evenements"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
