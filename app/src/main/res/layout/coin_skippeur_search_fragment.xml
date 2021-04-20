@@ -1,41 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
-xmlns:app="http://schemas.android.com/apk/res-auto">
+android:paddingLeft="16dp"
+android:paddingRight="16dp" >
 
-<TextView
-    android:layout_width="wrap_content"
+<EditText
+    android:id="@+id/leCoinDesSkippeursSearch"
+    android:layout_width="395dp"
     android:layout_height="wrap_content"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintLeft_toLeftOf="parent"
-    android:text="COIN DES SKIPPEURS - RECHERCHE !!!"
-    />
+    android:layout_alignParentStart="true"
+    android:layout_alignParentTop="true"
+    android:layout_alignParentEnd="true"
+    android:layout_marginStart="0dp"
+    android:layout_marginTop="181dp"
+    android:layout_marginEnd="0dp"
+    android:text="Le coin des skippeurs"
+    android:textSize="33dp"
+    tools:ignore="HardcodedText" />
 
-    <TextView
-        android:id="@+id/leCoinDesSkippeursSearch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Le coin des skippeurs"
-        android:textSize="36sp"
-        tools:layout_editor_absoluteX="31dp"
-        tools:layout_editor_absoluteY="158dp" />
+<Button
+    android:id="@+id/leCoinDesSkippeursBt1Search"
+    android:layout_width="385dp"
+    android:layout_height="wrap_content"
+    android:layout_alignParentStart="true"
+    android:layout_alignParentTop="true"
+    android:layout_alignParentEnd="true"
+    android:layout_marginStart="10dp"
+    android:layout_marginTop="318dp"
+    android:text="Recherche un club de Skippeurs"
+    tools:ignore="HardcodedText" />
 
-    <Button
-        android:id="@+id/leCoinDesSkippeursBt1Search"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        tools:layout_editor_absoluteX="159dp"
-        tools:layout_editor_absoluteY="240dp" />
+<Button
+    android:id="@+id/leCoinDesSkippeursBt2Search"
+    android:layout_width="370dp"
+    android:layout_height="wrap_content"
+    android:layout_alignParentStart="true"
+    android:layout_alignParentTop="true"
+    android:layout_alignParentEnd="true"
+    android:layout_marginStart="10dp"
+    android:layout_marginTop="388dp"
+    android:text="Recherche un ... de Skippeurs"
+    tools:ignore="HardcodedText" />
 
-    <Button
-        android:id="@+id/leCoinDesSkippeursBt2Search"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        tools:layout_editor_absoluteX="159dp"
-        tools:layout_editor_absoluteY="314dp" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
