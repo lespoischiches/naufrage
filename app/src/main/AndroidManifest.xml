@@ -16,13 +16,14 @@
         android:roundIcon="@mipmap/bateau_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Bateau">
-        <activity android:name=".ParamsActivity"></activity>
+        <activity android:name=".evenements.EvenementViewActivity"></activity>
+        <activity android:name=".ParamsActivity" />
         <activity android:name=".coins.CoinActivity" />
         <activity android:name=".reportActivity.AlertActivity" />
         <activity android:name=".reportActivity.SpotActivity" />
         <activity android:name=".CarteActivity" />
         <activity android:name=".meteo.MeteoActivity" />
-        <activity android:name=".NaufrageActivity"></activity>
+        <activity android:name=".NaufrageActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,7 +31,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <service android:name=".MyLocationService" android:foregroundServiceType="location"></service>
+
+        <service
+            android:name=".MyLocationService"
+            android:foregroundServiceType="location" />
     </application>
 
 </manifest>
