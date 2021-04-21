@@ -1,9 +1,6 @@
 package com.thomas.bateau;
 
-import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -20,8 +17,8 @@ import static android.Manifest.permission.*;
 public abstract class LocationAccessActivity extends AppCompatActivity {
 
     private ArrayList<String> permissionsToRequest;
-    private ArrayList<String> permissionsRejected = new ArrayList();
-    private ArrayList permissions = new ArrayList();
+    private final ArrayList<String> permissionsRejected = new ArrayList<>();
+    private final ArrayList<String> permissions = new ArrayList<>();
 
     private final static int ALL_PERMISSIONS_RESULT = 101;
     MyLocationService myLocationService;
@@ -53,8 +50,7 @@ public abstract class LocationAccessActivity extends AppCompatActivity {
         if (!myLocationService.canGetLocation()) {
             return null;
         }
-        Double[] result={myLocationService.getLatitude(), myLocationService.getLongitude()};
-        return result;
+        return new Double[]{myLocationService.getLatitude(), myLocationService.getLongitude()};
     }
 
 
