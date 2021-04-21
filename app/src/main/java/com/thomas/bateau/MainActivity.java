@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.thomas.bateau.coins.CoinActivity;
 import com.thomas.bateau.meteo.MeteoActivity;
@@ -13,7 +14,7 @@ import com.thomas.bateau.reportActivity.SpotActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button btnMeteo, btnCarte, btnReport, btnAccueilCoin,buttonSpot;
+    private TextView btnMeteo, btnCarte, btnReport, btnAccueilCoin,buttonSpot;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
