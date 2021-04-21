@@ -2,7 +2,6 @@ package com.thomas.bateau;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.app.Fragment;
-import androidx.lifecycle.ReportFragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +11,7 @@ public class ReportActivity extends AppCompatActivity {
 
     private Button btnBack, btnMode;
     private boolean mode = true;
+    private Fragment frag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,18 +21,28 @@ public class ReportActivity extends AppCompatActivity {
         btnBack.setOnClickListener(click ->{
             finish();
         });
-        Fragment frag = new com.thomas.bateau.ReportFragment();
+        frag = new com.thomas.bateau.ReportFragment();
         getFragmentManager().beginTransaction().replace(R.id.test, frag).commit();
         btnMode = findViewById(R.id.mode);
         btnMode.setOnClickListener(click ->{
             if(!mode){
-                Fragment fragmentDeuxMain = new com.thomas.bateau.ReportFragment();
-                getFragmentManager().beginTransaction().replace(R.id.test, fragmentDeuxMain).commit();
+                frag = new com.thomas.bateau.ReportFragment();
+                getFragmentManager().beginTransaction().replace(R.id.test, frag).commit();
             }else{
-                Fragment fragmentUneMain = new ReportFragmentUneMain();
-                getFragmentManager().beginTransaction().replace(R.id.test, fragmentUneMain).commit();
+                frag = new ReportFragmentUneMain();
+                getFragmentManager().beginTransaction().replace(R.id.test, frag).commit();
             }
             mode = !mode;
+        });
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        Button buttonS1 = ((ReportFragment)frag).signal1btn;
+        buttonS1.setOnClickListener(c -> {
+            Intent intent=new Intent(getApplicationContext(), PictureActivity.class);
+            startActivity(intent);
         });
     }
 }
