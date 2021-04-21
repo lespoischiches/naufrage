@@ -98,7 +98,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/btn_accueil_signaler_evenement"
-        android:name="com.thomas.bateau.EvenementAccueilFragment"/>
+        android:name="com.thomas.bateau.evenements.EvenementAccueilFragment"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,4 +1,4 @@
-package com.thomas.bateau;
+package com.thomas.bateau.evenements;
 
 import android.database.DataSetObserver;
 import android.os.Bundle;
@@ -16,6 +16,8 @@ import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
+
+import com.thomas.bateau.R;
 
 import java.util.Arrays;
 import java.util.List;
