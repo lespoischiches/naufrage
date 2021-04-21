@@ -49,6 +49,7 @@ public class EvenementAccueilFragment extends android.app.Fragment {
         return fragView;
     }
 
+    // sendNotificationOnChannel("NOTIF !!", "Hello from notification", CHANNEL_1_ID, NotificationCompat.PRIORITY_DEFAULT);
     private void sendNotificationOnChannel(String title, String message, String channelId, int priority) {
         NotificationCompat.Builder notification = new NotificationCompat.Builder(getActivity().getApplicationContext(), channelId).setContentTitle(title).setSmallIcon(R.drawable.cloud_icon).setContentText(message).setPriority(priority).setTimeoutAfter(5000);
         NotificationManagerCompat.from(getActivity()).notify(++notificationId, notification.build());
