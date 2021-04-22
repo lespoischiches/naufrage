@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -46,14 +47,6 @@ public class EvenementAccueilFragment extends android.app.Fragment implements IE
         EvenementsListAdapter evenementsListAdapter=new EvenementsListAdapter(fragView.getContext(), evenementsList);
         listEvenementsView.setAdapter(evenementsListAdapter);
         evenementsListAdapter.addListener(this);
-        /*List<String> listItems=Arrays.asList("Hello", "World");
-        listView.setAdapter(new ArrayAdapter<String>(fragView.getContext(), android.R.layout.simple_list_item_1, listItems));
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                sendNotificationOnChannel("NOTIF !!", "Hello from notification", CHANNEL_1_ID, NotificationCompat.PRIORITY_DEFAULT);
-            }
-        });*/
         return fragView;
     }
 
@@ -65,8 +58,10 @@ public class EvenementAccueilFragment extends android.app.Fragment implements IE
 
     @Override
     public void onClickEvenement(Evenement evenement) {
+        Log.d("A", "here");
         Intent intentEvenement=new Intent(fragView.getContext(), EvenementViewActivity.class);
         intentEvenement.putExtra(EVENEMENT, evenement);
         startActivity(intentEvenement);
     }
+
 }

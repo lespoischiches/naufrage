@@ -1,6 +1,7 @@
 package com.thomas.bateau.evenements;
 
 import android.content.Context;
+import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 
 import com.thomas.bateau.R;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 

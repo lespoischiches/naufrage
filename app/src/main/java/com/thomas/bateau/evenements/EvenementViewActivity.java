@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.thomas.bateau.R;
@@ -14,6 +15,7 @@ public class EvenementViewActivity extends AppCompatActivity {
 
     private Evenement evenement;
     private TextView textViewTitre, textViewDescription, textViewTexte;
+    private ImageView image;
     private Button btnRetour;
 
     @Override
@@ -24,6 +26,7 @@ public class EvenementViewActivity extends AppCompatActivity {
         textViewDescription=findViewById(R.id.activity_evenement_view_description);
         textViewTexte=findViewById(R.id.activity_evenement_view_texte);
         btnRetour=findViewById(R.id.activity_evenement_view_retour);
+        image=findViewById(R.id.activity_evenement_view_image);
 
         evenement=getIntent().getParcelableExtra(EVENEMENT);
         btnRetour.setOnClickListener(c -> {
@@ -33,5 +36,16 @@ public class EvenementViewActivity extends AppCompatActivity {
         textViewTitre.setText(evenement.getTitle());
         textViewDescription.setText(evenement.getDescription());
         textViewTexte.setText(evenement.getTexte());
+        evenement.downloadImage(success -> {
+            if(success) {
+                image.setImageBitmap(evenement.getImage());
+            }
+        });
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        evenement.cancelDownloadImage();
     }
 }
