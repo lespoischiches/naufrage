@@ -19,6 +19,7 @@ import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 
 import com.thomas.bateau.R;
+import com.thomas.bateau.TypeUtilisateurs;
 
 import java.util.Arrays;
 import java.util.List;
@@ -42,7 +43,6 @@ public class EvenementAccueilFragment extends android.app.Fragment implements IE
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         fragView=inflater.inflate(R.layout.evenement_accueil_fragment, container, false);
         listEvenementsView=fragView.findViewById(R.id.frag_evenements_list);
-        evenementsList.add(new Evenement("Hello", "world", "https://fr.seaicons.com/wp-content/uploads/2015/06/elephant-icon.png"));
         EvenementsListAdapter evenementsListAdapter=new EvenementsListAdapter(fragView.getContext(), evenementsList);
         listEvenementsView.setAdapter(evenementsListAdapter);
         evenementsListAdapter.addListener(this);

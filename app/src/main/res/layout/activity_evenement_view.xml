@@ -12,6 +12,39 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="Titre"
+        android:textStyle="bold"
+        android:textSize="40sp"
+        android:layout_marginTop="40dp"
+        android:maxEms="40"
+        android:singleLine="false"
+        />
+
+    <Button
+        android:id="@+id/activity_evenement_view_retour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="Retour" />
+
+    <TextView
+        android:id="@+id/activity_evenement_view_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/activity_evenement_view_title"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:text="Description"
+        />
+
+    <TextView
+        android:id="@+id/activity_evenement_view_texte"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/activity_evenement_view_description"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:text="texte"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

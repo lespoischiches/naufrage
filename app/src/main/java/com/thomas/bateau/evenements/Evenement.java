@@ -6,6 +6,9 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.widget.ImageView;
 
+import com.thomas.bateau.BateauApplication;
+import com.thomas.bateau.TypeUtilisateurs;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -13,8 +16,9 @@ import java.net.HttpURLConnection;
 public class Evenement implements Parcelable {
 
     private Double[] location=new Double[2];
-    private String titre, description, imageURL;
+    private String titre, description, imageURL, texte="";
     private Bitmap image;
+    private TypeUtilisateurs typeUtilisateur=TypeUtilisateurs.PECHEUR;
     public static final String EVENEMENT="evenement";
 
     public Evenement() {
@@ -25,27 +29,39 @@ public class Evenement implements Parcelable {
         imageURL=null;
     }
 
-    public Evenement(String title, String description, String imageURL) {
+    public Evenement(String title, String description, TypeUtilisateurs typeUtilisateur) {
+        this.titre=title;
+        this.description=description;
+        this.imageURL="";
+        this.image=null;
+        this.typeUtilisateur=typeUtilisateur;
+    }
+
+    public Evenement(String title, String description, TypeUtilisateurs typeUtilisateur, String imageURL) {
         this.titre=title;
         this.description=description;
         this.imageURL=imageURL;
         this.image=null;
+        this.typeUtilisateur=typeUtilisateur;
         //downloadBitmapFromURL();
         //new Thread(() -> downloadBitmapFromURL()).run();
     }
 
-    public Evenement(String title, String description, Bitmap image) {
+    public Evenement(String title, String description, TypeUtilisateurs typeUtilisateur, Bitmap image) {
         this.titre=title;
         this.description=description;
         this.imageURL="";
         this.image=image;
+        this.typeUtilisateur=typeUtilisateur;
     }
 
     protected Evenement(Parcel in) {
         titre=in.readString();
         description=in.readString();
         imageURL=in.readString();
+        texte=in.readString();
         image=in.readParcelable(Bitmap.class.getClassLoader());
+        typeUtilisateur=TypeUtilisateurs.valueOf(in.readString());
     }
 
     public String getTitle() {
@@ -62,6 +78,14 @@ public class Evenement implements Parcelable {
 
     public Bitmap getImage() {
         return image;
+    }
+
+    public String getTexte() {
+        return texte;
+    }
+
+    public TypeUtilisateurs getTypeUtilisateur() {
+        return typeUtilisateur;
     }
 
     public void setTitle(String title) {
@@ -82,12 +106,22 @@ public class Evenement implements Parcelable {
         this.imageURL="";
     }
 
+    public void setTexte(String texte) {
+        this.texte=texte;
+    }
+
+    public void setTypeUtilisateur(TypeUtilisateurs typeUtilisateur) {
+        this.typeUtilisateur=typeUtilisateur;
+    }
+
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(titre);
         dest.writeString(description);
         dest.writeString(imageURL);
+        dest.writeString(texte);
         dest.writeValue(image);
+        dest.writeString(typeUtilisateur.name());
     }
 
     @Override
@@ -108,7 +142,7 @@ public class Evenement implements Parcelable {
     };
 
     private void downloadBitmapFromURL() {
-        if(this.imageURL == null) {
+        if(this.imageURL == null || this.imageURL.isEmpty()) {
             return;
         }
         try {
@@ -118,6 +152,7 @@ public class Evenement implements Parcelable {
             connection.connect();
             InputStream input = connection.getInputStream();
             image = BitmapFactory.decodeStream(input);
+            imageURL="";
         } catch (IOException e) {
             //
         }

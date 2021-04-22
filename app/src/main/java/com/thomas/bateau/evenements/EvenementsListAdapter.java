@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.thomas.bateau.R;
@@ -47,9 +48,16 @@ public class EvenementsListAdapter extends BaseAdapter {
         if(convertView == null) {
             convertView=layoutInflater.inflate(R.layout.evenement_liste, parent, false);
         }
-        Evenement evenement=(Evenement)getItem(position);
         TextView titreTextView=convertView.findViewById(R.id.evenement_liste_titre);
+        ImageView iconImageView=convertView.findViewById(R.id.evenement_liste_photo);
+        TextView descriptionTextView=convertView.findViewById(R.id.evenement_liste_description);
+
+        Evenement evenement=(Evenement)getItem(position);
+
         titreTextView.setText(evenement.getTitle());
+        iconImageView.setImageResource(evenement.getTypeUtilisateur().getIcon());
+        descriptionTextView.setText(evenement.getDescription());
+
         convertView.setOnClickListener(v -> {
             listenerList.forEach(listener -> listener.onClickEvenement(evenement));
         });
