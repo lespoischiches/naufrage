@@ -27,26 +27,31 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/params_je_suis"
         android:orientation="vertical">
+
         <RadioButton android:id="@+id/params_radio_pecheur"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Un pêcheur"
             android:onClick="onChangeRoleClicked"/>
+
         <RadioButton android:id="@+id/params_radio_scientifique"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Un scientifique"
             android:onClick="onChangeRoleClicked"/>
+
         <RadioButton android:id="@+id/params_radio_plongeur"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Un plongeur"
             android:onClick="onChangeRoleClicked"/>
+
         <RadioButton android:id="@+id/params_radio_skipper"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Un skipper"
             android:onClick="onChangeRoleClicked"/>
+
         <RadioButton android:id="@+id/params_radio_kitter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

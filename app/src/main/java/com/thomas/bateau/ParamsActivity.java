@@ -107,21 +107,21 @@ public class ParamsActivity extends AppCompatActivity {
             }
         }
         else{
-            switch (BateauApplication.typeUtilisateurs) {
-                case PECHEUR:
-                    rbPecheur.setChecked(true);
+            switch (view.getId()) {
+                case R.id.params_radio_pecheur:
+                    BateauApplication.typeUtilisateurs = TypeUtilisateurs.PECHEUR;
                     break;
-                case KITTER:
-                    rbKitter.setChecked(true);
+                case R.id.params_radio_scientifique:
+                    BateauApplication.typeUtilisateurs = TypeUtilisateurs.SCIENTIFIQUE;
                     break;
-                case SKIPPER:
-                    rbSkipper.setChecked(true);
+                case R.id.params_radio_plongeur:
+                    BateauApplication.typeUtilisateurs = TypeUtilisateurs.PLONGEUR;
                     break;
-                case PLONGEUR:
-                    rbPlongeur.setChecked(true);
+                case R.id.params_radio_kitter:
+                    BateauApplication.typeUtilisateurs = TypeUtilisateurs.KITTER;
                     break;
-                case SCIENTIFIQUE:
-                    rbScientifique.setChecked(true);
+                case R.id.params_radio_skipper:
+                    BateauApplication.typeUtilisateurs = TypeUtilisateurs.SKIPPER;
                     break;
             }
         }
