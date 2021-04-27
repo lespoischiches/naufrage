@@ -19,11 +19,12 @@
         <activity android:name=".evenements.EvenementViewActivity"></activity>
         <activity android:name=".ParamsActivity" />
         <activity android:name=".coins.CoinActivity" />
-        <activity android:name=".reportActivity.AlertActivity" />
-        <activity android:name=".reportActivity.SpotActivity" />
+        <activity android:name=".reportActivity.alertActivity.AlertActivity" />
+        <activity android:name=".reportActivity.spotActivity.SpotActivity" />
         <activity android:name=".CarteActivity" />
         <activity android:name=".meteo.MeteoActivity" />
-        <activity android:name=".NaufrageActivity" />
+        <activity android:name=".alert.NaufrageActivity" />
+        <activity android:name=".spot.FisherSpotActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

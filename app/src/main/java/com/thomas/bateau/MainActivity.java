@@ -4,13 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.thomas.bateau.coins.CoinActivity;
 import com.thomas.bateau.meteo.MeteoActivity;
-import com.thomas.bateau.reportActivity.AlertActivity;
-import com.thomas.bateau.reportActivity.SpotActivity;
+import com.thomas.bateau.reportActivity.alertActivity.AlertActivity;
+import com.thomas.bateau.reportActivity.spotActivity.SpotActivity;
 
 public class MainActivity extends AppCompatActivity {
 

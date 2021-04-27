@@ -1,4 +1,4 @@
-package com.thomas.bateau.reportActivity.reportFragment;
+package com.thomas.bateau.reportActivity.alertActivity;
 
 import android.os.Bundle;
 
@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 
 import com.thomas.bateau.R;
 
-public class ReportFragmentDeuxMain extends ReportFragment {
+public class AlertFragmentTwoHand extends AlertFragment {
 
 
     @Override
@@ -16,8 +16,7 @@ public class ReportFragmentDeuxMain extends ReportFragment {
                              Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.fragment_report_deux_main, container, false);
-        initUIEmergency(v);
-        initUINaufrage(v);
+        init(v);
         return v;
     }
 }

@@ -1,4 +1,4 @@
-package com.thomas.bateau.reportActivity.reportFragment;
+package com.thomas.bateau.reportActivity.alertActivity;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,17 +7,14 @@ import android.view.ViewGroup;
 
 import com.thomas.bateau.R;
 
-public class ReportFragmentUneMain extends ReportFragment {
+public class AlertFragmentOneHand extends AlertFragment {
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_report_une_main, container, false);
-
-        initUIEmergency(v);
-        initUINaufrage(v);
-
+        init(v);
         return v;
     }
 

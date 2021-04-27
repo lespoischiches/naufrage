@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/spotReport"
-    tools:context=".reportActivity.SpotActivity">
+    tools:context=".reportActivity.spotActivity.SpotActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"

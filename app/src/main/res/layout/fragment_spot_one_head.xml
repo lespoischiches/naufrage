@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/fish_spot"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:text="Spot de Peche \n Tout les spots de Pêche"/>
+
+            <Button
+                android:id="@+id/skipper_spot"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:text="Spot des Skippers \n Tout les spots de Skipper"
+                />
+
+            <Button
+                android:id="@+id/diver_spot"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:text="Spot des Plongeurs \n Tout les spots pour Plongueurs" />
+
+            <Button
+                android:id="@+id/scientist_spot"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:text="Spot des Scientifiques \n Tout les spots Scientifiques  " />
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

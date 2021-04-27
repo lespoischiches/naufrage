@@ -1,4 +1,4 @@
-package com.thomas.bateau;
+package com.thomas.bateau.alert;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,6 +6,9 @@ import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.thomas.bateau.LocationAccessActivity;
+import com.thomas.bateau.R;
 
 public class NaufrageActivity extends LocationAccessActivity {
 

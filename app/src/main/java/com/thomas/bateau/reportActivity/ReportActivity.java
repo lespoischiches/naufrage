@@ -1,13 +1,14 @@
 package com.thomas.bateau.reportActivity;
 
-import android.app.Fragment;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
+import android.app.Fragment;
 
 import com.thomas.bateau.R;
-import com.thomas.bateau.reportActivity.reportFragment.ReportFragmentDeuxMain;
-import com.thomas.bateau.reportActivity.reportFragment.ReportFragmentUneMain;
+import com.thomas.bateau.reportActivity.alertActivity.AlertFragmentOneHand;
+import com.thomas.bateau.reportActivity.alertActivity.AlertFragmentTwoHand;
+import com.thomas.bateau.reportActivity.spotActivity.SpotFragmentTwoHand;
 
 public abstract class ReportActivity extends AppCompatActivity {
 
@@ -15,28 +16,19 @@ public abstract class ReportActivity extends AppCompatActivity {
     protected Button btnBack, btnMode;
     protected boolean mode = true;
 
-    protected void initLayout(int portID, int landID)
+    protected  void initLayout(int portID, int landID)
     {
-
         btnMode = findViewById(R.id.mode);
-
-
-        if(findViewById(portID) != null) {
-            Fragment frag = new ReportFragmentDeuxMain();
-            getFragmentManager().beginTransaction().replace(R.id.test, frag).commit();
-            btnMode.setOnClickListener(click -> {
-                if (!mode) getFragmentManager().beginTransaction().replace(R.id.test,  new ReportFragmentDeuxMain()).commit();
-                else getFragmentManager().beginTransaction().replace(R.id.test, new ReportFragmentUneMain()).commit();
-                mode = !mode;
-            });
-        }
-
-        if(findViewById(landID)!= null){
-
-            ReportFragmentUneMain fragmentUneMain = new ReportFragmentUneMain();
-            getFragmentManager().beginTransaction().replace(R.id.test, fragmentUneMain).commit();
-        }
     }
+    protected void setButtonMode(Fragment fragmentOne, Fragment fragmentTwo)
+    {
+        getFragmentManager().beginTransaction().replace(R.id.test, fragmentTwo).commit();
+        btnMode.setOnClickListener(click -> {
+            if (!mode) getFragmentManager().beginTransaction().replace(R.id.test,  fragmentTwo).commit();
+            else getFragmentManager().beginTransaction().replace(R.id.test, fragmentOne).commit();
+            mode = !mode;});
+    }
+
     protected void initReturnBack(int backID)
     {
         btnBack = findViewById(backID);
