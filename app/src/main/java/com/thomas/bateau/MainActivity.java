@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.thomas.bateau.coins.CoinActivity;
+import com.thomas.bateau.evenements.EvenementNotificationService;
 import com.thomas.bateau.meteo.MeteoActivity;
 import com.thomas.bateau.reportActivity.alertActivity.AlertActivity;
 import com.thomas.bateau.reportActivity.spotActivity.SpotActivity;
@@ -50,7 +51,8 @@ public class MainActivity extends AppCompatActivity {
             Intent intent=new Intent(getApplicationContext(), ParamsActivity.class);
             startActivity(intent);
         });
-        //getFragmentManager().beginTransaction().replace(R.id.accueil_fragment_evenements, (android.app.Fragment)new EvenementAccueilFragment()).addToBackStack(null).commit();
+        Intent startServiceIntent = new Intent(getApplicationContext(), EvenementNotificationService.class);
+        getApplicationContext().startService(startServiceIntent);
     }
 
     public void reloadBtn() {

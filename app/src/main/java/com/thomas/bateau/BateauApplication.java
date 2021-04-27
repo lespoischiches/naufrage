@@ -12,7 +12,7 @@ public class BateauApplication extends Application {
     public static final String CHANNEL_1_ID="channel low";
     public static final String CHANNEL_2_ID="channel default";
     public static final String CHANNEL_3_ID="channel high";
-    private static NotificationManager notificationManager;
+    public static NotificationManager notificationManager;
     public static TypeUtilisateurs typeUtilisateurs=TypeUtilisateurs.PECHEUR;
     public static MainActivity mainActivityInstance;
 
@@ -34,6 +34,6 @@ public class BateauApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        createNotificationChannel();
+        //createNotificationChannel();
     }
 }

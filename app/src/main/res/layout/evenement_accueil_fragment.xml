@@ -1,25 +1,21 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?><!--<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">-->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/frag_evenements_titre"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Evenements"
 
-        />
-
-    <ListView
-        android:id="@+id/frag_evenements_list"
-        app:layout_constraintTop_toBottomOf="@id/frag_evenements_titre"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <ListView
+            android:id="@+id/frag_evenements_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fillViewport="true"
+            android:isScrollContainer="true"/>
+</LinearLayout><!--</androidx.constraintlayout.widget.ConstraintLayout>-->

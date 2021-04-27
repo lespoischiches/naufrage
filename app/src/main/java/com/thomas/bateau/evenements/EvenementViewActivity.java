@@ -2,6 +2,7 @@ package com.thomas.bateau.evenements;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -40,6 +41,10 @@ public class EvenementViewActivity extends AppCompatActivity {
             if(success) {
                 image.setImageBitmap(evenement.getImage());
             }
+        });
+        findViewById(R.id.activity_evenement_view_test1).setOnClickListener(c -> {
+            Intent intent=new Intent(getApplicationContext(), EvenementsListActivity.class);
+            startActivity(intent);
         });
     }
 

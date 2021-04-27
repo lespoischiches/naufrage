@@ -31,7 +31,6 @@ import static com.thomas.bateau.evenements.Evenement.EVENEMENT;
 public class EvenementAccueilFragment extends android.app.Fragment implements IEvenementAdapterListener {
 
     private View fragView;
-    private int notificationId=0;
     private ListView listEvenementsView;
     private EvenementsList evenementsList=new EvenementsList();
 
@@ -47,13 +46,8 @@ public class EvenementAccueilFragment extends android.app.Fragment implements IE
         EvenementsListAdapter evenementsListAdapter=new EvenementsListAdapter(fragView.getContext(), evenementsList);
         listEvenementsView.setAdapter(evenementsListAdapter);
         evenementsListAdapter.addListener(this);
-        return fragView;
-    }
 
-    // sendNotificationOnChannel("NOTIF !!", "Hello from notification", CHANNEL_1_ID, NotificationCompat.PRIORITY_DEFAULT);
-    private void sendNotificationOnChannel(String title, String message, String channelId, int priority) {
-        NotificationCompat.Builder notification = new NotificationCompat.Builder(getActivity().getApplicationContext(), channelId).setContentTitle(title).setSmallIcon(R.drawable.cloud_icon).setContentText(message).setPriority(priority).setTimeoutAfter(5000);
-        NotificationManagerCompat.from(getActivity()).notify(++notificationId, notification.build());
+        return fragView;
     }
 
     @Override
