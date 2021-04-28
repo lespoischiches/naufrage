@@ -46,7 +46,11 @@ public class EvenementAccueilFragment extends android.app.Fragment implements IE
         EvenementsListAdapter evenementsListAdapter=new EvenementsListAdapter(fragView.getContext(), evenementsList);
         listEvenementsView.setAdapter(evenementsListAdapter);
         evenementsListAdapter.addListener(this);
-
+        evenementsList.downloadJSON("https://vps-e690be27.vps.ovh.net/ihm/events.txt", (success) -> {
+            if(success) {
+                evenementsListAdapter.updateList(evenementsList);
+            }
+        });
         return fragView;
     }
 

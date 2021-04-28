@@ -13,6 +13,8 @@ import com.thomas.bateau.TypeUtilisateurs;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.StringWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -28,6 +30,7 @@ public class Evenement implements Parcelable {
     private TypeUtilisateurs typeUtilisateur=TypeUtilisateurs.PECHEUR;
     public static final String EVENEMENT="evenement";
     private DownloadFilesTask downloadFilesTask=new DownloadFilesTask();
+    private long timestamp;
 
     public Evenement() {
         super();
@@ -68,6 +71,7 @@ public class Evenement implements Parcelable {
         texte=in.readString();
         //image=in.readParcelable(Bitmap.class.getClassLoader());
         typeUtilisateur=TypeUtilisateurs.valueOf(in.readString());
+        timestamp=in.readLong();
     }
 
     public String getTitle() {
@@ -98,6 +102,10 @@ public class Evenement implements Parcelable {
         this.titre=title;
     }
 
+    public long getTimestamp() {
+        return timestamp;
+    }
+
     public void setDescription(String description) {
         this.description=description;
     }
@@ -119,6 +127,10 @@ public class Evenement implements Parcelable {
         this.typeUtilisateur=typeUtilisateur;
     }
 
+    public void setTimestamp(long t) {
+        timestamp=t;
+    }
+
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(titre);
@@ -127,6 +139,8 @@ public class Evenement implements Parcelable {
         dest.writeString(texte);
         //dest.writeParcelable(image, flags);
         dest.writeString(typeUtilisateur.name());
+        dest.writeLong(timestamp);
+        //Log.d(">A", typeUtilisateur.name());
     }
 
     @Override
@@ -172,7 +186,6 @@ public class Evenement implements Parcelable {
         downloadFilesTask.cancel(true);
     }
 
-
     private class DownloadFilesTask extends AsyncTask<URL, Integer, Long> {
 
         private Runnable onPost;
@@ -207,6 +220,7 @@ public class Evenement implements Parcelable {
                 connection.connect();
                 InputStream input = connection.getInputStream();
                 Bitmap bmp = BitmapFactory.decodeStream(input);
+                connection.disconnect();
                 return bmp;
             } catch (Exception e) {
                 Log.d("Z", e.toString());

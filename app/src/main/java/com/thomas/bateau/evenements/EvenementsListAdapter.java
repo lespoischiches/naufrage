@@ -69,4 +69,9 @@ public class EvenementsListAdapter extends BaseAdapter {
     void addListener(IEvenementAdapterListener iEvenementAdapterListener) {
         listenerList.add(iEvenementAdapterListener);
     }
+
+    public void updateList(List<Evenement> newList) {
+        evenementList = newList;
+        notifyDataSetChanged();
+    }
 }
