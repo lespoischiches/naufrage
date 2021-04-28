@@ -20,7 +20,7 @@
         android:theme="@style/Theme.Bateau">
         <service
             android:name=".evenements.EvenementNotificationService"
-            android:exported="true"></service>
+            android:permission="android.permission.BIND_JOB_SERVICE"></service>
 
         <receiver
             android:name=".BootDeviceReceiver"

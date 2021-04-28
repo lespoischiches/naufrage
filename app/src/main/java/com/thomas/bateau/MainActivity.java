@@ -51,8 +51,7 @@ public class MainActivity extends AppCompatActivity {
             Intent intent=new Intent(getApplicationContext(), ParamsActivity.class);
             startActivity(intent);
         });
-        Intent startServiceIntent = new Intent(getApplicationContext(), EvenementNotificationService.class);
-        getApplicationContext().startService(startServiceIntent);
+        //EvenementNotificationService.scheduleJob(getApplicationContext());
     }
 
     public void reloadBtn() {
