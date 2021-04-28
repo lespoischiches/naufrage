@@ -42,10 +42,6 @@ public class EvenementViewActivity extends AppCompatActivity {
                 image.setImageBitmap(evenement.getImage());
             }
         });
-        findViewById(R.id.activity_evenement_view_test1).setOnClickListener(c -> {
-            Intent intent=new Intent(getApplicationContext(), EvenementsListActivity.class);
-            startActivity(intent);
-        });
     }
 
     @Override

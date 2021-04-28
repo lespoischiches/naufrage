@@ -11,6 +11,7 @@ import android.app.job.JobService;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.util.Log;
@@ -19,7 +20,6 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
 import com.thomas.bateau.R;
-import com.thomas.bateau.TypeUtilisateurs;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -33,13 +33,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.Consumer;
+import java.util.stream.Collectors;
 
 import static com.thomas.bateau.BateauApplication.CHANNEL_1_ID;
 import static com.thomas.bateau.BateauApplication.CHANNEL_2_ID;
 import static com.thomas.bateau.BateauApplication.CHANNEL_3_ID;
+import static com.thomas.bateau.BateauApplication.SHARED_PREFERENCES_FILE_NAME;
 import static com.thomas.bateau.BateauApplication.eventsListURL;
 import static com.thomas.bateau.BateauApplication.getStringFromInputStream;
 import static com.thomas.bateau.BateauApplication.notificationManager;
+import static com.thomas.bateau.BateauApplication.typeUtilisateurs;
+import static com.thomas.bateau.evenements.Evenement.EVENEMENT;
 
 public class EvenementNotificationService extends JobService {
     private int notificationId=0;
@@ -59,15 +63,19 @@ public class EvenementNotificationService extends JobService {
         }
 
         downloadJSON(eventsListURL, (success) -> {
+            listEvenements=listEvenements.stream().filter(e -> e.getTypeUtilisateur()==typeUtilisateurs).collect(Collectors.toList());
             if(!success || listEvenements.isEmpty()) {
                 return;
             }
             if (!alreadyShown) {
                 if(listEvenements.size() == 1) {
                     Evenement e=listEvenements.get(0);
-                    sendNotificationOnChannel(e.getTitle(), e.getDescription(), CHANNEL_1_ID, NotificationCompat.PRIORITY_DEFAULT, e.getTypeUtilisateur().getIcon());
+                    Intent activityOnClickIntent = new Intent(this, EvenementViewActivity.class);
+                    activityOnClickIntent.putExtra(EVENEMENT, e);
+                    sendNotificationOnChannel(e.getTitle(), e.getDescription(), CHANNEL_1_ID, NotificationCompat.PRIORITY_DEFAULT, e.getTypeUtilisateur().getIcon(), activityOnClickIntent);
                 } else {
-                    sendNotificationOnChannel(listEvenements.size()+" nouveaux événements", "Plusieurs nouveaux événements ont été signalés autour de votre position.", CHANNEL_1_ID, NotificationCompat.PRIORITY_DEFAULT, R.drawable.cloud_icon);
+                    Intent activityOnClickIntent = new Intent(this, EvenementsListActivity.class);
+                    sendNotificationOnChannel(listEvenements.size()+" nouveaux événements", "Plusieurs nouveaux événements ont été signalés autour de votre position.", CHANNEL_1_ID, NotificationCompat.PRIORITY_DEFAULT, R.drawable.cloud_icon, activityOnClickIntent);
                 }
                 alreadyShown = true;
             }
@@ -110,15 +118,18 @@ public class EvenementNotificationService extends JobService {
         }
     }
 
-    private void sendNotificationOnChannel(String title, String message, String channelId, int priority, int icon) {
+    private void sendNotificationOnChannel(String title, String message, String channelId, int priority, int icon, Intent activityOnClickIntent) {
         if(getApplicationContext() == null) {
             return;
         }
-        Intent resultIntent = new Intent(this, EvenementsListActivity.class);
-        TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
-        stackBuilder.addNextIntentWithParentStack(resultIntent);
-        PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
-        NotificationCompat.Builder notification = new NotificationCompat.Builder(getApplicationContext(), channelId).setContentTitle(title).setSmallIcon(icon).setContentText(message).setPriority(priority).setContentIntent(resultPendingIntent).setAutoCancel(true);;
+
+        NotificationCompat.Builder notification = new NotificationCompat.Builder(getApplicationContext(), channelId).setContentTitle(title).setSmallIcon(icon).setContentText(message).setPriority(priority).setAutoCancel(true);;
+        if(activityOnClickIntent != null) {
+            TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
+            stackBuilder.addNextIntentWithParentStack(activityOnClickIntent);
+            PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
+            notification.setContentIntent(resultPendingIntent);
+        }
         NotificationManagerCompat.from(getApplicationContext()).notify(++notificationId, notification.build());
     }
 
@@ -138,13 +149,10 @@ public class EvenementNotificationService extends JobService {
                         JSONArray jsonArray=new JSONArray(this.JSON);
                         for(int i=0; i<jsonArray.length(); i++) {
                             JSONObject jsonObject=jsonArray.getJSONObject(i);
-                            Evenement e=new Evenement();
-                            e.setTitle(jsonObject.getString("title"));
-                            e.setDescription(jsonObject.getString("description"));
-                            e.setTexte(jsonObject.getString("texte"));
-                            e.setImageURL(jsonObject.getString("imageurl"));
-                            e.setTypeUtilisateur(TypeUtilisateurs.valueOf(jsonObject.getString("typeutilisateur")));
-                            listEvenements.add(e);
+                            Evenement e=Evenement.parseJSONObject(jsonObject);
+                            if(e != null) {
+                                listEvenements.add(e);
+                            }
                         }
                     } catch (JSONException e) {
                         if (onJSONDownloaded != null) {

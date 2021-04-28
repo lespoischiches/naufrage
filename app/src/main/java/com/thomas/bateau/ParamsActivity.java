@@ -4,12 +4,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.TextView;
+
+import static com.thomas.bateau.BateauApplication.SHARED_PREFERENCES_FILE_NAME;
+import static com.thomas.bateau.BateauApplication.typeUtilisateurs;
 
 public class ParamsActivity extends AppCompatActivity {
 
@@ -125,6 +129,10 @@ public class ParamsActivity extends AppCompatActivity {
                     break;
             }
         }
+        SharedPreferences settings=getSharedPreferences(SHARED_PREFERENCES_FILE_NAME, 0);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putString("typeutilisateur", typeUtilisateurs.name());
+        editor.commit();
         if(BateauApplication.mainActivityInstance != null) {
             BateauApplication.mainActivityInstance.reloadBtn();
         }

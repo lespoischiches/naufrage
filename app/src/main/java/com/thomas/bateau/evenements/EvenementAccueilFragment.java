@@ -13,7 +13,10 @@ import androidx.annotation.Nullable;
 
 import com.thomas.bateau.R;
 
+import java.util.stream.Collectors;
+
 import static com.thomas.bateau.BateauApplication.eventsListURL;
+import static com.thomas.bateau.BateauApplication.typeUtilisateurs;
 import static com.thomas.bateau.evenements.Evenement.EVENEMENT;
 
 public class EvenementAccueilFragment extends android.app.Fragment implements IEvenementAdapterListener {
@@ -36,6 +39,7 @@ public class EvenementAccueilFragment extends android.app.Fragment implements IE
         evenementsListAdapter.addListener(this);
         evenementsList.downloadJSON(eventsListURL, (success) -> {
             if(success) {
+                //evenementsList=evenementsList.stream().filter(e -> e.getTypeUtilisateur() == typeUtilisateurs).collect(Collectors.toCollection(EvenementsList::new));
                 evenementsListAdapter.updateList(evenementsList);
             }
         });

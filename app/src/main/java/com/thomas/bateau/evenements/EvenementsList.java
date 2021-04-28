@@ -47,13 +47,10 @@ public class EvenementsList extends ArrayList<Evenement> {
                         JSONArray jsonArray=new JSONArray(this.JSON);
                         for(int i=0; i<jsonArray.length(); i++) {
                             JSONObject jsonObject=jsonArray.getJSONObject(i);
-                            Evenement e=new Evenement();
-                            e.setTitle(jsonObject.getString("title"));
-                            e.setDescription(jsonObject.getString("description"));
-                            e.setTexte(jsonObject.getString("texte"));
-                            e.setImageURL(jsonObject.getString("imageurl"));
-                            e.setTypeUtilisateur(TypeUtilisateurs.valueOf(jsonObject.getString("typeutilisateur")));
-                            add(e);
+                            Evenement e=Evenement.parseJSONObject(jsonObject);
+                            if(e != null) {
+                                add(e);
+                            }
                         }
                     } catch (JSONException e) {
                         if (onJSONDownloaded != null) {

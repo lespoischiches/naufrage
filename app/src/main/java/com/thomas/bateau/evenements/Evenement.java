@@ -11,6 +11,9 @@ import android.widget.ImageView;
 import com.thomas.bateau.BateauApplication;
 import com.thomas.bateau.TypeUtilisateurs;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -129,6 +132,20 @@ public class Evenement implements Parcelable {
 
     public void setTimestamp(long t) {
         timestamp=t;
+    }
+
+    public static Evenement parseJSONObject(JSONObject jsonObject) {
+        Evenement e=new Evenement();
+        try {
+            e.setTitle(jsonObject.getString("title"));
+            e.setDescription(jsonObject.getString("description"));
+            e.setTexte(jsonObject.getString("texte"));
+            e.setImageURL(jsonObject.getString("imageurl"));
+            e.setTypeUtilisateur(TypeUtilisateurs.valueOf(jsonObject.getString("typeutilisateur")));
+        } catch (JSONException jsonException) {
+            return null;
+        }
+        return e;
     }
 
     @Override

@@ -28,12 +28,13 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
             </intent-filter>
         </receiver>
 
         <activity android:name=".evenements.EvenementsListActivity"
             android:parentActivityName=".MainActivity"/>
-        <activity android:name=".evenements.EvenementViewActivity" />
+        <activity android:name=".evenements.EvenementViewActivity" android:parentActivityName=".MainActivity" />
         <activity android:name=".ParamsActivity" />
         <activity android:name=".coins.CoinActivity" />
         <activity android:name=".reportActivity.alertActivity.AlertActivity" />

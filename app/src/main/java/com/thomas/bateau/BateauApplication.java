@@ -5,7 +5,9 @@ import android.app.Application;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Build;
+import android.util.Log;
 
 import com.thomas.bateau.evenements.EvenementNotificationService;
 
@@ -24,11 +26,15 @@ public class BateauApplication extends Application {
     public static TypeUtilisateurs typeUtilisateurs=TypeUtilisateurs.PECHEUR;
     public static MainActivity mainActivityInstance;
     public static final String eventsListURL="https://vps-e690be27.vps.ovh.net/ihm/events.txt";
+    public static final String SHARED_PREFERENCES_FILE_NAME = "BateauSharedPreferences";
 
 
     @Override
     public void onCreate() {
         super.onCreate();
+        SharedPreferences settings=getSharedPreferences(SHARED_PREFERENCES_FILE_NAME, 0);
+        Log.i("Bat", "We're here");
+        typeUtilisateurs=TypeUtilisateurs.valueOf(settings.getString("typeutilisateur", TypeUtilisateurs.PECHEUR.name()));
         EvenementNotificationService.scheduleJob(getApplicationContext());
     }
 
