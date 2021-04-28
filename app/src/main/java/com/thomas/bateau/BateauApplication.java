@@ -7,6 +7,8 @@ import android.app.NotificationManager;
 import android.content.Context;
 import android.os.Build;
 
+import com.thomas.bateau.evenements.EvenementNotificationService;
+
 import java.util.Objects;
 
 public class BateauApplication extends Application {
@@ -22,14 +24,7 @@ public class BateauApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        /*if(!isMyServiceRunning(EvenementNotificationService.class)) {
-            Intent startServiceIntent = new Intent(getApplicationContext(), EvenementNotificationService.class);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                getApplicationContext().startForegroundService(startServiceIntent);
-            } else {
-                getApplicationContext().startService(startServiceIntent);
-            }
-        }*/
+        EvenementNotificationService.scheduleJob(getApplicationContext());
     }
 
 }

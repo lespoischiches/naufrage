@@ -31,7 +31,8 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".evenements.EvenementsListActivity" />
+        <activity android:name=".evenements.EvenementsListActivity"
+            android:parentActivityName=".MainActivity"/>
         <activity android:name=".evenements.EvenementViewActivity" />
         <activity android:name=".ParamsActivity" />
         <activity android:name=".coins.CoinActivity" />
