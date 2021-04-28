@@ -19,13 +19,13 @@
                     android:id="@+id/emergency"
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
-                    android:text="Urgence \n ce bouton effectue le Urgence"/>
+                    android:text="Urgence \n ce bouton permet d'appeler les urgence"/>
 
                 <Button
                     android:id="@+id/naufrage"
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
-                    android:text="Naufrage\n ce bouton effectue le Naufrage"
+                    android:text="Naufrage\n ce bouton permet d'envoyer vos coordonnées en cas de naufrage"
                     />
 
                 <Button
@@ -38,7 +38,13 @@
                 android:id="@+id/button4"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
-                android:text="Débris \n ce bouton effectue le Débris" />
+                android:text="Débris \n ce bouton permet de signaler des débris" />
+            <Button
+                android:id="@+id/meteo"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:text="Météo\n Ce bouton permet de signaler un événement météorologique"
+                />
 
         </LinearLayout>
     </ScrollView>

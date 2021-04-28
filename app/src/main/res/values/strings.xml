@@ -7,4 +7,10 @@
     <string name="TextPlongeurParam"> Ceci est un test sur les plongeur</string>
     <string name="TextSkipperParam"> Ceci est un test sur les skipper</string>
 
+    <string name="TextCoinPeche">Le coin des pêcheurs</string>
+    <string name="TextCoinScience">Le coin des scientifiques</string>
+    <string name="TextCoinKite">Le coin des kitters</string>
+    <string name="TextCoinPlongeur">Le coin des plongeurs</string>
+    <string name="TextCoinSkippeur">Le coin des skippeurs</string>
+
 </resources>

@@ -25,8 +25,7 @@
                 android:id="@+id/skipper_spot"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
-                android:text="Spot des Skippers \n Tout les spots de Skipper"
-                />
+                android:text="Spot des Skippers \n Tout les spots de Skipper" />
 
             <Button
                 android:id="@+id/diver_spot"
@@ -38,7 +37,13 @@
                 android:id="@+id/scientist_spot"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
-                android:text="Spot des Scientifiques \n Tout les spots Scientifiques  " />
+                android:text="Spot des Scientifiques \n Tout les spots relatif à la Science  " />
+
+            <Button
+                android:id="@+id/kitter_spot"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:text="Spot de kitter \n Tout les spots relatif au kitesurf " />
 
         </LinearLayout>
     </ScrollView>
