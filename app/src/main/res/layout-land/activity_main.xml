@@ -7,25 +7,41 @@
     tools:context=".MainActivity">
 
     <ScrollView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent">
  <LinearLayout
      android:layout_width="match_parent"
      android:layout_height="match_parent"
      android:orientation="vertical">
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Paramètres penché"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:id="@+id/accueil_btn_params"
-        />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <Button
+                android:layout_margin="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Paramètres"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:id="@+id/accueil_btn_params"
+                />
+
+             <Button
+                 android:layout_margin="5dp"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text="Accés au flux d'actualité"
+                 app:layout_constraintTop_toTopOf="parent"
+                 app:layout_constraintRight_toRightOf="parent"
+                 android:id="@+id/accueil_btn_actu"/>
+        </LinearLayout>
+
 
      <GridLayout
-         android:layout_width="fill_parent"
+         android:layout_width="wrap_content"
          android:layout_height="wrap_content"
          android:id="@+id/accueilfirstlinearlayout"
          app:layout_constraintLeft_toLeftOf="parent"
