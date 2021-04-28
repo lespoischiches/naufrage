@@ -11,6 +11,7 @@ import android.app.job.JobService;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.util.Log;
 
@@ -18,16 +19,34 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
 import com.thomas.bateau.R;
+import com.thomas.bateau.TypeUtilisateurs;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+import java.util.function.Consumer;
 
 import static com.thomas.bateau.BateauApplication.CHANNEL_1_ID;
 import static com.thomas.bateau.BateauApplication.CHANNEL_2_ID;
 import static com.thomas.bateau.BateauApplication.CHANNEL_3_ID;
+import static com.thomas.bateau.BateauApplication.eventsListURL;
+import static com.thomas.bateau.BateauApplication.getStringFromInputStream;
 import static com.thomas.bateau.BateauApplication.notificationManager;
 
 public class EvenementNotificationService extends JobService {
     private int notificationId=0;
+    private static boolean alreadyShown=false;
+    private DownloadFilesTask downloadFilesTask=new DownloadFilesTask();
+    private String JSON;
+    List<Evenement> listEvenements=new ArrayList<>();
 
     public EvenementNotificationService() {
     }
@@ -38,7 +57,22 @@ public class EvenementNotificationService extends JobService {
         if(notificationManager == null) {
             createNotificationChannel();
         }
-        sendNotificationOnChannel("NOTIF !!", "Hello from notification", CHANNEL_1_ID, NotificationCompat.PRIORITY_DEFAULT);
+
+        downloadJSON(eventsListURL, (success) -> {
+            if(!success || listEvenements.isEmpty()) {
+                return;
+            }
+            if (!alreadyShown) {
+                if(listEvenements.size() == 1) {
+                    Evenement e=listEvenements.get(0);
+                    sendNotificationOnChannel(e.getTitle(), e.getDescription(), CHANNEL_1_ID, NotificationCompat.PRIORITY_DEFAULT, e.getTypeUtilisateur().getIcon());
+                } else {
+                    sendNotificationOnChannel(listEvenements.size()+" nouveaux événements", "Plusieurs nouveaux événements ont été signalés autour de votre position.", CHANNEL_1_ID, NotificationCompat.PRIORITY_DEFAULT, R.drawable.cloud_icon);
+                }
+                alreadyShown = true;
+            }
+        });
+
         EvenementNotificationService.scheduleJob(getApplicationContext());
         return true;
     }
@@ -76,7 +110,7 @@ public class EvenementNotificationService extends JobService {
         }
     }
 
-    private void sendNotificationOnChannel(String title, String message, String channelId, int priority) {
+    private void sendNotificationOnChannel(String title, String message, String channelId, int priority, int icon) {
         if(getApplicationContext() == null) {
             return;
         }
@@ -84,8 +118,97 @@ public class EvenementNotificationService extends JobService {
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
         stackBuilder.addNextIntentWithParentStack(resultIntent);
         PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
-        NotificationCompat.Builder notification = new NotificationCompat.Builder(getApplicationContext(), channelId).setContentTitle(title).setSmallIcon(R.drawable.cloud_icon).setContentText(message).setPriority(priority).setTimeoutAfter(5000).setContentIntent(resultPendingIntent);;
+        NotificationCompat.Builder notification = new NotificationCompat.Builder(getApplicationContext(), channelId).setContentTitle(title).setSmallIcon(icon).setContentText(message).setPriority(priority).setContentIntent(resultPendingIntent).setAutoCancel(true);;
         NotificationManagerCompat.from(getApplicationContext()).notify(++notificationId, notification.build());
+    }
+
+
+
+    private void downloadJSON(String JSONURL, Consumer<Boolean> onJSONDownloaded) {
+        if(JSONURL == null || JSONURL.isEmpty()) {
+            return;
+        }
+        try {
+            downloadFilesTask.setOnPost(() -> {
+                if(downloadFilesTask.strs.size() > 0 && downloadFilesTask.strs.get(0) != null) {
+                    this.JSON = downloadFilesTask.strs.get(0);
+                    downloadFilesTask.strs.clear();
+                    try {
+                        listEvenements.clear();
+                        JSONArray jsonArray=new JSONArray(this.JSON);
+                        for(int i=0; i<jsonArray.length(); i++) {
+                            JSONObject jsonObject=jsonArray.getJSONObject(i);
+                            Evenement e=new Evenement();
+                            e.setTitle(jsonObject.getString("title"));
+                            e.setDescription(jsonObject.getString("description"));
+                            e.setTexte(jsonObject.getString("texte"));
+                            e.setImageURL(jsonObject.getString("imageurl"));
+                            e.setTypeUtilisateur(TypeUtilisateurs.valueOf(jsonObject.getString("typeutilisateur")));
+                            listEvenements.add(e);
+                        }
+                    } catch (JSONException e) {
+                        if (onJSONDownloaded != null) {
+                            onJSONDownloaded.accept(false);
+                        }
+                        return;
+                    }
+                    if (onJSONDownloaded != null) {
+                        onJSONDownloaded.accept(this.JSON != null);
+                    }
+                }
+            });
+            downloadFilesTask.execute(new URL(JSONURL));
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void cancelDownloadJSON() {
+        downloadFilesTask.cancel(true);
+    }
+
+    class DownloadFilesTask extends AsyncTask<URL, Integer, Long> {
+
+        private Runnable onPost;
+        protected List<String> strs=new ArrayList<>();
+
+        void setOnPost(Runnable onPostDownload) {
+            this.onPost=onPostDownload;
+        }
+
+        @Override
+        protected Long doInBackground(URL... urls) {
+            int count = urls.length;
+            for (int i = 0; i < count; i++) {
+                strs.add(downloadStringFromURL(urls[i]));
+                publishProgress((int) ((i / (float) count) * 100));
+                if (isCancelled()) break;
+            }
+            return new Long(0);
+        }
+
+        @Override
+        protected void onPostExecute(Long result) {
+            if(onPost != null) {
+                onPost.run();
+            }
+        }
+
+        public String downloadStringFromURL(URL url) {
+            try {
+                HttpURLConnection connection = (HttpURLConnection)url.openConnection();
+                connection.setDoInput(true);
+                connection.connect();
+                InputStream input = connection.getInputStream();
+                String str = getStringFromInputStream(input);
+                connection.disconnect();
+                return str;
+            } catch (Exception e) {
+                Log.d("Z", e.toString());
+            }
+            return null;
+        }
+
     }
 
 }

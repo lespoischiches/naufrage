@@ -9,6 +9,10 @@ import android.os.Build;
 
 import com.thomas.bateau.evenements.EvenementNotificationService;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.StringWriter;
 import java.util.Objects;
 
 public class BateauApplication extends Application {
@@ -19,12 +23,23 @@ public class BateauApplication extends Application {
     public static NotificationManager notificationManager;
     public static TypeUtilisateurs typeUtilisateurs=TypeUtilisateurs.PECHEUR;
     public static MainActivity mainActivityInstance;
+    public static final String eventsListURL="https://vps-e690be27.vps.ovh.net/ihm/events.txt";
 
 
     @Override
     public void onCreate() {
         super.onCreate();
         EvenementNotificationService.scheduleJob(getApplicationContext());
+    }
+
+    public static String getStringFromInputStream(InputStream stream) throws IOException
+    {
+        int n = 0;
+        char[] buffer = new char[1024 * 4];
+        InputStreamReader reader = new InputStreamReader(stream, "UTF8");
+        StringWriter writer = new StringWriter();
+        while (-1 != (n = reader.read(buffer))) writer.write(buffer, 0, n);
+        return writer.toString();
     }
 
 }

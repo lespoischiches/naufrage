@@ -22,6 +22,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
+import static com.thomas.bateau.BateauApplication.getStringFromInputStream;
+
 public class EvenementsList extends ArrayList<Evenement> {
 
     private String JSON;
@@ -116,14 +118,5 @@ public class EvenementsList extends ArrayList<Evenement> {
             return null;
         }
 
-        public String getStringFromInputStream(InputStream stream) throws IOException
-        {
-            int n = 0;
-            char[] buffer = new char[1024 * 4];
-            InputStreamReader reader = new InputStreamReader(stream, "UTF8");
-            StringWriter writer = new StringWriter();
-            while (-1 != (n = reader.read(buffer))) writer.write(buffer, 0, n);
-            return writer.toString();
-        }
     }
 }

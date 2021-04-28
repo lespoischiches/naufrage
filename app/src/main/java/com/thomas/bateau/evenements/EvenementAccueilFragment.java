@@ -1,31 +1,19 @@
 package com.thomas.bateau.evenements;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
-import androidx.fragment.app.Fragment;
 
 import com.thomas.bateau.R;
-import com.thomas.bateau.TypeUtilisateurs;
 
-import java.util.Arrays;
-import java.util.List;
-
-import static com.thomas.bateau.BateauApplication.CHANNEL_1_ID;
+import static com.thomas.bateau.BateauApplication.eventsListURL;
 import static com.thomas.bateau.evenements.Evenement.EVENEMENT;
 
 public class EvenementAccueilFragment extends android.app.Fragment implements IEvenementAdapterListener {
@@ -46,7 +34,7 @@ public class EvenementAccueilFragment extends android.app.Fragment implements IE
         EvenementsListAdapter evenementsListAdapter=new EvenementsListAdapter(fragView.getContext(), evenementsList);
         listEvenementsView.setAdapter(evenementsListAdapter);
         evenementsListAdapter.addListener(this);
-        evenementsList.downloadJSON("https://vps-e690be27.vps.ovh.net/ihm/events.txt", (success) -> {
+        evenementsList.downloadJSON(eventsListURL, (success) -> {
             if(success) {
                 evenementsListAdapter.updateList(evenementsList);
             }
