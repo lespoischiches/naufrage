@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.thomas.bateau.coins.CoinActivity;
-import com.thomas.bateau.evenements.EvenementNotificationService;
 import com.thomas.bateau.evenements.EvenementsListActivity;
 import com.thomas.bateau.meteo.MeteoActivity;
 import com.thomas.bateau.reportActivity.alertActivity.AlertActivity;
@@ -45,6 +44,7 @@ public class  MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
         btnAccueilCoin.setText("Coin des "+BateauApplication.typeUtilisateurs.getString());
+        //btnAccueilCoin.setCompoundDrawablesWithIntrinsicBounds(BateauApplication.typeUtilisateurs.getIcon(), 0, 0, 0);
         btnAccueilCoin.setOnClickListener(c -> {
             Intent intent=new Intent(getApplicationContext(), CoinActivity.class);
             startActivity(intent);
