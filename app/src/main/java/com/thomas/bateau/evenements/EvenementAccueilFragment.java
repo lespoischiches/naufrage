@@ -24,6 +24,7 @@ public class EvenementAccueilFragment extends android.app.Fragment implements IE
     private View fragView;
     private ListView listEvenementsView;
     private EvenementsList evenementsList=new EvenementsList();
+    private EvenementsListAdapter evenementsListAdapter;
 
     public EvenementAccueilFragment() {
         //
@@ -34,13 +35,13 @@ public class EvenementAccueilFragment extends android.app.Fragment implements IE
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         fragView=inflater.inflate(R.layout.evenement_accueil_fragment, container, false);
         listEvenementsView=fragView.findViewById(R.id.frag_evenements_list);
-        EvenementsListAdapter evenementsListAdapter=new EvenementsListAdapter(fragView.getContext(), evenementsList);
+        evenementsListAdapter=new EvenementsListAdapter(fragView.getContext(), evenementsList);
         listEvenementsView.setAdapter(evenementsListAdapter);
         evenementsListAdapter.addListener(this);
         evenementsList.downloadJSON(eventsListURL, (success) -> {
             if(success) {
-                //evenementsList=evenementsList.stream().filter(e -> e.getTypeUtilisateur() == typeUtilisateurs).collect(Collectors.toCollection(EvenementsList::new));
-                evenementsListAdapter.updateList(evenementsList);
+                EvenementsList evenementsListDisplay=evenementsList.stream().filter(e -> e.getTypeUtilisateur() == typeUtilisateurs).collect(Collectors.toCollection(EvenementsList::new));
+                evenementsListAdapter.updateList(evenementsListDisplay);
             }
         });
         return fragView;
@@ -54,4 +55,10 @@ public class EvenementAccueilFragment extends android.app.Fragment implements IE
         startActivity(intentEvenement);
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        EvenementsList evenementsListDisplay=evenementsList.stream().filter(e -> e.getTypeUtilisateur() == typeUtilisateurs).collect(Collectors.toCollection(EvenementsList::new));
+        evenementsListAdapter.updateList(evenementsListDisplay);
+    }
 }

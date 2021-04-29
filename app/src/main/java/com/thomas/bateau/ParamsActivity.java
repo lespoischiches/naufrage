@@ -85,6 +85,7 @@ public class ParamsActivity extends AppCompatActivity {
         if(!checked) {
             return;
         }
+
         // Check which radio button was clicked
         if(ori == Configuration.ORIENTATION_LANDSCAPE) {
             switch (view.getId()) {
