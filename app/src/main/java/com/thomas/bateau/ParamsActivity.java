@@ -12,6 +12,8 @@ import android.view.View;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
+import com.thomas.bateau.evenements.EvenementNotificationService;
+
 import static com.thomas.bateau.BateauApplication.SHARED_PREFERENCES_FILE_NAME;
 import static com.thomas.bateau.BateauApplication.typeUtilisateurs;
 
@@ -134,8 +136,6 @@ public class ParamsActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = settings.edit();
         editor.putString("typeutilisateur", typeUtilisateurs.name());
         editor.commit();
-        if(BateauApplication.mainActivityInstance != null) {
-            BateauApplication.mainActivityInstance.reloadBtn();
-        }
+        EvenementNotificationService.alreadyShown=false;
     }
 }

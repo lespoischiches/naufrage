@@ -26,7 +26,6 @@ public class  MainActivity extends AppCompatActivity {
         btnCarte=findViewById(R.id.btn_accueil_carte);
         btnReport=findViewById(R.id.btn_accueil_signaler_evenement);
         btnAccueilCoin=findViewById(R.id.btn_accueil_coin);
-        BateauApplication.mainActivityInstance=this;
         buttonSpot = findViewById(R.id.btn_accueil_spot);
 
         buttonSpot.setOnClickListener(click ->{
@@ -63,10 +62,11 @@ public class  MainActivity extends AppCompatActivity {
                 startActivity(intent);
             });
         }
-        //EvenementNotificationService.scheduleJob(getApplicationContext());
     }
 
-    public void reloadBtn() {
+    @Override
+    public void onResume() {
+        super.onResume();
         btnAccueilCoin.setText("Coin des "+BateauApplication.typeUtilisateurs.getString());
     }
 }

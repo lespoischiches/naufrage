@@ -47,7 +47,7 @@ import static com.thomas.bateau.evenements.Evenement.EVENEMENT;
 
 public class EvenementNotificationService extends JobService {
     private int notificationId=0;
-    private static boolean alreadyShown=false;
+    public static boolean alreadyShown=false;
     private DownloadFilesTask downloadFilesTask=new DownloadFilesTask();
     private String JSON;
     List<Evenement> listEvenements=new ArrayList<>();

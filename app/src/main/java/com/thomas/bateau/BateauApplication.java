@@ -24,7 +24,6 @@ public class BateauApplication extends Application {
     public static final String CHANNEL_3_ID="channel high";
     public static NotificationManager notificationManager;
     public static TypeUtilisateurs typeUtilisateurs=TypeUtilisateurs.PECHEUR;
-    public static MainActivity mainActivityInstance;
     public static final String eventsListURL="https://vps-e690be27.vps.ovh.net/ihm/events.txt";
     public static final String SHARED_PREFERENCES_FILE_NAME = "BateauSharedPreferences";
 
