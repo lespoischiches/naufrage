@@ -5,8 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.thomas.bateau.LocationAccessActivity;
 import com.thomas.bateau.R;
 
@@ -16,7 +14,7 @@ public class NaufrageActivity extends LocationAccessActivity {
     Button sharingNaufrage, buttonBack ;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_naufrage);
+        setContentView(R.layout.alert_activity_naufrage);
 
         buttonBack = findViewById(R.id.returnButtonNaufrage);
         buttonBack.setOnClickListener(new View.OnClickListener() {

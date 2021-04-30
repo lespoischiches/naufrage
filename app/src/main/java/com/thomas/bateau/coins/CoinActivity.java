@@ -45,13 +45,15 @@ public class CoinActivity extends AppCompatActivity {
                 coinsFactory=new CoinSkippeurFactory();
                 text.setText(getString(R.string.TextCoinSkippeur));
                 break;
-            default: // ???
-                coinsFactory=new CoinPecheurFactory();
+            default:
+                text.setText("Veuillez relancer l'application ou modifier vos paramètre, vous êtes dans un cas impossible");
                 break;
         }
          // Si pecheur, sinon CoinScientifiqueFactory, CoinSkipperFactory etc...
-        getFragmentManager().beginTransaction().replace(R.id.coin_result_fragment, (android.app.Fragment)coinsFactory.createFragmentResults()).addToBackStack(null).commit();
-        getFragmentManager().beginTransaction().replace(R.id.coin_search_fragment, (android.app.Fragment)coinsFactory.createFragmentSearch()).addToBackStack(null).commit();
+        if(coinsFactory != null) {
+            getFragmentManager().beginTransaction().replace(R.id.coin_result_fragment, (android.app.Fragment) coinsFactory.createFragmentResults()).addToBackStack(null).commit();
+            getFragmentManager().beginTransaction().replace(R.id.coin_search_fragment, (android.app.Fragment) coinsFactory.createFragmentSearch()).addToBackStack(null).commit();
+        }
         findViewById(R.id.coin_retour_bouton).setOnClickListener(c -> {
             finish();
         });

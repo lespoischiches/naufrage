@@ -43,6 +43,10 @@
         <activity android:name=".meteo.MeteoActivity" />
         <activity android:name=".alert.NaufrageActivity" />
         <activity android:name=".spot.FisherSpotActivity" />
+        <activity android:name=".spot.ScientistSpotActivity"/>
+        <activity android:name=".spot.SkipperSpotActivity"/>
+        <activity android:name=".spot.DiverSpotActivity"/>
+        <activity android:name=".spot.KitterSpotActivity"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -50,6 +54,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".alert.AlertMeteoActivity" />
+        <activity android:name=".alert.HelpActivity" />
+        <activity android:name=".alert.RemainsActivity" />
 
         <service
             android:name=".MyLocationService"

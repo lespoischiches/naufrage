@@ -6,7 +6,7 @@
 
 
     <Button
-        android:id="@+id/fisher_spot_return"
+        android:id="@+id/skipper_spot_return"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_width="100dp"
@@ -19,7 +19,7 @@
         android:layout_height="300dp"
         android:background="#009688"
         app:layout_constraintVertical_bias="0.15"
-        app:layout_constraintTop_toBottomOf="@id/fisher_spot_return"
+        app:layout_constraintTop_toBottomOf="@id/skipper_spot_return"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent">

@@ -12,6 +12,9 @@ public class AlertFragment extends ReportFragment {
     {
         initUi(v, R.id.emergency);
         initUi(v,R.id.naufrage);
+        initUi(v, R.id.meteo);
+        initUi(v, R.id.remains);
+        initUi(v, R.id.help);
 
     }
 }
