@@ -58,6 +58,17 @@
         <activity android:name=".alert.HelpActivity" />
         <activity android:name=".alert.RemainsActivity" />
 
+        <activity android:name=".coins.resultactivity.ResultFisherActivity"/>
+        <activity android:name=".coins.resultactivity.ResultDiverActivity" />
+        <activity android:name=".coins.resultactivity.ResultKitterActivity" />
+        <activity android:name=".coins.resultactivity.ResultScientistActivity" />
+        <activity android:name=".coins.resultactivity.ResultSkipperActivity" />
+        <activity android:name=".coins.searchactivity.SearchDiverActivity" />
+        <activity android:name=".coins.searchactivity.SearchFisherActivity" />
+        <activity android:name=".coins.searchactivity.SearchKitterActivity" />
+        <activity android:name=".coins.searchactivity.SearchScientistActivity" />
+        <activity android:name=".coins.searchactivity.SearchSkipperActivity" />
+
         <service
             android:name=".MyLocationService"
             android:foregroundServiceType="location" />
