@@ -8,7 +8,7 @@ import android.widget.Button;
 
 import com.thomas.bateau.R;
 
-public class ScientistSpotActivity extends Activity {
+public class ScientistSpotActivity extends PostSpotActivity {
 
 
     Button post, buttonBack ;
@@ -17,12 +17,7 @@ public class ScientistSpotActivity extends Activity {
         setContentView(R.layout.activity_science_spot);
 
         buttonBack = findViewById(R.id.scientist_spot_return);
-        buttonBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        initReturnBack(R.id.diver_spot_return);
 
         post =findViewById(R.id.post);
         post.setOnClickListener(new View.OnClickListener() {
@@ -31,6 +26,6 @@ public class ScientistSpotActivity extends Activity {
 
             }
         });
-
+        addPicture(R.id.add_photo,R.id.image_spot);
     }
 }

@@ -8,7 +8,7 @@ import android.widget.Button;
 
 import com.thomas.bateau.R;
 
-public class FisherSpotActivity extends Activity {
+public class FisherSpotActivity extends PostSpotActivity {
 
 
 
@@ -16,14 +16,7 @@ public class FisherSpotActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fisher_spot);
-
-        buttonBack = findViewById(R.id.fisher_spot_return);
-        buttonBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        initReturnBack(R.id.fisher_spot_return);
 
         post =findViewById(R.id.post);
         post.setOnClickListener(new View.OnClickListener() {
@@ -32,6 +25,6 @@ public class FisherSpotActivity extends Activity {
 
             }
         });
-
+        addPicture(R.id.add_photo,R.id.image_spot);
     }
 }

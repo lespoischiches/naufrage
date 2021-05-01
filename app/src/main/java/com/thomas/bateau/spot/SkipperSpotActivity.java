@@ -8,21 +8,14 @@ import android.widget.Button;
 
 import com.thomas.bateau.R;
 
-public class SkipperSpotActivity extends Activity {
+public class SkipperSpotActivity extends PostSpotActivity {
 
 
     Button post, buttonBack ;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_skipper_spot);
-
-        buttonBack = findViewById(R.id.skipper_spot_return);
-        buttonBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        initReturnBack(R.id.skipper_spot_return);
 
         post =findViewById(R.id.post);
         post.setOnClickListener(new View.OnClickListener() {
@@ -31,6 +24,6 @@ public class SkipperSpotActivity extends Activity {
 
             }
         });
-
+        addPicture(R.id.add_photo,R.id.image_spot);
     }
 }
