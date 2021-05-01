@@ -9,6 +9,9 @@ import android.widget.Button;
 import com.thomas.bateau.LocationAccessActivity;
 import com.thomas.bateau.R;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 public class NaufrageActivity extends LocationAccessActivity {
 
 
@@ -31,26 +34,12 @@ public class NaufrageActivity extends LocationAccessActivity {
                 public void onClick(View v) {
                     Double[] positions  = getLocation();
                     String shareBody = " "+positions[0]+", "+ positions[1];
-                    String url = "https://twitter.com/intent/tweet?text=Alert%20mon%20embarcation%20sombre,%20ma%20position%20est%20la%20suivante%20:%20" + shareBody;
+                    String date = new SimpleDateFormat(" dd-MM-yyyy à HH:mm:ss").format(Calendar.getInstance().getTime());
+                    String url = "https://twitter.com/intent/tweet?text= "+ date +" - Alerte%20mon%20navire%20sombre, %20ma%20position%20est%20la%20suivante%20:%20" + shareBody;
                     Intent intent = new Intent( Intent.ACTION_VIEW, Uri.parse( url ) );
                     startActivity(intent);
                 }
         });
-
-        /* Le code de William */
-//        sharingNaufrage.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(Intent.ACTION_SEND);
-//                intent.setType("text/plain");
-//                Double[] positions  = getLocation();
-//                String shareBody = " "+positions[0]+", "+ positions[1];
-//                String shareSub = "Share Position";
-//                intent.putExtra(Intent.EXTRA_SUBJECT,shareSub);
-//                intent.putExtra(Intent.EXTRA_TEXT,shareBody);
-//                startActivity(Intent.createChooser(intent,"Share Using"));
-//            }
-//        });
 
     }
 }
