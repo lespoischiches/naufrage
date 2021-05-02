@@ -10,8 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     <TableLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent">
 
@@ -24,7 +24,7 @@
         <Button
             android:id="@+id/emergency"
             android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_height="125dp"
             android:text="Urgence"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="15dp"/>
@@ -32,7 +32,7 @@
         <Button
             android:id="@+id/naufrage"
             android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_height="125dp"
             android:text="Naufrage"
             android:layout_marginRight="15dp"
             android:layout_marginTop="15dp"
@@ -46,7 +46,7 @@
         <Button
             android:id="@+id/help"
             android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_height="125dp"
             android:text="Aide "
             android:layout_marginLeft="15dp"
             android:layout_marginTop="15dp" />
@@ -54,7 +54,7 @@
         <Button
             android:id="@+id/remains"
             android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_height="125dp"
             android:text="Débris "
             android:layout_marginRight="15dp"
             android:layout_marginTop="15dp"
@@ -66,7 +66,7 @@
         <Button
             android:id="@+id/meteo"
             android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_height="125dp"
             android:text="Météo"
             android:layout_marginTop="15dp"
             android:layout_marginLeft="15dp"
