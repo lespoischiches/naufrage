@@ -17,15 +17,10 @@ public class DiverSpotActivity extends PostSpotActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_diver_spot);
+
         initReturnBack(R.id.diver_spot_return);
+        post();
 
-        post = findViewById(R.id.post);
-        post.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
         imageViewDiver = findViewById(R.id.image_spot);
         addPicture(R.id.add_photo,R.id.image_spot);
     }

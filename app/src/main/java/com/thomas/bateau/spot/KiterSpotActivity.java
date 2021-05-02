@@ -8,24 +8,18 @@ import android.widget.Button;
 
 import com.thomas.bateau.R;
 
-public class KitterSpotActivity extends PostSpotActivity {
+public class KiterSpotActivity extends PostSpotActivity {
 
 
-    Button post, buttonBack ;
+    Button post ;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kitter_spot);
 
-        buttonBack = findViewById(R.id.kitter_spot_return);
-        initReturnBack(R.id.diver_spot_return);
+        initReturnBack(R.id.kitter_spot_return);
 
-        post =findViewById(R.id.post);
-        post.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        post();
 
-            }
-        });
         addPicture(R.id.add_photo,R.id.image_spot);
     }
 }

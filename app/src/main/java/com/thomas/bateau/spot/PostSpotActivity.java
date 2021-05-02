@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.provider.MediaStore;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -13,13 +14,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.thomas.bateau.R;
+
 public abstract class PostSpotActivity extends AppCompatActivity {
 
     protected Button btnBack, btnPicture;
     protected final int REQUEST_CAMERA = 100;
     protected ImageView imageView;
     protected Bitmap picture = null;
-
+    protected Button post;
     protected void initReturnBack(int backID)
     {
         this.picture = null;
@@ -29,6 +32,17 @@ public abstract class PostSpotActivity extends AppCompatActivity {
         });
     }
 
+
+    protected void post()
+    {
+        post =findViewById(R.id.post);
+        post.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+    }
     protected void addPicture(int takePictureBtnId, int imageViewId) {
         btnPicture =  findViewById(takePictureBtnId);
         imageView = findViewById(imageViewId);

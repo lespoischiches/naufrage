@@ -11,21 +11,15 @@ import com.thomas.bateau.R;
 public class ScientistSpotActivity extends PostSpotActivity {
 
 
-    Button post, buttonBack ;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_science_spot);
 
-        buttonBack = findViewById(R.id.scientist_spot_return);
-        initReturnBack(R.id.diver_spot_return);
+        initReturnBack(R.id.scientist_spot_return);
 
-        post =findViewById(R.id.post);
-        post.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        post();
 
-            }
-        });
         addPicture(R.id.add_photo,R.id.image_spot);
     }
 }

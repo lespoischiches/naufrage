@@ -47,7 +47,7 @@
         <activity android:name=".spot.ScientistSpotActivity"/>
         <activity android:name=".spot.SkipperSpotActivity"/>
         <activity android:name=".spot.DiverSpotActivity"/>
-        <activity android:name=".spot.KitterSpotActivity"/>
+        <activity android:name=".spot.KiterSpotActivity"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
