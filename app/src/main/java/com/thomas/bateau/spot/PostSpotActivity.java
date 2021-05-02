@@ -30,7 +30,7 @@ public abstract class PostSpotActivity extends AppCompatActivity {
     }
 
     protected void addPicture(int takePictureBtnId, int imageViewId) {
-        btnPicture =  findViewById(takePictureBtnId);
+        btnPicture = findViewById(takePictureBtnId);
         imageView = findViewById(imageViewId);
         btnPicture.setOnClickListener(click ->{
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)== PackageManager.PERMISSION_DENIED) {
