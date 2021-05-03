@@ -43,18 +43,12 @@ public abstract class ReportFragment extends Fragment {
         buttonID.put(R.id.meteo,(view -> new Intent(view.getContext(), AlertMeteoActivity.class)));
         buttonID.put(R.id.remains,(view -> new Intent(view.getContext(), RemainsActivity.class)));
         buttonID.put(R.id.help,(view -> new Intent(view.getContext(), HelpActivity.class)));
-
     }
+
     protected void initUi(View v, int id )
     {
         Button button = v.findViewById(id);
-        button.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v) {
-                    startActivity(buttonID.get(id).apply(v));
-            }
-        });
+        button.setOnClickListener(click-> startActivity(buttonID.get(id).apply(v)));
 
     }
     protected abstract void init(View v);
