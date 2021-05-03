@@ -52,8 +52,7 @@ public class  MainActivity extends AppCompatActivity implements Observer {
             Intent intent = new Intent(getApplicationContext(), AlertActivity.class);
             startActivity(intent);
         });
-        btnAccueilCoin.setText("Coin des "+BateauApplication.typeUtilisateurs.getString());
-        //btnAccueilCoin.setCompoundDrawablesWithIntrinsicBounds(BateauApplication.typeUtilisateurs.getIcon(), 0, 0, 0);
+        setBtnAccueilCoin();
         btnAccueilCoin.setOnClickListener(c -> {
             Intent intent=new Intent(getApplicationContext(), CoinActivity.class);
             startActivity(intent);
@@ -77,7 +76,16 @@ public class  MainActivity extends AppCompatActivity implements Observer {
     @Override
     public void onResume() {
         super.onResume();
+        setBtnAccueilCoin();
+    }
+
+    private void setBtnAccueilCoin() {
         btnAccueilCoin.setText("Coin des "+BateauApplication.typeUtilisateurs.getString());
+        Drawable image = getResources().getDrawable( BateauApplication.typeUtilisateurs.getIcon());
+        int h = image.getIntrinsicHeight();
+        int w = image.getIntrinsicWidth();
+        image.setBounds( 0, 0, w, h );
+        btnAccueilCoin.setCompoundDrawables(image, null, null, null);
     }
 
     @Override

@@ -15,35 +15,40 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-                <Button
-                    android:id="@+id/emergency"
-                    android:layout_width="match_parent"
-                    android:layout_height="150dp"
-                    android:text="Urgence \n ce bouton permet d'appeler les urgence"/>
-
-                <Button
-                    android:id="@+id/naufrage"
-                    android:layout_width="match_parent"
-                    android:layout_height="150dp"
-                    android:text="Naufrage\n ce bouton permet d'envoyer vos coordonnées en cas de naufrage"
-                    />
-
-                <Button
-                    android:id="@+id/button3"
-                    android:layout_width="match_parent"
-                    android:layout_height="150dp"
-                    android:text="Aide \n ce bouton effectue l'Aide" />
-
             <Button
-                android:id="@+id/button4"
+                android:id="@+id/emergency"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
-                android:text="Débris \n ce bouton permet de signaler des débris" />
+                android:text="Urgence \n ce bouton permet d'appeler les urgence"
+                android:drawableLeft="@drawable/drawable_urgence"/>
+
+            <Button
+                android:id="@+id/naufrage"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:text="Naufrage\n ce bouton permet d'envoyer vos coordonnées en cas de naufrage"
+                android:drawableLeft="@drawable/drawable_naufrage"
+                />
+
+            <Button
+                android:id="@+id/help"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:text="Aide \n ce bouton effectue l'Aide"
+                android:drawableLeft="@drawable/drawable_aide"/>
+
+            <Button
+                android:id="@+id/remains"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:text="Débris \n ce bouton permet de signaler des débris"
+                android:drawableLeft="@drawable/drawable_debris"/>
             <Button
                 android:id="@+id/meteo"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:text="Météo\n Ce bouton permet de signaler un événement météorologique"
+                android:drawableLeft="@drawable/drawable_meteo"
                 />
 
         </LinearLayout>
