@@ -26,6 +26,7 @@
             android:layout_width="0dp"
             android:layout_height="125dp"
             android:layout_weight="1"
+            android:drawableBottom="@drawable/drawable_urgence"
             android:text="Urgence"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="15dp"/>
@@ -35,6 +36,7 @@
             android:layout_width="0dp"
             android:layout_height="125dp"
             android:layout_weight="1"
+            android:drawableBottom="@drawable/drawable_naufrage"
             android:text="Naufrage"
             android:layout_marginRight="15dp"
             android:layout_marginTop="15dp"
@@ -50,6 +52,7 @@
             android:layout_width="0dp"
             android:layout_height="125dp"
             android:layout_weight="1"
+            android:drawableBottom="@drawable/drawable_aide"
             android:text="Aide "
             android:layout_marginLeft="15dp"
             android:layout_marginTop="15dp" />
@@ -59,6 +62,7 @@
             android:layout_width="0dp"
             android:layout_height="125dp"
             android:layout_weight="1"
+            android:drawableBottom="@drawable/drawable_debris"
             android:text="Débris "
             android:layout_marginRight="15dp"
             android:layout_marginTop="15dp"
@@ -71,8 +75,9 @@
             android:id="@+id/meteo"
             android:layout_width="0dp"
             android:layout_height="125dp"
-            android:text="Météo"
             android:layout_weight="1"
+            android:drawableBottom="@drawable/drawable_meteo"
+            android:text="Météo"
             android:layout_marginTop="15dp"
             android:layout_marginLeft="15dp"
             />

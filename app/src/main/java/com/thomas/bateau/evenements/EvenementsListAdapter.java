@@ -57,7 +57,7 @@ public class EvenementsListAdapter extends BaseAdapter {
         Evenement evenement=(Evenement)getItem(position);
 
         titreTextView.setText(evenement.getTitle());
-        iconImageView.setImageResource(evenement.getTypeUtilisateur().getIcon());
+        iconImageView.setImageResource(evenement.getTypeEvenement().getIcon());
         descriptionTextView.setText(evenement.getDescription());
 
         convertView.setOnClickListener(v -> {

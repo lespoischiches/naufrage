@@ -3,11 +3,11 @@ package com.thomas.bateau;
 import androidx.annotation.NonNull;
 
 public enum TypeUtilisateurs {
-    PECHEUR("pêcheur", R.drawable.canne_icon),
-    SCIENTIFIQUE("scientifique", R.drawable.microscope_icon),
-    SKIPPER("skipper", R.drawable.voilier_icon),
-    PLONGEUR("plongeur", R.drawable.plongeur_icon),
-    KITTER("kitter", R.drawable.kite_icon);
+    PECHEUR("pêcheur", R.drawable.drawable_canne),
+    SCIENTIFIQUE("scientifique", R.drawable.drawable_microscope),
+    SKIPPER("skipper", R.drawable.drawable_voilier),
+    PLONGEUR("plongeur", R.drawable.drawable_plongeur),
+    KITTER("kitter", R.drawable.drawable_kite);
 
     private String typeStr;
     private int associatedIcon;
