@@ -4,18 +4,24 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.widget.TextView;
 
 import com.thomas.bateau.coins.CoinActivity;
 import com.thomas.bateau.evenements.EvenementsListActivity;
 import com.thomas.bateau.meteo.MeteoActivity;
+import com.thomas.bateau.meteo.MeteoModel;
 import com.thomas.bateau.reportActivity.alertActivity.AlertActivity;
 import com.thomas.bateau.reportActivity.spotActivity.SpotActivity;
 
-public class  MainActivity extends AppCompatActivity {
+import java.util.Observable;
+import java.util.Observer;
+
+public class  MainActivity extends AppCompatActivity implements Observer {
 
     private TextView btnMeteo, btnCarte, btnReport, btnAccueilCoin,buttonSpot;
+    private MeteoModel meteoModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +32,9 @@ public class  MainActivity extends AppCompatActivity {
         btnReport=findViewById(R.id.btn_accueil_signaler_evenement);
         btnAccueilCoin=findViewById(R.id.btn_accueil_coin);
         buttonSpot = findViewById(R.id.btn_accueil_spot);
+
+        meteoModel=MeteoModel.getInstance();
+        meteoModel.addObserver(this);
 
         buttonSpot.setOnClickListener(click ->{
             Intent intent=new Intent(getApplicationContext(), SpotActivity.class);
@@ -62,6 +71,7 @@ public class  MainActivity extends AppCompatActivity {
                 startActivity(intent);
             });
         }
+        changeDataDisplayedFromMeteoModel();
     }
 
     @Override
@@ -69,4 +79,19 @@ public class  MainActivity extends AppCompatActivity {
         super.onResume();
         btnAccueilCoin.setText("Coin des "+BateauApplication.typeUtilisateurs.getString());
     }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        changeDataDisplayedFromMeteoModel();
+    }
+
+    private void changeDataDisplayedFromMeteoModel() {
+        btnMeteo.setText(meteoModel.getMeteoType().toString()+"\nTemp: "+meteoModel.getTemperature()+" °C\nHumidity: "+meteoModel.getHumidity()+" %");
+        Drawable image = getResources().getDrawable(meteoModel.getMeteoType().getIcon());
+        int h = image.getIntrinsicHeight();
+        int w = image.getIntrinsicWidth();
+        image.setBounds( 0, 0, w, h );
+        btnMeteo.setCompoundDrawables(image, null, null, null);
+    }
+
 }
