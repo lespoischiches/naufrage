@@ -1,11 +1,11 @@
 <resources>
     <string name="app_name">bateau</string>
 
-    <string name="TextPecheurParam"> Ceci est un test sur les pecheur</string>
-    <string name="TextScientifiqueParam"> Ceci est un test sur les scientifique</string>
-    <string name="TextKitterParam"> Ceci est un test sur les kitter</string>
-    <string name="TextPlongeurParam"> Ceci est un test sur les plongeur</string>
-    <string name="TextSkipperParam"> Ceci est un test sur les skipper</string>
+    <string name="TextPecheurParam"> Ce bouton vous identifiera comme pêcheur, l\'application ne vous notifiera que des actualités relatives au pêcheur et vous donnera accès au coin des pêcheurs </string>
+    <string name="TextScientifiqueParam">Ce bouton vous identifiera comme scientifique, l\'application ne vous notifiera que des actualités relatives au scientifique et vous donnera accès au coin des scientifiques</string>
+    <string name="TextKitterParam">Ce bouton vous identifiera comme kitesurfer, l\'application ne vous notifiera que des actualités relatives au kitesurfer et vous donnera accès au coin des kitesurfers</string>
+    <string name="TextPlongeurParam">Ce bouton vous identifiera comme plongeur, l\'application ne vous notifiera que des actualités relatives au plongeur et vous donnera accès au coin des plongeurs</string>
+    <string name="TextSkipperParam">Ce bouton vous identifiera comme skipper, l\'application ne vous notifiera que des actualités relatives au skipper et vous donnera accès au coin des skippers</string>
 
     <string name="TextCoinPeche">Le coin des pêcheurs</string>
     <string name="TextCoinScience">Le coin des scientifiques</string>
