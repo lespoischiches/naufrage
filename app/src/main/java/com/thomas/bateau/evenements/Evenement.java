@@ -31,6 +31,7 @@ public class Evenement implements Parcelable {
     private String titre, description, imageURL, texte="";
     private Bitmap image;
     private TypeUtilisateurs typeUtilisateur=TypeUtilisateurs.PECHEUR;
+    private TypeEvenement typeEvenement = TypeEvenement.SPOT;
     public static final String EVENEMENT="evenement";
     private DownloadFilesTask downloadFilesTask=new DownloadFilesTask();
     private long timestamp;
@@ -74,6 +75,7 @@ public class Evenement implements Parcelable {
         texte=in.readString();
         //image=in.readParcelable(Bitmap.class.getClassLoader());
         typeUtilisateur=TypeUtilisateurs.valueOf(in.readString());
+        typeEvenement=TypeEvenement.valueOf(in.readString());
         timestamp=in.readLong();
     }
 
@@ -99,6 +101,10 @@ public class Evenement implements Parcelable {
 
     public TypeUtilisateurs getTypeUtilisateur() {
         return typeUtilisateur;
+    }
+
+    public TypeEvenement getTypeEvenement() {
+        return typeEvenement;
     }
 
     public void setTitle(String title) {
@@ -130,6 +136,10 @@ public class Evenement implements Parcelable {
         this.typeUtilisateur=typeUtilisateur;
     }
 
+    public void setTypeEvenement(TypeEvenement typeEvenement) {
+        this.typeEvenement = typeEvenement;
+    }
+
     public void setTimestamp(long t) {
         timestamp=t;
     }
@@ -142,6 +152,7 @@ public class Evenement implements Parcelable {
             e.setTexte(jsonObject.getString("texte"));
             e.setImageURL(jsonObject.getString("imageurl"));
             e.setTypeUtilisateur(TypeUtilisateurs.valueOf(jsonObject.getString("typeutilisateur")));
+            e.setTypeEvenement(TypeEvenement.valueOf(jsonObject.getString("typeevenement")));
         } catch (JSONException jsonException) {
             return null;
         }
@@ -156,6 +167,7 @@ public class Evenement implements Parcelable {
         dest.writeString(texte);
         //dest.writeParcelable(image, flags);
         dest.writeString(typeUtilisateur.name());
+        dest.writeString(typeEvenement.name());
         dest.writeLong(timestamp);
         //Log.d(">A", typeUtilisateur.name());
     }
