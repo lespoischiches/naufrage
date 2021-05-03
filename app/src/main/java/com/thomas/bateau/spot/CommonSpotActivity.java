@@ -34,7 +34,7 @@ public abstract class CommonSpotActivity extends LocationAccessActivity {
 
     protected void init(int backID)
     {
-        getFragmentManager().beginTransaction().add(R.id.photo_fragment, new PhotoFragment()).commit();
+
         initReturnBack(backID);
     }
     protected void initReturnBack(int backID)
