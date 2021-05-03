@@ -16,7 +16,7 @@ import java.util.HashMap;
 
 public abstract class SpinnerFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
-    String fishingChoice,hourChoice, depthChoice, typeofFishingChoice ;
+    String fishingChoice,hourChoice, depthChoice, typeofFishingChoice;
     static HashMap<Integer,Integer> spinners = new HashMap<>();
     static
     {
