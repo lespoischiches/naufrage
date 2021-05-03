@@ -22,6 +22,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.thomas.bateau.Character;
+import com.thomas.bateau.FileManager;
 import com.thomas.bateau.R;
 import com.thomas.bateau.spot.spinner.SpinnerDiverFragment;
 import com.thomas.bateau.spot.spinner.SpinnerFisherFragment;
@@ -29,9 +30,12 @@ import com.thomas.bateau.spot.spinner.SpinnerFragment;
 import com.thomas.bateau.spot.spinner.SpinnerScientistFragment;
 import com.thomas.bateau.spot.spinner.SpinnerSportFragment;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Writer;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Objects;
@@ -45,8 +49,9 @@ public class CommonSpotFragment extends Fragment  {
     EditText description;
     TextView textView;
     Bitmap bitmap;
-    String fishingChoice,hourChoice, depthChoice ;
-
+    SpinnerFragment spinnerFragment;
+    Character invokedType;
+    String imagePath;
     final int REQUEST_CAMERA = 100;
 
     static HashMap<Integer, SpinnerFragment> spinnerID = new HashMap<>();
@@ -62,6 +67,7 @@ public class CommonSpotFragment extends Fragment  {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.common_spot_fragment, container, false);
+        invokedType = Character.values()[getActivity().getIntent().getExtras().getInt("ID")];
         initUI(v);
         return v;
     }
@@ -76,36 +82,25 @@ public class CommonSpotFragment extends Fragment  {
     void postAction() {
         saveImage();
         saveContent();
-        getActivity().finish();
+      //  getActivity().finish();
     }
     protected void setSpinner(SpinnerFragment spinnerFragment)
     {
-        getFragmentManager().beginTransaction().replace(R.id.spinnerLayoutID, (android.app.Fragment) spinnerFragment).commit();
+        this.spinnerFragment = spinnerFragment;
+        getFragmentManager().beginTransaction().replace(R.id.spinnerLayoutID,spinnerFragment).commit();
     }
 
     private void saveContent() {
         if (dataToJson() == null) return;
         ContextWrapper cw = new ContextWrapper(getActivity().getApplicationContext());
         File directory = cw.getDir("jsonDir", Context.MODE_PRIVATE);
-        try {
-            FileOutputStream fos = getContext().openFileOutput(directory + "1.json", Context.MODE_PRIVATE);
-            fos.write( dataToJson().getBytes());
-            fos.close();
-        } catch (IOException fileNotFoundException){}
+        FileManager.saveFile(directory,dataToJson());
     }
     private void saveImage()
     {
-        if(bitmap==null) return;
+        if(bitmap==null) return ;
         ContextWrapper cw = new ContextWrapper(getActivity().getApplicationContext());
-        File directory = cw.getDir("spotImageDir", Context.MODE_PRIVATE);
-        File path = new File(directory, Objects.requireNonNull(directory.listFiles()).length+1+".png");
-        try {
-            FileOutputStream fos = new FileOutputStream(path);
-            bitmap.compress(Bitmap.CompressFormat.PNG, 100, fos);
-            fos.close();
-        } catch (Exception e) {
-            e.printStackTrace(); }
-        Arrays.stream(Objects.requireNonNull(directory.listFiles())).forEach(file -> Log.d("fichier",file.getAbsolutePath()));
+        imagePath =  FileManager.saveImage(cw.getDir("spotImageDir", Context.MODE_PRIVATE),bitmap);
     }
 
 
@@ -119,18 +114,25 @@ public class CommonSpotFragment extends Fragment  {
     private void initUI(View view) {
         view.findViewById(R.id.spot_return).setOnClickListener(click-> getActivity().finish());
         view.findViewById(R.id.add_photo).setOnClickListener(click -> pictureAction(view));
+        view.findViewById(R.id.post).setOnClickListener(click -> postAction());
+
         imageView = view.findViewById(R.id.image_spot);
         description = view.findViewById(R.id.description);
         textView = view.findViewById(R.id.localPos);
-        view.findViewById(R.id.post).setOnClickListener(click -> postAction());
+
         setSpinner(spinnerID.get(((CommonSpotActivity)getActivity()).getIntent().getExtras().getInt("ID")));
 
+        initPosition();
+
+    }
+
+    void initPosition()
+    {
         CommonSpotActivity activity = ((CommonSpotActivity) getActivity());
         activity.setOnNewLocationCallBack(this::setPosition);
         Double[] location = activity.getSavedLocation();
         if(location!=null) textView.setText(Arrays.toString(location));
     }
-
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -138,8 +140,7 @@ public class CommonSpotFragment extends Fragment  {
         if (requestCode != REQUEST_CAMERA) return;
         switch (resultCode) {
             case RESULT_OK:
-                bitmap= (Bitmap) data.getExtras().get("data");
-                imageView.setImageBitmap(bitmap);
+                imageView.setImageBitmap(bitmap= (Bitmap) data.getExtras().get("data"));
                 break;
             case RESULT_CANCELED:
                 toastShow("picture canceled");
@@ -167,19 +168,23 @@ public class CommonSpotFragment extends Fragment  {
 
     public String dataToJson()
     {
-        String hour = convertJson("hour",hourChoice);
-        String depth = convertJson("depth",depthChoice);
-        String fish = convertJson("fish",fishingChoice);
-        String comment = convertJson("comment" , description.getText().toString());
-        return hour+","+depth+","+fish+","+comment;
+        StringBuilder data  =new StringBuilder("{");
+        Double[] position =  ((CommonSpotActivity) getActivity()).getSavedLocation();
+        data.append(convertJson("type",String.valueOf(invokedType.ordinal())))
+                .append(",")
+                .append(convertJson("image",imagePath))
+                .append(",")
+                .append(convertJson("description",description.getText().toString()))
+                .append(",")
+                .append(convertJson("position","["+position[0]+","+position[1]+"]"))
+                .append(",")
+                .append(spinnerFragment.dataToJson()).append("}");
+        return data.toString();
     }
-    String  convertJson(String key, String element)
+    private String  convertJson(String key, String element)
     {
-        return "{'"+key+"':"+element+"}";
+        return "\""+key+"\":\""+element+"\"";
     }
-
-
-
 }
 
 

@@ -16,6 +16,10 @@ import com.thomas.bateau.coins.ItemListView;
 import com.thomas.bateau.coins.ItemListViewAdapter;
 import com.thomas.bateau.reportActivity.spotActivity.SpotFragmentOneHand;
 
+import com.thomas.bateau.spot.CommonSpotFragment;
+
+
+
 import java.util.LinkedList;
 
 public class ResultFisherActivity extends Activity {
