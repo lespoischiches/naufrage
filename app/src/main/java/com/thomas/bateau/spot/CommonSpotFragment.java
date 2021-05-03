@@ -28,10 +28,13 @@ import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.thomas.bateau.Character;
 import com.thomas.bateau.R;
 import com.thomas.bateau.spot.spinner.SpinnerDiverFragment;
 import com.thomas.bateau.spot.spinner.SpinnerFisherFragment;
 import com.thomas.bateau.spot.spinner.SpinnerFragment;
+import com.thomas.bateau.spot.spinner.SpinnerScientistFragment;
+import com.thomas.bateau.spot.spinner.SpinnerSportFragment;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -45,7 +48,7 @@ import java.util.Objects;
 import static android.app.Activity.RESULT_CANCELED;
 import static android.app.Activity.RESULT_OK;
 
-public class PhotoFragment extends Fragment  {
+public class CommonSpotFragment extends Fragment  {
 
     ImageView imageView;
     EditText description;
@@ -55,11 +58,13 @@ public class PhotoFragment extends Fragment  {
 
     final int REQUEST_CAMERA = 100;
 
-    static HashMap<Class<?>, SpinnerFragment> spinnerID = new HashMap<>();
+    static HashMap<Integer, SpinnerFragment> spinnerID = new HashMap<>();
     static {
-        spinnerID.put(DiverSpotActivity.class,new SpinnerDiverFragment());
-        spinnerID.put(FisherSpotActivity.class,new SpinnerFisherFragment());
-
+        spinnerID.put(Character.DIVER.ordinal(),new SpinnerDiverFragment());
+        spinnerID.put(Character.FISHER.ordinal(),new SpinnerFisherFragment());
+        spinnerID.put(Character.KITTER.ordinal(),new SpinnerSportFragment());
+        spinnerID.put(Character.SKIPPER.ordinal(),new SpinnerSportFragment());
+        spinnerID.put(Character.SCIENTIST.ordinal(),new SpinnerScientistFragment());
     }
 
     @Override
@@ -119,19 +124,22 @@ public class PhotoFragment extends Fragment  {
         if (position == null) textView.setText("je n'ai pas accès au gps");
         else textView.setText("Position\nlatitude :"+position[0]+"\nlongitude :"+position[1]);
     }
+
     private void initUI(View view) {
+        view.findViewById(R.id.spot_return).setOnClickListener(click-> getActivity().finish());
         view.findViewById(R.id.add_photo).setOnClickListener(click -> pictureAction(view));
         imageView = view.findViewById(R.id.image_spot);
         description = view.findViewById(R.id.description);
         textView = view.findViewById(R.id.localPos);
         view.findViewById(R.id.post).setOnClickListener(click -> postAction());
-        setSpinner(spinnerID.get(getActivity().getClass()));
+        setSpinner(spinnerID.get(((CommonSpotActivity)getActivity()).getIntent().getExtras().getInt("ID")));
 
         CommonSpotActivity activity = ((CommonSpotActivity) getActivity());
         activity.setOnNewLocationCallBack(this::setPosition);
         Double[] location = activity.getSavedLocation();
         if(location!=null) textView.setText(Arrays.toString(location));
     }
+
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {

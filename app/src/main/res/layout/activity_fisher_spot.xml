@@ -29,7 +29,7 @@
         android:id="@+id/photo_fragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:name="com.thomas.bateau.spot.PhotoFragment"
+        android:name="com.thomas.bateau.spot.CommonSpotFragment"
         />
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,7 +14,7 @@ import com.thomas.bateau.R;
 
 import java.util.HashMap;
 
-public class SpinnerFragment extends Fragment implements AdapterView.OnItemSelectedListener {
+public abstract class SpinnerFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
     String fishingChoice,hourChoice, depthChoice, typeofFishingChoice ;
     static HashMap<Integer,Integer> spinners = new HashMap<>();
@@ -24,8 +24,8 @@ public class SpinnerFragment extends Fragment implements AdapterView.OnItemSelec
         spinners.put(R.id.spinnerHour,R.array.spinnerHour);
         spinners.put(R.id.spinnerDepth,R.array.spinnerDepth);
         spinners.put(R.id.spinnerTypeOfFishing,R.array.spinnerTypeOfFishing);
-
     }
+
 
     void init(View v, Integer... spinnersID)
     {
