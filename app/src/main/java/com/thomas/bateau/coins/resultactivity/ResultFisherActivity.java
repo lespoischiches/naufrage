@@ -15,7 +15,7 @@ import com.thomas.bateau.R;
 import com.thomas.bateau.coins.ItemListView;
 import com.thomas.bateau.coins.ItemListViewAdapter;
 import com.thomas.bateau.reportActivity.spotActivity.SpotFragmentOneHand;
-import com.thomas.bateau.spot.PhotoFragment;
+import com.thomas.bateau.spot.CommonSpotFragment;
 
 import java.util.LinkedList;
 

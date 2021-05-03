@@ -28,15 +28,13 @@ public  class CommonSpotActivity extends LocationAccessActivity {
 
     private Runnable runnable;
     private Double[] location;
-    protected int activityCharacter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_spot);
-        activityCharacter = getIntent().getExtras().getInt("ID");
-
     }
+
     @Override
     public void onNewLocationAvailable() {
         super.onNewLocationAvailable();

@@ -10,13 +10,16 @@ import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
 import android.widget.Spinner;
 
+import com.thomas.bateau.Character;
 import com.thomas.bateau.R;
+import com.thomas.bateau.spot.CommonSpotActivity;
 
 import java.util.HashMap;
 
 public abstract class SpinnerFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
-    String fishingChoice,hourChoice, depthChoice, typeofFishingChoice;
+
+    protected SpinnerData spinnerData;
     static HashMap<Integer,Integer> spinners = new HashMap<>();
     static
     {
@@ -29,8 +32,10 @@ public abstract class SpinnerFragment extends Fragment implements AdapterView.On
 
     void init(View v, Integer... spinnersID)
     {
+        spinnerData= new SpinnerData(Character.values()[(((CommonSpotActivity)getActivity()).getIntent().getExtras().getInt("ID"))]);
         for(Integer spinnerID : spinnersID) initSpinner(v,spinnerID,spinners.get(spinnerID));
     }
+
 
 
     private void initSpinner(View v,int ID,int arrayID)
@@ -39,23 +44,19 @@ public abstract class SpinnerFragment extends Fragment implements AdapterView.On
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),arrayID,android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         lst.setAdapter(adapter);
-        lst.setOnItemSelectedListener(this);
+        lst.setOnItemSelectedListener((SpinnerFragment)this);
 
+    }
+    public String dataToJson()
+    {
+        return spinnerData.toJson();
     }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
     {
-        switch (parent.getId()){
-            case R.id.spinnerFish :
-                fishingChoice = position==0? null : parent.getItemAtPosition(position).toString();
-            case R.id.spinnerHour :
-                hourChoice = position==0? null : parent.getItemAtPosition(position).toString();
-            case R.id.spinnerDepth :
-                depthChoice = position==0? null : parent.getItemAtPosition(position).toString();
-            case R.id.spinnerTypeOfFishing :
-                typeofFishingChoice = position==0? null : parent.getItemAtPosition(position).toString();
-        }
+        if(position!=0)
+            spinnerData.onItemSelected(parent.getId(), parent.getItemAtPosition(position).toString());
     }
 
     @Override
