@@ -29,13 +29,13 @@
                     />
 
                 <Button
-                    android:id="@+id/button3"
+                    android:id="@+id/help"
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
                     android:text="Aide \n ce bouton effectue l'Aide" />
 
             <Button
-                android:id="@+id/button4"
+                android:id="@+id/remains"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:text="Débris \n ce bouton permet de signaler des débris" />

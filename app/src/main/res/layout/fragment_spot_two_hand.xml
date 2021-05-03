@@ -15,12 +15,13 @@ tools:context=".reportActivity.spotActivity.SpotFragmentTwoHand">
             android:layout_height="match_parent">
             <TableRow
                 android:id="@+id/layout1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
                 <Button
                     android:id="@+id/fish_spot"
-                    android:layout_width="150dp"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="125dp"
                     android:text="Spot de Peche"
                     android:layout_marginLeft="15dp"
@@ -28,7 +29,8 @@ tools:context=".reportActivity.spotActivity.SpotFragmentTwoHand">
 
                 <Button
                     android:id="@+id/skipper_spot"
-                    android:layout_width="150dp"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="125dp"
                     android:text="Spot des Skippers"
                     android:layout_marginRight="15dp"
@@ -38,11 +40,12 @@ tools:context=".reportActivity.spotActivity.SpotFragmentTwoHand">
             </TableRow>
 
             <TableRow
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
                 <Button
                     android:id="@+id/diver_spot"
-                    android:layout_width="150dp"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="125dp"
                     android:text="Spot de Plongeur "
                     android:layout_marginLeft="15dp"
@@ -50,7 +53,8 @@ tools:context=".reportActivity.spotActivity.SpotFragmentTwoHand">
 
                 <Button
                     android:id="@+id/scientist_spot"
-                    android:layout_width="150dp"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="125dp"
                     android:text="Spot de Scientifique "
                     android:layout_marginRight="15dp"
@@ -59,14 +63,27 @@ tools:context=".reportActivity.spotActivity.SpotFragmentTwoHand">
                     />
 
             </TableRow>
-            <TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
                 <Button
                     android:id="@+id/kitter_spot"
-                    android:layout_width="150dp"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="125dp"
                     android:text="Spot de kitter "
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="15dp" />
+
+                <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="125dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="30dp"
+
+                    />
             </TableRow>
         </TableLayout>
     </ScrollView>
