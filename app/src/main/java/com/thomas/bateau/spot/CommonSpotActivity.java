@@ -1,5 +1,6 @@
 package com.thomas.bateau.spot;
 
+import android.app.Fragment;
 import android.content.Intent;
 import android.net.Uri;
 import android.util.Log;
@@ -30,6 +31,7 @@ public abstract class CommonSpotActivity extends LocationAccessActivity {
 
 
 
+
     protected void init(int backID)
     {
         getFragmentManager().beginTransaction().add(R.id.photo_fragment, new PhotoFragment()).commit();
@@ -40,6 +42,7 @@ public abstract class CommonSpotActivity extends LocationAccessActivity {
         btnBack = findViewById(backID);
         btnBack.setOnClickListener(click -> finish());
     }
+
 
     @Override
     public void onNewLocationAvailable() {

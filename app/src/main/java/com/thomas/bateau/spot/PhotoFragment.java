@@ -29,6 +29,9 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.thomas.bateau.R;
+import com.thomas.bateau.spot.spinner.SpinnerDiverFragment;
+import com.thomas.bateau.spot.spinner.SpinnerFisherFragment;
+import com.thomas.bateau.spot.spinner.SpinnerFragment;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -36,12 +39,13 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
 
 import static android.app.Activity.RESULT_CANCELED;
 import static android.app.Activity.RESULT_OK;
 
-public class PhotoFragment extends Fragment  implements AdapterView.OnItemSelectedListener {
+public class PhotoFragment extends Fragment  {
 
     ImageView imageView;
     EditText description;
@@ -51,15 +55,17 @@ public class PhotoFragment extends Fragment  implements AdapterView.OnItemSelect
 
     final int REQUEST_CAMERA = 100;
 
+    static HashMap<Class<?>, SpinnerFragment> spinnerID = new HashMap<>();
+    static {
+        spinnerID.put(DiverSpotActivity.class,new SpinnerDiverFragment());
+        spinnerID.put(FisherSpotActivity.class,new SpinnerFisherFragment());
 
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.photo_fragment, container, false);
-        fishingChoice = null;
-        hourChoice = null;
-        depthChoice = null;
         initUI(v);
         return v;
     }
@@ -75,6 +81,10 @@ public class PhotoFragment extends Fragment  implements AdapterView.OnItemSelect
         saveImage();
         saveContent();
         getActivity().finish();
+    }
+    protected void setSpinner(SpinnerFragment spinnerFragment)
+    {
+        getFragmentManager().beginTransaction().replace(R.id.spinnerLayoutID, (android.app.Fragment) spinnerFragment).commit();
     }
 
     private void saveContent() {
@@ -115,24 +125,12 @@ public class PhotoFragment extends Fragment  implements AdapterView.OnItemSelect
         description = view.findViewById(R.id.description);
         textView = view.findViewById(R.id.localPos);
         view.findViewById(R.id.post).setOnClickListener(click -> postAction());
-
-        initSpinner(view,R.id.spinnerFish,R.array.spinnerFish);
-        initSpinner(view,R.id.spinnerHour,R.array.spinnerHour);
-        initSpinner(view,R.id.spinnerDepth,R.array.spinnerDepth);
+        setSpinner(spinnerID.get(getActivity().getClass()));
 
         CommonSpotActivity activity = ((CommonSpotActivity) getActivity());
         activity.setOnNewLocationCallBack(this::setPosition);
         Double[] location = activity.getSavedLocation();
         if(location!=null) textView.setText(Arrays.toString(location));
-    }
-    private void initSpinner(View v,int id,int layoutID)
-    {
-        Spinner lst = v.findViewById(id);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),layoutID,android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        lst.setAdapter(adapter);
-        lst.setOnItemSelectedListener(this);
-
     }
 
     @Override
@@ -181,23 +179,8 @@ public class PhotoFragment extends Fragment  implements AdapterView.OnItemSelect
         return "{'"+key+"':"+element+"}";
     }
 
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
-    {
-        switch (parent.getId()){
-            case R.id.spinnerFish :
-                fishingChoice = position==0? null : parent.getItemAtPosition(position).toString();
-            case R.id.spinnerHour :
-                hourChoice = position==0? null : parent.getItemAtPosition(position).toString();
-            case R.id.spinnerDepth :
-                depthChoice = position==0? null : parent.getItemAtPosition(position).toString();
-        }
-    }
 
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
 
-    }
 }
 
 

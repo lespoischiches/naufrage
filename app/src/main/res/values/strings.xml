@@ -56,6 +56,13 @@
         <item>40 m </item>
     </string-array>
 
+    <string-array name="spinnerTypeOfFishing">
+        <item> Type de peche :</item>
+        <item> peche au filet </item>
+        <item> peche au harpon</item>
+        <item> peche à la peche </item>
+    </string-array>
+
 
 
 </resources>
