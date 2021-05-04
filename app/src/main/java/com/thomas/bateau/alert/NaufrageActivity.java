@@ -8,11 +8,12 @@ import android.widget.Button;
 
 import com.thomas.bateau.LocationAccessActivity;
 import com.thomas.bateau.R;
+import com.thomas.bateau.SharingBehaviorActivity;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-public class NaufrageActivity extends LocationAccessActivity {
+public class NaufrageActivity extends LocationAccessActivity implements SharingBehaviorActivity {
 
 
     Button sharingNaufrage, buttonBack, buttonSharePosition;
@@ -38,11 +39,7 @@ public class NaufrageActivity extends LocationAccessActivity {
                     String url = "https://twitter.com/intent/tweet?text= "+ date +" - Alerte%20mon%20navire%20sombre, %20ma%20position%20est%20la%20suivante%20:%20" + shareBody;
                     Intent intent = new Intent( Intent.ACTION_VIEW, Uri.parse( url ) );
                     startActivity(intent);*/
-                    Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
-                    sharingIntent.setType("text/plain");
-                    sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Naufrage repéré");
-                    sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
-                    startActivity(Intent.createChooser(sharingIntent, "Share via"));
+                    sharePlainTextWithUndefinedApp("Partager avec...", "Naufrage repéré", shareBody);
                 }
         });
 
