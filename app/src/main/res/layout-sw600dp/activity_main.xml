@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="80dp"
+        android:text="Paramètres"
+        android:textSize="25sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:id="@+id/accueil_btn_params"
+        />
+
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/accueilfirstlinearlayout"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/accueil_btn_params"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="20dp"
+        android:columnCount="2"
+        android:rowCount="2">
+
+        <TextView
+            android:id="@+id/btn_accueil_meteo"
+            android:layout_width="350dp"
+            android:layout_height="100dp"
+            android:drawableLeft="@drawable/drawable_cloud2"
+            android:text="Nuageux\nTemp: -1°C\nHum: 80%"
+            android:textAlignment="center"
+            android:textSize="25dp"
+            android:layout_margin="10dp"
+            android:background="#F3E8E8"/>
+
+        <TextView
+            android:id="@+id/btn_accueil_coin"
+            android:layout_width="350dp"
+            android:layout_height="100dp"
+            android:drawableLeft="@drawable/drawable_canne2"
+            android:text="Coin des [...]"
+            android:textAlignment="center"
+            android:textSize="25dp"
+            android:layout_margin="10dp"
+            android:background="#F3E8E8"/>
+
+        <TextView
+            android:id="@+id/btn_accueil_carte"
+            android:layout_width="350dp"
+            android:layout_height="100dp"
+            android:drawableLeft="@drawable/drawable_globe"
+            android:text="Carte"
+            android:textAlignment="center"
+            android:textSize="25dp"
+            android:layout_margin="10dp"
+            android:background="#F3E8E8"/>
+        <TextView
+            android:id="@+id/btn_recherche"
+            android:layout_width="350dp"
+            android:layout_height="100dp"
+            android:drawableLeft="@drawable/drawable_loupe"
+            android:text="Rechercher des evenement"
+            android:textAlignment="center"
+            android:textSize="25dp"
+            android:layout_margin="10dp"
+            android:background="#F3E8E8"/>
+
+</GridLayout>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_accueil_spot"
+        android:backgroundTint="#009E0F"
+        android:text="SPOTS"
+        android:layout_margin="10dp"
+        android:textSize="30dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/accueilfirstlinearlayout"/>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_accueil_signaler_evenement"
+        android:backgroundTint="#CF2A27"
+        android:text="Signaler un évènement"
+        android:layout_margin="10dp"
+        android:textSize="30dp"
+        app:layout_constraintTop_toBottomOf="@id/btn_accueil_spot"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
+    
+    <fragment
+        android:id="@+id/accueil_fragment_evenements"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="20dp"
+        app:layout_constraintTop_toBottomOf="@id/btn_accueil_signaler_evenement"
+        android:name="com.thomas.bateau.evenements.EvenementAccueilFragment"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

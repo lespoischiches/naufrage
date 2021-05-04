@@ -2,10 +2,12 @@ package com.thomas.bateau;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.telephony.TelephonyManager;
 import android.widget.TextView;
 
 import com.thomas.bateau.coins.CoinActivity;
@@ -15,6 +17,7 @@ import com.thomas.bateau.meteo.MeteoModel;
 import com.thomas.bateau.reportActivity.alertActivity.AlertActivity;
 import com.thomas.bateau.reportActivity.spotActivity.SpotActivity;
 
+import java.util.Objects;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -64,7 +67,9 @@ public class  MainActivity extends AppCompatActivity implements Observer {
         });
 
         int ori = this.getResources().getConfiguration().orientation;
-        if( ori==Configuration.ORIENTATION_LANDSCAPE) {
+        int device = getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK;
+
+        if(ori==Configuration.ORIENTATION_LANDSCAPE && device<Configuration.SCREENLAYOUT_SIZE_LARGE) {
             findViewById(R.id.accueil_btn_actu).setOnClickListener(c -> {
                 Intent intent = new Intent(getApplicationContext(), EvenementsListActivity.class);
                 startActivity(intent);
