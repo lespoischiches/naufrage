@@ -21,6 +21,7 @@ public class ParamsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         int ori = this.getResources().getConfiguration().orientation;
+        int device = getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_params);
         rbPecheur=findViewById(R.id.params_radio_pecheur);
@@ -29,7 +30,7 @@ public class ParamsActivity extends AppCompatActivity {
         rbKitter=findViewById(R.id.params_radio_kitter);
         rbSkipper=findViewById(R.id.params_radio_skipper);
         TextView t = findViewById(R.id.textview_paramPenche);
-        if(ori == Configuration.ORIENTATION_LANDSCAPE) {
+        if(ori == Configuration.ORIENTATION_LANDSCAPE || device>=Configuration.SCREENLAYOUT_SIZE_LARGE) {
             switch (BateauApplication.typeUtilisateurs) {
                 case PECHEUR:
                     rbPecheur.setChecked(true);

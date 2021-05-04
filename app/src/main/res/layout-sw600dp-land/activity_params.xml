@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginHorizontal="5dp"
+    tools:context=".ParamsActivity">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Retour"
+        android:id="@+id/params_btn_retour"
+        android:textSize="30sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/params_btn_retour"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:id="@+id/params_je_suis"
+        android:text="Je suis:"
+        android:textSize="30sp"
+        android:layout_marginHorizontal="30dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/params_je_suis">
+
+        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/scrollview_radio"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="30dp"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <RadioButton android:id="@+id/params_radio_pecheur"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Un pêcheur"
+                android:textSize="30sp"
+                android:layout_margin="10dp"
+                android:onClick="onChangeRoleClicked"/>
+
+            <RadioButton android:id="@+id/params_radio_scientifique"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Un scientifique"
+                android:textSize="30sp"
+                android:layout_margin="10dp"
+                android:onClick="onChangeRoleClicked"/>
+
+            <RadioButton android:id="@+id/params_radio_plongeur"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Un plongeur"
+                android:textSize="30sp"
+                android:layout_margin="10dp"
+                android:onClick="onChangeRoleClicked"/>
+
+            <RadioButton android:id="@+id/params_radio_skipper"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Un skipper"
+                android:textSize="30sp"
+                android:layout_margin="10dp"
+                android:onClick="onChangeRoleClicked"/>
+
+            <RadioButton android:id="@+id/params_radio_kitter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Un kitter"
+                android:textSize="30sp"
+                android:layout_margin="10dp"
+                android:onClick="onChangeRoleClicked"/>
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/textview_paramPenche"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            app:layout_constraintLeft_toRightOf="@+id/scrollview_radio"
+            android:layout_marginHorizontal="50dp"
+            android:text="Test"
+            android:textSize="30sp"
+            android:gravity="center"
+            android:layout_weight="2" />
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
