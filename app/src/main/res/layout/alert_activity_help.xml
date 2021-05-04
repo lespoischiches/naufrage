@@ -5,15 +5,10 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-
-
-    <Button
-        android:id="@+id/alert_help_return"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_width="100dp"
-        android:layout_height="64dp"
-        android:text="retour" />
-
+    <fragment
+        android:id="@+id/alert_activity_meteo_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:name="com.thomas.bateau.reportActivity.alertActivity.AlertActivityFragment" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
