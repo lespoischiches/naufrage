@@ -10,11 +10,10 @@ import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.thomas.bateau.MainActivity;
 import com.thomas.bateau.R;
-import com.thomas.bateau.alert.HelpActivity;
 import com.thomas.bateau.coins.ResultCoinFragment;
-import com.thomas.bateau.coins.resultactivity.ResultFisherActivity;
+import com.thomas.bateau.coins.searchActivity.SearchActivity;
+import com.thomas.bateau.coins.searchActivity.club.ClubSearchActivity;
 
 
 public class ResultCoinPecheurFragment extends ResultCoinFragment {
@@ -33,7 +32,7 @@ public class ResultCoinPecheurFragment extends ResultCoinFragment {
         {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(fragView.getContext(), ResultFisherActivity.class));
+                startActivity(new Intent(fragView.getContext(), ClubSearchActivity.class));
             }
         });
         return fragView;

@@ -12,9 +12,7 @@ import androidx.annotation.Nullable;
 
 import com.thomas.bateau.R;
 import com.thomas.bateau.coins.SearchCoinFragment;
-import com.thomas.bateau.coins.resultactivity.ResultFisherActivity;
-import com.thomas.bateau.coins.resultactivity.ResultKitterActivity;
-import com.thomas.bateau.coins.searchactivity.SearchFisherActivity;
+import com.thomas.bateau.coins.searchActivity.spot.SpotSearchActivity;
 
 public class SearchCoinPecheurFragment extends SearchCoinFragment {
     private View fragView;
@@ -31,7 +29,7 @@ public class SearchCoinPecheurFragment extends SearchCoinFragment {
         {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(fragView.getContext(), SearchFisherActivity.class));
+                startActivity(new Intent(fragView.getContext(), SpotSearchActivity.class));
             }
         });
         return fragView;

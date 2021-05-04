@@ -12,8 +12,8 @@ import androidx.annotation.Nullable;
 
 import com.thomas.bateau.R;
 import com.thomas.bateau.coins.ResultCoinFragment;
-import com.thomas.bateau.coins.resultactivity.ResultFisherActivity;
-import com.thomas.bateau.coins.resultactivity.ResultKitterActivity;
+import com.thomas.bateau.coins.searchActivity.SearchActivity;
+import com.thomas.bateau.coins.searchActivity.club.ClubSearchActivity;
 
 public class ResultCoinKitesurferFragment extends ResultCoinFragment {
 
@@ -31,7 +31,7 @@ public class ResultCoinKitesurferFragment extends ResultCoinFragment {
         {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(fragView.getContext(), ResultKitterActivity.class));
+                startActivity(new Intent(fragView.getContext(), ClubSearchActivity.class));
             }
         });
         return fragView;

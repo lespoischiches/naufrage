@@ -1,12 +1,8 @@
 package com.thomas.bateau;
 
-import android.app.ActivityManager;
 import android.app.Application;
-import android.app.NotificationChannel;
 import android.app.NotificationManager;
-import android.content.Context;
 import android.content.SharedPreferences;
-import android.os.Build;
 import android.util.Log;
 
 import com.thomas.bateau.evenements.EvenementNotificationService;
@@ -15,7 +11,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.StringWriter;
-import java.util.Objects;
 
 public class BateauApplication extends Application {
 

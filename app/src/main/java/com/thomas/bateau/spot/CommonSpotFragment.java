@@ -1,6 +1,7 @@
 package com.thomas.bateau.spot;
 
 import android.Manifest;
+import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.ContextWrapper;
@@ -64,8 +65,7 @@ public class CommonSpotFragment extends Fragment  {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.common_spot_fragment, container, false);
         invokedType = Character.values()[getActivity().getIntent().getExtras().getInt("ID")];
         initUI(v);
@@ -92,9 +92,7 @@ public class CommonSpotFragment extends Fragment  {
 
     private void saveContent() {
         if (dataToJson() == null) return;
-        ContextWrapper cw = new ContextWrapper(getActivity().getApplicationContext());
-        File directory = cw.getDir("jsonDir", Context.MODE_PRIVATE);
-        FileManager.saveFile(directory,dataToJson());
+        FileManager.saveFile( new ContextWrapper(getActivity().getApplicationContext()),dataToJson());
     }
     private void saveImage()
     {
@@ -178,7 +176,7 @@ public class CommonSpotFragment extends Fragment  {
                 .append(",")
                 .append(convertJson("position","["+position[0]+","+position[1]+"]"))
                 .append(",")
-                .append(spinnerFragment.dataToJson()).append("}");
+                .append(spinnerFragment.dataToJson()).append("}\n");
         return data.toString();
     }
     private String  convertJson(String key, String element)
