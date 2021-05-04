@@ -33,6 +33,7 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent">
                 <EditText
+                    android:id="@+id/edit_button_search"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:maxHeight="300dp"

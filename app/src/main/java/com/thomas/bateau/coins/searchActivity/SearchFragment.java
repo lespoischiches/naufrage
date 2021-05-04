@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import androidx.annotation.Nullable;
@@ -34,6 +35,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -43,72 +45,99 @@ public class SearchFragment extends Fragment {
 
     Button buttonResearch;
     AdvancedSearchFragment advancedResearch;
+    EditText text;
+    List<JSONObject> elements;
+    LinkedList<ItemListView> items;
+    ListView listView;
     boolean advanced = false;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.search_fragment, container, false);
         v.findViewById(R.id.result_return).setOnClickListener(click -> getActivity().finish());
+        initListJson();
+        initSearchButton(v);
         advancedResearch = new AdvancedSearchFragment();
         buttonResearch = v.findViewById(R.id.show_more_button);
         buttonResearch.setText("Recherche avancé ");
         buttonResearch.setOnClickListener(click -> swap());
+        text = v.findViewById(R.id.edit_button_search);
         try {
             initListView(v);
-        }catch (IOException | JSONException ignored){}
-
-
+        }catch ( JSONException ignored){}
         return v;
     }
+    void initSearchButton(View v)
+    {
+        v.findViewById(R.id.search_button).setOnClickListener(click->{
+            items.clear();
+            for (JSONObject jsonObject :filterJsonObjects(elements,text.getText().toString(),"fish","description")) {
+                try { items.add(createItemListView(jsonObject));
+                } catch (JSONException ignored) {}
+            }
+            ItemListViewAdapter adapter = new ItemListViewAdapter(getActivity().getApplicationContext(), R.layout.search_activity, items);
+            listView.setAdapter(adapter);
 
-    void initListView(View v) throws IOException, JSONException {
-        ItemListViewAdapter adapter = new ItemListViewAdapter(getActivity().getApplicationContext(), R.layout.search_activity, fillListView());
-        ListView list = (ListView) v.findViewById(R.id.result_activity_listView);
-        list.setAdapter(adapter);
-        list.setOnItemClickListener(((parent, view, position, id) -> launchResearchSelected()));
+        } );
+    }
+    void initListJson()
+    {
+        ContextWrapper contextWrapper = new ContextWrapper(getActivity().getApplicationContext());
+        try {
+            elements = filterJsonObjects(FileManager.loadFile(contextWrapper.getDir("jsonDir", Context.MODE_PRIVATE).toString())
+                    ,  String.valueOf(BateauApplication.typeUtilisateurs.ordinal()),"type");
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
+
     }
 
-    LinkedList<ItemListView> fillListView() throws IOException,JSONException {
-        LinkedList<ItemListView> items = new LinkedList<ItemListView>();
-        ContextWrapper contextWrapper = new ContextWrapper(getActivity().getApplicationContext());
-        List<JSONObject>jsonObjects = FileManager.loadFile(contextWrapper.getDir("jsonDir", Context.MODE_PRIVATE).toString());
+    void initListView(View v) throws  JSONException {
+        ItemListViewAdapter adapter = new ItemListViewAdapter(getActivity().getApplicationContext(), R.layout.search_activity, fillListView());
+        listView = (ListView) v.findViewById(R.id.result_activity_listView);
+        listView.setAdapter(adapter);
+        listView.setOnItemClickListener(((parent, view, position, id) -> launchResearchSelected()));
+    }
 
-        for (JSONObject jsonObject : filterJsonObjects(jsonObjects, "type", String.valueOf(BateauApplication.typeUtilisateurs.ordinal())))
-            items.add(createItemListView(jsonObject));
-
+    LinkedList<ItemListView> fillListView() throws JSONException {
+        items = new LinkedList<ItemListView>();
+        for (JSONObject jsonObject :elements) items.add(createItemListView(jsonObject));
         return items;
     }
+
+
 
     private ItemListView createItemListView(JSONObject jsonObject) throws JSONException
     {
         return new ItemListView(setTitleItemListView(jsonObject), R.drawable.canne_icon, jsonObject.get("description").toString());
     }
-    List<JSONObject> filterJsonObjects(List<JSONObject> jsonObjects, String filter, String reference) {
-        return jsonObjects.stream().filter(jsonObject -> {
-            try {
-                return jsonObject.get(filter).equals(reference);
-            } catch (JSONException ignored) {return false;}
-        }).collect(Collectors.toList());
+
+
+    List<JSONObject> filterJsonObjects(List<JSONObject> jsonObjects, String reference, String... filters) {
+        return jsonObjects.stream().filter(jsonObject -> Arrays.stream(filters).anyMatch(filter-> {
+                    try { return jsonObject.get(filter).equals(reference);
+                    } catch (JSONException jsonException) { return false; } })
+        ).collect(Collectors.toList());
 
     }
-
 
     void launchResearchSelected() {
             startActivity(new Intent(getContext(), ResultActivity.class));
     }
 
-    String setTitleItemListView(JSONObject json ) throws JSONException {
+    private String setTitleItemListView(JSONObject json ) throws JSONException {
         if(BateauApplication.typeUtilisateurs.equals(TypeUtilisateurs.SKIPPER) ||
                 BateauApplication.typeUtilisateurs.equals(TypeUtilisateurs.KITTER) )
             return "Coin sympas";
         else return json.get("fish").toString();
 
     }
-    void swap() {
+    private void swap() {
         if (advanced) getFragmentManager().beginTransaction().remove(advancedResearch).commit();
-        else
-            getFragmentManager().beginTransaction().replace(R.id.result_activity_linearLayout, advancedResearch).commit();
+        else getFragmentManager().beginTransaction().replace(R.id.result_activity_linearLayout, advancedResearch).commit();
         advanced = !advanced;
     }
+
+
 
 }
