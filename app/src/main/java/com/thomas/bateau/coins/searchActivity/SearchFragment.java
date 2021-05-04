@@ -133,7 +133,15 @@ public class SearchFragment extends Fragment {
     }
 
 
+    public void updateView(List<ItemListView> itemListViews)
+    {
+        items.clear();
+        items.addAll(itemListViews);
+        ItemListViewAdapter adapter = new ItemListViewAdapter(getActivity().getApplicationContext(), R.layout.search_activity, items);
+        listView.setAdapter(adapter);
 
+
+    }
     void launchResearchSelected() {
             startActivity(new Intent(getContext(), ResultActivity.class));
     }

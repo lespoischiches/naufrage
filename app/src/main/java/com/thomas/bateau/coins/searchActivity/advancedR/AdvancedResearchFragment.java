@@ -8,7 +8,10 @@ import android.widget.Spinner;
 
 import com.thomas.bateau.FileManager;
 import com.thomas.bateau.R;
+import com.thomas.bateau.coins.searchActivity.JsonFilter;
 import com.thomas.bateau.coins.searchActivity.SearchFragment;
+
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -33,12 +36,12 @@ public abstract class AdvancedResearchFragment extends Fragment implements Adapt
         filter.put(R.id.depth_filter,"depth");
         filter.put(R.id.fishing_way_filter,"fishingM");
     }
-    List<String> filterList;
     SearchFragment parent;
 
+    HashMap<String,String> filteredValues ;
     void init(View v, Integer... spinnersID)
     {
-        filterList = new ArrayList<>();
+        filteredValues = new HashMap<>();
         for(Integer spinnerID : spinnersID) initSpinner(v,spinnerID,spinners.get(spinnerID));
     }
 
@@ -60,9 +63,19 @@ public abstract class AdvancedResearchFragment extends Fragment implements Adapt
     public  void onItemSelected(AdapterView<?> parent, View view, int position, long id)
     {
 
-        if(id!=0  && !filterList.contains(filter.get(id)))return;
-        if(filterList.contains(filter.get(id)))filterList.remove(filter.get(id));
-        else filterList.add(filter.get(id));
+        String filter = filter.get(parent.getId());
+        if(position!=0  && !filteredValues.containsKey())return;
+        if(position==0 && filteredValues.containsKey(filter.get(parent.getId()))) {
+            filteredValues.remove()
+            filterList.remove(filter.get(parent.getId()));
+            referenceList.remove(parent.getItemAtPosition(position).toString());
+        }
+        else {
+            filterList.add(filter.get(parent.getId()));
+            referenceList.add(parent.getItemAtPosition(position).toString());
+        }
+        List<JSONObject> filteredElement = new ArrayList<>();
+        for (String reference : referenceList)
 
     }
 

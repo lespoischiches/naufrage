@@ -11,7 +11,6 @@ import java.util.stream.Collectors;
 
 public class JsonFilter {
 
-
     public static  List<JSONObject>  filterJsonObjects(List<JSONObject> jsonObjects, Filter<String,String,Boolean> filter , String reference, String... filters) {
         return jsonObjects.stream().filter(jsonObject -> Arrays.stream(filters).anyMatch(type-> {
             try { return filter.apply(reference, (String) jsonObject.get(type));
