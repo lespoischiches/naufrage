@@ -13,68 +13,85 @@
         android:layout_weight="1"
         android:layout_marginHorizontal="10dp">
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="250dp"
+            android:layout_height="80dp"
             android:text="Paramètres"
+            android:textSize="25sp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             android:id="@+id/accueil_btn_params"
             />
 
-        <GridLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <LinearLayout
             android:id="@+id/accueilfirstlinearlayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="20dp"
+            android:layout_marginHorizontal="10dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/accueil_btn_params"
             app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginTop="20dp"
-            android:columnCount="2"
-            android:rowCount="2">
+            android:orientation="vertical"
+            android:layout_gravity="center">
 
-            <TextView
-                android:id="@+id/btn_accueil_meteo"
-                android:layout_width="175dp"
-                android:layout_height="75dp"
-                android:drawableLeft="@drawable/drawable_cloud"
-                android:text="Nuageux\nTemp: -1°C\nHum: 80%"
-                android:textAlignment="center"
-                android:textSize="15dp"
-                android:layout_margin="5dp"
-                android:background="#F3E8E8"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:layout_weight="1">
+                <TextView
+                    android:id="@+id/btn_accueil_meteo"
+                    android:layout_width="175dp"
+                    android:layout_height="100dp"
+                    android:text="Nuageux\nTemp: -1°C\nHum: 80%"
+                    android:drawableLeft="@drawable/drawable_cloud2"
+                    android:textAlignment="center"
+                    android:textSize="20sp"
+                    android:layout_margin="5dp"
+                    android:background="#F3E8E8"
+                    android:layout_weight="1"/>
 
-            <TextView
-                android:id="@+id/btn_accueil_coin"
-                android:layout_width="175dp"
-                android:layout_height="75dp"
-                android:drawableLeft="@drawable/drawable_canne"
-                android:text="Coin des [...]"
-                android:textAlignment="center"
-                android:textSize="15dp"
-                android:layout_margin="5dp"
-                android:background="#F3E8E8"/>
-            <TextView
-                android:id="@+id/btn_accueil_carte"
-                android:layout_width="175dp"
-                android:layout_height="75dp"
-                android:drawableLeft="@drawable/drawable_globe"
-                android:text="Carte"
-                android:textAlignment="center"
-                android:textSize="15dp"
-                android:layout_margin="5dp"
-                android:background="#F3E8E8"/>
-            <TextView
-                android:id="@+id/btn_recherche"
-                android:layout_width="175dp"
-                android:layout_height="75dp"
-                android:drawableLeft="@drawable/drawable_loupe"
-                android:text="Rechercher des evenement"
-                android:textAlignment="center"
-                android:textSize="15dp"
-                android:layout_margin="5dp"
-                android:background="#F3E8E8"/>
-
-    </GridLayout>
+                <TextView
+                    android:id="@+id/btn_accueil_coin"
+                    android:layout_width="175dp"
+                    android:layout_height="100dp"
+                    android:text="Coin des [...]"
+                    android:drawableLeft="@drawable/drawable_canne2"
+                    android:textAlignment="center"
+                    android:textSize="20sp"
+                    android:layout_margin="5dp"
+                    android:background="#F3E8E8"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+                <TextView
+                    android:id="@+id/btn_accueil_carte"
+                    android:layout_width="175dp"
+                    android:layout_height="100dp"
+                    android:text="Carte"
+                    android:drawableLeft="@drawable/drawable_globe2"
+                    android:textAlignment="center"
+                    android:textSize="20sp"
+                    android:layout_margin="5dp"
+                    android:background="#F3E8E8"
+                    android:layout_weight="1"/>
+                <TextView
+                    android:id="@+id/btn_recherche"
+                    android:layout_width="175dp"
+                    android:layout_height="100dp"
+                    android:text="Rechercher des evenement"
+                    android:drawableLeft="@drawable/drawable_loupe2"
+                    android:textAlignment="center"
+                    android:textSize="20sp"
+                    android:layout_margin="5dp"
+                    android:background="#F3E8E8"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+        </LinearLayout>
 
         <Button
             android:layout_width="fill_parent"
@@ -82,18 +99,21 @@
             android:id="@+id/btn_accueil_spot"
             android:backgroundTint="#009E0F"
             android:text="SPOTS"
+            android:textSize="30sp"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/accueilfirstlinearlayout" />
+            app:layout_constraintTop_toBottomOf="@+id/accueilfirstlinearlayout"
+            android:layout_marginHorizontal="40dp"/>
 
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:id="@+id/btn_accueil_signaler_evenement"
             android:backgroundTint="#CF2A27"
+            android:text="Signaler un évènement"
+            android:textSize="30sp"
             app:layout_constraintTop_toBottomOf="@id/btn_accueil_spot"
             app:layout_constraintLeft_toLeftOf="parent"
-            android:text="Signaler un évènement"/>
-
+            android:layout_marginHorizontal="40dp"/>
     </LinearLayout>
     
     <fragment
@@ -102,6 +122,7 @@
         android:layout_height="match_parent"
         android:layout_marginHorizontal="10dp"
         android:layout_weight="1"
+        android:padding="10dp"
         android:name="com.thomas.bateau.evenements.EvenementAccueilFragment"/>
 
 

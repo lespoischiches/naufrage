@@ -34,7 +34,7 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class FileManager {
 
-    public static String filename="data1.json";
+    public static String filename="data2.json";
 
 
     public static void  saveFile( ContextWrapper context, String content)

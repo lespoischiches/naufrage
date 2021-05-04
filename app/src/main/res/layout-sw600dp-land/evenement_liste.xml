@@ -10,9 +10,9 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:src="@drawable/bateau"
-        app:layout_constraintHeight_max="80dp"
-        app:layout_constraintWidth_max="80dp"
+        android:src="@drawable/voilier_icon2"
+        app:layout_constraintHeight_max="160dp"
+        app:layout_constraintWidth_max="160dp"
         />
 
     <TextView
@@ -22,27 +22,28 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toRightOf="@id/evenement_liste_photo"
         android:layout_marginLeft="10dp"
-        android:textSize="20sp"
+        android:textSize="25sp"
         android:textStyle="bold"
         android:text="titre"
         />
 
     <LinearLayout
-        android:layout_width="300dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/evenement_liste_titre"
         app:layout_constraintLeft_toRightOf="@id/evenement_liste_photo">
-    <TextView
-        android:id="@+id/evenement_liste_description"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="5dp"
-        android:text="Description"
-
-        />
+        <TextView
+            android:id="@+id/evenement_liste_description"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:text="Description"
+            android:textSize="20sp"
+            />
 
     </LinearLayout>
+
 
     <!--android:inputType="textMultiLine"
     android:singleLine="false"

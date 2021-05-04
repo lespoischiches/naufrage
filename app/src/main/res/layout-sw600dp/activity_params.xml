@@ -26,6 +26,7 @@
         android:layout_marginHorizontal="30dp"/>
 
     <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/scrollview_radio"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
@@ -72,5 +73,15 @@
             android:layout_margin="10dp"
             android:onClick="onChangeRoleClicked"/>
     </RadioGroup>
+    <TextView
+        android:id="@+id/textview_paramPenche"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/scrollview_radio"
+        android:layout_margin="20dp"
+        android:padding="50dp"
+        android:text="Test"
+        android:textSize="30sp"
+        android:gravity="center" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
