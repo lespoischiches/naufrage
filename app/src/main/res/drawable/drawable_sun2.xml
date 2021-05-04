@@ -2,6 +2,6 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:drawable="@drawable/sun_icon"
-        android:width="100dp"
-        android:height="100dp" />
+        android:width="75dp"
+        android:height="75dp" />
 </layer-list>

@@ -24,7 +24,7 @@ tools:context=".reportActivity.spotActivity.SpotFragmentTwoHand">
                     android:layout_weight="1"
                     android:layout_height="125dp"
                     android:text="Spot de Peche"
-                    android:layout_marginLeft="15dp"
+                    android:layout_marginLeft="10dp"
                     android:layout_marginTop="15dp"/>
 
                 <Button
@@ -33,9 +33,9 @@ tools:context=".reportActivity.spotActivity.SpotFragmentTwoHand">
                     android:layout_weight="1"
                     android:layout_height="125dp"
                     android:text="Spot des Skippers"
-                    android:layout_marginRight="15dp"
                     android:layout_marginTop="15dp"
-                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="20dp"
                     />
             </TableRow>
 
@@ -48,7 +48,7 @@ tools:context=".reportActivity.spotActivity.SpotFragmentTwoHand">
                     android:layout_weight="1"
                     android:layout_height="125dp"
                     android:text="Spot de Plongeur "
-                    android:layout_marginLeft="15dp"
+                    android:layout_marginLeft="10dp"
                     android:layout_marginTop="15dp" />
 
                 <Button
@@ -57,7 +57,7 @@ tools:context=".reportActivity.spotActivity.SpotFragmentTwoHand">
                     android:layout_weight="1"
                     android:layout_height="125dp"
                     android:text="Spot de Scientifique "
-                    android:layout_marginRight="15dp"
+                    android:layout_marginRight="10dp"
                     android:layout_marginTop="15dp"
                     android:layout_marginLeft="30dp"
                     />
@@ -72,14 +72,14 @@ tools:context=".reportActivity.spotActivity.SpotFragmentTwoHand">
                     android:layout_weight="1"
                     android:layout_height="125dp"
                     android:text="Spot de kitter "
-                    android:layout_marginLeft="15dp"
+                    android:layout_marginLeft="10dp"
                     android:layout_marginTop="15dp" />
 
                 <FrameLayout
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="125dp"
-                    android:layout_marginRight="15dp"
+                    android:layout_marginRight="10dp"
                     android:layout_marginTop="15dp"
                     android:layout_marginLeft="30dp"
 
