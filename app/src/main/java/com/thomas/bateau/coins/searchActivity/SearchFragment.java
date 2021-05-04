@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import androidx.annotation.Nullable;
@@ -47,6 +48,7 @@ public class SearchFragment extends Fragment {
     boolean advanced = false;
     AdvancedResearchFragment spinnerFragment;
     ItemListViewAdapter adapter;
+    View currentView;
 
     public static HashMap<Integer, AdvancedResearchFragment> spinnerID = new HashMap<>();
     static {
@@ -68,12 +70,12 @@ public class SearchFragment extends Fragment {
         initSearchButton(v);
         initShowMoreButton(v);
         initSearchButton(v);
-
         text = v.findViewById(R.id.edit_button_search);
         try {
             initListView(v);
         }catch ( JSONException ignored){}
-
+        v.findViewById(R.id.result_activity_linearLayout).setVisibility(View.VISIBLE);
+        currentView = v;
         return v;
     }
 
@@ -147,8 +149,14 @@ public class SearchFragment extends Fragment {
     }
     private void swap() {
 
-        if (advanced) getFragmentManager().beginTransaction().remove(spinnerFragment).commit();
-        else getFragmentManager().beginTransaction().replace(R.id.result_activity_linearLayout, spinnerFragment).commit();
+        if (advanced) {
+            getFragmentManager().beginTransaction().remove(spinnerFragment).commit();
+            currentView.findViewById(R.id.result_activity_linearLayout).setVisibility(View.VISIBLE);
+        }
+        else {
+            getFragmentManager().beginTransaction().replace(R.id.frame_test, spinnerFragment).commit();
+            currentView.findViewById(R.id.result_activity_linearLayout).setVisibility(View.INVISIBLE);
+        }
         advanced = !advanced;
     }
 
