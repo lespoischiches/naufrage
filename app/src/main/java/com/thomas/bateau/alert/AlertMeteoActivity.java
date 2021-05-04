@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.thomas.bateau.R;
 
@@ -17,7 +18,7 @@ public class AlertMeteoActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.alert_activity_meteo);
 
-        buttonBack = findViewById(R.id.alert_meteo_return);
+        buttonBack = findViewById(R.id.alert_fragment_return);
         buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -25,5 +26,6 @@ public class AlertMeteoActivity extends Activity {
             }
         });
 
+        ((TextView) findViewById(R.id.alert_fragment_titre)).setText("Signaler un évènement météo");
     }
 }
