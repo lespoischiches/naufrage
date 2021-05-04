@@ -14,7 +14,6 @@ import android.widget.ListView;
 
 import androidx.annotation.Nullable;
 
-import com.thomas.bateau.AdvancedSearchFragment;
 import com.thomas.bateau.BateauApplication;
 import com.thomas.bateau.FileManager;
 import com.thomas.bateau.R;
@@ -41,12 +40,13 @@ public class SearchFragment extends Fragment {
 
     Button buttonResearch;
     EditText text;
-    List<JSONObject> elements;
+    public List<JSONObject> elements;
     LinkedList<ItemListView> items;
     ListView listView;
     boolean advanced = false;
     AdvancedResearchFragment spinnerFragment;
     ItemListViewAdapter adapter;
+    View currentView;
 
     public static HashMap<Integer, AdvancedResearchFragment> spinnerID = new HashMap<>();
     static {
@@ -68,12 +68,12 @@ public class SearchFragment extends Fragment {
         initSearchButton(v);
         initShowMoreButton(v);
         initSearchButton(v);
-
         text = v.findViewById(R.id.edit_button_search);
         try {
             initListView(v);
         }catch ( JSONException ignored){}
-
+        v.findViewById(R.id.result_activity_linearLayout).setVisibility(View.VISIBLE);
+        currentView = v;
         return v;
     }
 
@@ -86,13 +86,13 @@ public class SearchFragment extends Fragment {
     void initSpinnerFragment()
     {
         this.spinnerFragment = spinnerID.get(BateauApplication.typeUtilisateurs.ordinal());
-        spinnerFragment.setParent(this);
+        spinnerFragment.setParentFragment(this);
     }
     void initSearchButton(View v)
     {
         v.findViewById(R.id.search_button).setOnClickListener(click->{
             items.clear();
-            for (JSONObject jsonObject :JsonFilter.filterJsonObjects(elements, JsonFilter::findRegex,text.getText().toString(),"fish","description")) {
+            for (JSONObject jsonObject :JsonFilter.filterJsonObjects(elements, JsonFilter::findRegex,text.getText().toString(),"fish","description","title")) {
                 try { items.add(createItemListView(jsonObject));
                 } catch (JSONException ignored) {}
             }
@@ -133,7 +133,15 @@ public class SearchFragment extends Fragment {
     }
 
 
+    public void updateView(List<JSONObject> jsonObjects) throws JSONException
+    {
+        items.clear();
+        for (JSONObject jsonObject :jsonObjects) items.add(createItemListView(jsonObject));
+        ItemListViewAdapter adapter = new ItemListViewAdapter(getActivity().getApplicationContext(), R.layout.search_activity, items);
+        listView.setAdapter(adapter);
 
+
+    }
     void launchResearchSelected() {
             startActivity(new Intent(getContext(), ResultActivity.class));
     }
@@ -141,16 +149,22 @@ public class SearchFragment extends Fragment {
     private String setTitleItemListView(JSONObject json ) throws JSONException {
         if(BateauApplication.typeUtilisateurs.equals(TypeUtilisateurs.SKIPPER) ||
                 BateauApplication.typeUtilisateurs.equals(TypeUtilisateurs.KITTER) )
-            return "Coin sympas";
+            return json.get("title").toString();
+
         else return json.get("fish").toString();
 
     }
     private void swap() {
 
-        if (advanced) getFragmentManager().beginTransaction().remove(spinnerFragment).commit();
-        else getFragmentManager().beginTransaction().replace(R.id.result_activity_linearLayout, spinnerFragment).commit();
+        if (advanced) {
+            getFragmentManager().beginTransaction().remove(spinnerFragment).commit();
+            currentView.findViewById(R.id.result_activity_linearLayout).setVisibility(View.VISIBLE);
+        }
+        else {
+            getFragmentManager().beginTransaction().replace(R.id.frame_test, spinnerFragment).commit();
+            currentView.findViewById(R.id.result_activity_linearLayout).setVisibility(View.INVISIBLE);
+        }
         advanced = !advanced;
     }
-
 
 }
