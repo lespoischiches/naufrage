@@ -10,12 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import androidx.annotation.Nullable;
 
-import com.thomas.bateau.AdvancedSearchFragment;
 import com.thomas.bateau.BateauApplication;
 import com.thomas.bateau.FileManager;
 import com.thomas.bateau.R;
@@ -42,7 +40,7 @@ public class SearchFragment extends Fragment {
 
     Button buttonResearch;
     EditText text;
-    List<JSONObject> elements;
+    public List<JSONObject> elements;
     LinkedList<ItemListView> items;
     ListView listView;
     boolean advanced = false;
@@ -88,7 +86,7 @@ public class SearchFragment extends Fragment {
     void initSpinnerFragment()
     {
         this.spinnerFragment = spinnerID.get(BateauApplication.typeUtilisateurs.ordinal());
-        spinnerFragment.setParent(this);
+        spinnerFragment.setParentFragment(this);
     }
     void initSearchButton(View v)
     {
@@ -135,10 +133,10 @@ public class SearchFragment extends Fragment {
     }
 
 
-    public void updateView(List<ItemListView> itemListViews)
+    public void updateView(List<JSONObject> jsonObjects) throws JSONException
     {
         items.clear();
-        items.addAll(itemListViews);
+        for (JSONObject jsonObject :jsonObjects) items.add(createItemListView(jsonObject));
         ItemListViewAdapter adapter = new ItemListViewAdapter(getActivity().getApplicationContext(), R.layout.search_activity, items);
         listView.setAdapter(adapter);
 
