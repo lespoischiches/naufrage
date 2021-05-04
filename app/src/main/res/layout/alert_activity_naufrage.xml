@@ -29,4 +29,12 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteY="0dp" />
 
+    <Button
+        android:id="@+id/activity_alert_naufrage_twitter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Twitter"
+        app:layout_constraintTop_toBottomOf="@id/sharePosition"
+        app:layout_constraintRight_toRightOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -16,13 +16,13 @@ import java.util.Calendar;
 public class NaufrageActivity extends LocationAccessActivity implements SharingBehaviorActivity {
 
 
-    Button sharingNaufrage, buttonBack, buttonSharePosition;
+    Button sharingNaufrage, buttonBack, buttonSharePosition, twitterButton;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.alert_activity_naufrage);
         sharingNaufrage = findViewById(R.id.sharePosition);
-
         buttonBack = findViewById(R.id.returnButtonNaufrage);
+        twitterButton=findViewById(R.id.activity_alert_naufrage_twitter);
         buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -35,12 +35,15 @@ public class NaufrageActivity extends LocationAccessActivity implements SharingB
                 public void onClick(View v) {
                     Double[] positions  = getLocation();
                     String shareBody = "ALERTE: naufrage a "+positions[0]+", "+ positions[1];
-                    /*String date = new SimpleDateFormat(" dd-MM-yyyy à HH:mm:ss").format(Calendar.getInstance().getTime());
-                    String url = "https://twitter.com/intent/tweet?text= "+ date +" - Alerte%20mon%20navire%20sombre, %20ma%20position%20est%20la%20suivante%20:%20" + shareBody;
-                    Intent intent = new Intent( Intent.ACTION_VIEW, Uri.parse( url ) );
-                    startActivity(intent);*/
                     sharePlainTextWithUndefinedApp("Partager avec...", "Naufrage repéré", shareBody);
                 }
+        });
+
+        twitterButton.setOnClickListener(c -> {
+            Double[] positions  = getLocation();
+            String shareBody = "ALERTE: naufrage a "+positions[0]+", "+ positions[1];
+            String date = new SimpleDateFormat(" dd-MM-yyyy à HH:mm:ss").format(Calendar.getInstance().getTime());
+            shareTweetLaunchBrowser(date +" - Alerte mon navire sombre, ma position est la suivante: " + shareBody);
         });
 
     }
