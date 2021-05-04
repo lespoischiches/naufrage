@@ -2,17 +2,17 @@ package com.thomas.bateau.evenements;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.thomas.bateau.R;
+import com.thomas.bateau.SharingBehaviorActivity;
 
 import static com.thomas.bateau.evenements.Evenement.EVENEMENT;
 
-public class EvenementViewActivity extends AppCompatActivity {
+public class EvenementViewActivity extends AppCompatActivity implements SharingBehaviorActivity {
 
     private Evenement evenement;
     private TextView textViewTitre, textViewDescription, textViewTexte;
@@ -35,12 +35,7 @@ public class EvenementViewActivity extends AppCompatActivity {
             finish();
         });
         btnShare.setOnClickListener(c -> {
-            String shareBody = "Je partage avec vous l'événement " + evenement.getTitle() + ":\n" + evenement.getDescription();
-            Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
-            sharingIntent.setType("text/plain");
-            sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, evenement.getTitle());
-            sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
-            startActivity(Intent.createChooser(sharingIntent, "Partager avec"));
+            sharePlainTextWithUndefinedApp("Partager avec...", evenement.getTitle(), "Je partage avec vous l'événement " + evenement.getTitle() + ":\n" + evenement.getDescription());
         });
 
         textViewTitre.setText(evenement.getTitle());
