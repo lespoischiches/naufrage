@@ -8,8 +8,8 @@
 
     <LinearLayout
 
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -17,18 +17,18 @@
         <Spinner
             android:id="@+id/spinnerFish"
             android:layout_width="match_parent"
-            android:layout_height="46dp"
+            android:layout_height="75dp"
             android:layout_marginTop="5dp" />
         <Spinner
             android:id="@+id/spinnerHour"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
+            android:layout_height="75dp"
             android:layout_marginTop="5dp"
             />
         <Spinner
             android:id="@+id/spinnerDepth"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
+            android:layout_height="75dp"
             android:layout_marginTop="5dp"
             />
 
