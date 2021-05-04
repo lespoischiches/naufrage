@@ -45,4 +45,8 @@ public class ItemListViewAdapter extends ArrayAdapter<ItemListView> {
 
         return convertView;
     }
+
+    public void setItems(LinkedList<ItemListView> items) {
+        this.items = items;
+    }
 }

@@ -65,4 +65,53 @@
 
 
 
+    <string-array name="fish_filter">
+        <item>Rechercher par poisson:</item>
+        <item>Morue</item>
+        <item>Bar</item>
+        <item>Espadon</item>
+        <item>Sole</item>
+        <item>Turbot</item>
+        <item>Cabillaud</item>
+        <item>Saumon</item>
+        <item>Merlan</item>
+    </string-array>
+
+
+    <string-array name="depth_filter">
+        <item>Rechercher par profondeur:</item>
+        <item>1 m </item>
+        <item>5 m </item>
+        <item>10 m </item>
+        <item>15 m </item>
+        <item>20 m </item>
+        <item>25 m </item>
+        <item>30 m </item>
+        <item>35 m </item>
+        <item>40 m </item>
+    </string-array>
+
+
+    <string-array name="hour_filter">
+        <item>Rechercher par heure:</item>
+        <item>8:00 </item>
+        <item>9:00 </item>
+        <item>10:00 </item>
+        <item>11:00 </item>
+        <item>12:00 </item>
+        <item>13:00 </item>
+        <item>14:00 </item>
+        <item>15:00 </item>
+        <item>16:00 </item>
+        <item>17:00 </item>
+        <item>18:00 </item>
+        <item>19:00 </item>
+    </string-array>
+
+    <string-array name="fishing_way_filter">
+        <item>Rechercher par type de peche:</item>
+        <item> peche au filet </item>
+        <item> peche au harpon</item>
+        <item> peche à la peche </item>
+    </string-array>
 </resources>

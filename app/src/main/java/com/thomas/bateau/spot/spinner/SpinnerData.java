@@ -8,9 +8,9 @@ import java.util.HashMap;
 public class SpinnerData {
 
     String fishingChoice,hourChoice, depthChoice ,typeofFishingChoice;
-    Character characterID;
+    int characterID;
 
-    public SpinnerData(Character id)
+    public SpinnerData(int id)
     {
         characterID = id ;
     }
@@ -36,11 +36,11 @@ public class SpinnerData {
     String toJson()
     {
         StringBuilder str = new StringBuilder();
-        if(characterID.equals(Character.FISHER))
+        if(characterID == Character.FISHER.ordinal())
             str.append(convertJson("fish",fishingChoice))
             .append(",").append(convertJson("fishingM",typeofFishingChoice))
             .append(",");
-        else  if(characterID.equals(Character.DIVER) || characterID.equals(Character.SCIENTIST))
+        else  if(characterID == Character.DIVER.ordinal() || characterID ==Character.SCIENTIST.ordinal())
             str.append(convertJson("fish",fishingChoice))
             .append(",").append(convertJson("depth",depthChoice))
                     .append(",");

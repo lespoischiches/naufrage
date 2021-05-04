@@ -55,7 +55,7 @@ public class CommonSpotFragment extends Fragment  {
     String imagePath;
     final int REQUEST_CAMERA = 100;
 
-    static HashMap<Integer, SpinnerFragment> spinnerID = new HashMap<>();
+    public static HashMap<Integer, SpinnerFragment> spinnerID = new HashMap<>();
     static {
         spinnerID.put(Character.DIVER.ordinal(),new SpinnerDiverFragment());
         spinnerID.put(Character.FISHER.ordinal(),new SpinnerFisherFragment());
@@ -82,7 +82,7 @@ public class CommonSpotFragment extends Fragment  {
     void postAction() {
         saveImage();
         saveContent();
-      //  getActivity().finish();
+        getActivity().finish();
     }
     protected void setSpinner(SpinnerFragment spinnerFragment)
     {
@@ -91,7 +91,6 @@ public class CommonSpotFragment extends Fragment  {
     }
 
     private void saveContent() {
-        if (dataToJson() == null) return;
         FileManager.saveFile( new ContextWrapper(getActivity().getApplicationContext()),dataToJson());
     }
     private void saveImage()
