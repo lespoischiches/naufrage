@@ -92,7 +92,7 @@ public class SearchFragment extends Fragment {
     {
         v.findViewById(R.id.search_button).setOnClickListener(click->{
             items.clear();
-            for (JSONObject jsonObject :JsonFilter.filterJsonObjects(elements, JsonFilter::findRegex,text.getText().toString(),"fish","description")) {
+            for (JSONObject jsonObject :JsonFilter.filterJsonObjects(elements, JsonFilter::findRegex,text.getText().toString(),"fish","description","title")) {
                 try { items.add(createItemListView(jsonObject));
                 } catch (JSONException ignored) {}
             }
@@ -149,7 +149,8 @@ public class SearchFragment extends Fragment {
     private String setTitleItemListView(JSONObject json ) throws JSONException {
         if(BateauApplication.typeUtilisateurs.equals(TypeUtilisateurs.SKIPPER) ||
                 BateauApplication.typeUtilisateurs.equals(TypeUtilisateurs.KITTER) )
-            return "Coin sympas";
+            return json.get("title").toString();
+
         else return json.get("fish").toString();
 
     }
@@ -165,6 +166,5 @@ public class SearchFragment extends Fragment {
         }
         advanced = !advanced;
     }
-
 
 }

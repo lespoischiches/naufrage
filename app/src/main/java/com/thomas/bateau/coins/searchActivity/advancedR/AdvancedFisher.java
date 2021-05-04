@@ -20,6 +20,4 @@ public class AdvancedFisher extends AdvancedResearchFragment {
         return v;
     }
 
-
-
 }

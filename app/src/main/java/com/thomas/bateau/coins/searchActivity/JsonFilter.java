@@ -18,7 +18,6 @@ public class JsonFilter {
         ).collect(Collectors.toList());
 
     }
-
     public static boolean findRegex(String key , String word)
     {
         Pattern pattern = Pattern.compile(key);

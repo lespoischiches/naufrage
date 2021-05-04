@@ -19,4 +19,7 @@ public class SpinnerDiverFragment extends SpinnerFragment   {
         init(v,R.id.spinnerFish,R.id.spinnerHour,R.id.spinnerDepth);
         return v;
     }
+
+
+
 }
