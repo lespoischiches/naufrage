@@ -26,14 +26,7 @@ public class ResultCoinKitesurferFragment extends ResultCoinFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         fragView = inflater.inflate(R.layout.coin_kitesurfer_result_fragment, container, false);
-        Button button = fragView.findViewById(R.id.btRechercheUnClubDesKitesurfersResult);
-        button.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(fragView.getContext(), ClubSearchActivity.class));
-            }
-        });
+
         return fragView;
     }
 }

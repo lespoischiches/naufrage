@@ -28,14 +28,6 @@ public class ResultCoinSkippeurFragment extends ResultCoinFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         fragView=inflater.inflate(R.layout.coin_skippeur_result_fragment, container, false);
 
-        Button button = fragView.findViewById(R.id.leCoinDesSkippeursBt1Result);
-        button.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(fragView.getContext(), ClubSearchActivity.class));
-            }
-        });
         return fragView;
     }
 }

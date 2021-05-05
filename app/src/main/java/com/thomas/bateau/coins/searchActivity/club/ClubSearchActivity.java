@@ -2,5 +2,5 @@ package com.thomas.bateau.coins.searchActivity.club;
 
 import com.thomas.bateau.coins.searchActivity.SearchActivity;
 
-public class ClubSearchActivity extends SearchActivity {
+public class ClubSearchActivity  {
 }
