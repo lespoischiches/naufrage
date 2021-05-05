@@ -17,14 +17,6 @@ public class RemainsActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.alert_activity_remains);
 
-        buttonBack = findViewById(R.id.alert_fragment_return);
-        buttonBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-
         ((TextView) findViewById(R.id.alert_fragment_titre)).setText("Signaler un débris");
 
 

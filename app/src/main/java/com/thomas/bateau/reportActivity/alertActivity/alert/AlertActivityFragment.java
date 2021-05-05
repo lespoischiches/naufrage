@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -34,10 +35,12 @@ public class AlertActivityFragment extends Fragment {
     Bitmap bitmap;
     EditText description;
     ImageView imageView;
+    View view;
     final int REQUEST_CAMERA = 100;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View fragView =inflater.inflate(R.layout.alert_activity_fragment, container, false);
+        view = fragView;
         initUI(fragView);
         return fragView;
     }
@@ -132,5 +135,6 @@ public class AlertActivityFragment extends Fragment {
     {
         return "\""+key+"\":\""+element+"\"";
     }
+
 }
 

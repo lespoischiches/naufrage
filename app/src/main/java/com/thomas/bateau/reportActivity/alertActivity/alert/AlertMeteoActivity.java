@@ -17,8 +17,6 @@ public class AlertMeteoActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.alert_activity_meteo);
 
-
-
         ((TextView) findViewById(R.id.alert_fragment_titre)).setText("Signaler un évènement météo");
     }
 
