@@ -13,7 +13,9 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.thomas.bateau.R;
 
+import java.util.Arrays;
 import java.util.LinkedList;
+import java.util.List;
 
 public class ItemListViewAdapter extends ArrayAdapter<ItemListView> {
     private final Context context;
@@ -42,6 +44,20 @@ public class ItemListViewAdapter extends ArrayAdapter<ItemListView> {
         viewTitle.setText(items.get(position).getNom());
         viewDescription.setText(items.get(position).getDescription());
         viewTitle.setTag(items.get(position).getNom());
+        int  i=0 ;
+        List<TextView> viewsList = Arrays.asList( (TextView) convertView.findViewById(R.id.text1), (TextView) convertView.findViewById(R.id.text2), (TextView) convertView.findViewById(R.id.text3));
+        for (String element : items.get(position).getElement() )
+        {
+                if(element==null || element.equals("null")) continue;
+                viewsList.get(i).setText(element);
+                i++;
+        }
+
+        for ( ; i<3; i++)
+            viewsList.get(i).setText("");
+
+
+
 
         return convertView;
     }

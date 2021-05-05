@@ -34,15 +34,13 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class FileManager {
 
-    public static String filename="data2.json";
+    public static String SPOT="data3.json";
+    public static String ALERT="data34json";
 
 
-    public static void  saveFile( ContextWrapper context, String content)
+    public static void  saveFile( ContextWrapper context, String content,String filename)
     {
         File directory = context.getDir("jsonDir", Context.MODE_PRIVATE);
-        Log.d("",content);
-        Log.d("Path",directory+"/"+filename);
-        Log.d("content",content);
         try {
 
            File file = new File(directory+"/"+filename);
@@ -65,7 +63,7 @@ public class FileManager {
         return path.getPath();
     }
 
-    public static List<JSONObject>  loadFile(String pathFile) throws IOException {
+    public static List<JSONObject>  loadFile(String pathFile,String filename) throws IOException {
 
         FileInputStream fileInputStream = new FileInputStream(pathFile+"/"+filename);
         InputStreamReader streamReader = new InputStreamReader(fileInputStream);

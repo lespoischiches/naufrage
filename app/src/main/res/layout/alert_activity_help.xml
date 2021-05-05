@@ -9,6 +9,6 @@
         android:id="@+id/alert_activity_meteo_fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:name="com.thomas.bateau.reportActivity.alertActivity.AlertActivityFragment" />
+        android:name="com.thomas.bateau.reportActivity.alertActivity.alert.AlertActivityFragment" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

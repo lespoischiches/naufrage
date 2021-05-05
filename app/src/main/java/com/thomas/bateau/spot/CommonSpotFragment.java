@@ -91,7 +91,7 @@ public class CommonSpotFragment extends Fragment  {
     }
 
     private void saveContent() {
-        FileManager.saveFile( new ContextWrapper(getActivity().getApplicationContext()),dataToJson());
+        FileManager.saveFile( new ContextWrapper(getActivity().getApplicationContext()),dataToJson(),FileManager.SPOT);
     }
     private void saveImage()
     {

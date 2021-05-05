@@ -1,7 +1,6 @@
-package com.thomas.bateau.alert;
+package com.thomas.bateau.reportActivity.alertActivity.alert;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,19 +12,15 @@ public class AlertMeteoActivity extends Activity {
 
 
 
-    Button post, buttonBack ;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.alert_activity_meteo);
 
-        buttonBack = findViewById(R.id.alert_fragment_return);
-        buttonBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+
 
         ((TextView) findViewById(R.id.alert_fragment_titre)).setText("Signaler un évènement météo");
     }
+
+
 }

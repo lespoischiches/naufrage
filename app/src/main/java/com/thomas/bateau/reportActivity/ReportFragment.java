@@ -8,12 +8,12 @@ import android.widget.Button;
 
 
 import com.thomas.bateau.Character;
-import com.thomas.bateau.alert.NaufrageActivity;
+import com.thomas.bateau.reportActivity.alertActivity.alert.NaufrageActivity;
 import com.thomas.bateau.R;
-import com.thomas.bateau.alert.AlertMeteoActivity;
+import com.thomas.bateau.reportActivity.alertActivity.alert.AlertMeteoActivity;
 import com.thomas.bateau.spot.CommonSpotActivity;
-import com.thomas.bateau.alert.HelpActivity;
-import com.thomas.bateau.alert.RemainsActivity;
+import com.thomas.bateau.reportActivity.alertActivity.alert.HelpActivity;
+import com.thomas.bateau.reportActivity.alertActivity.alert.RemainsActivity;
 
 import java.util.HashMap;
 import java.util.function.Function;

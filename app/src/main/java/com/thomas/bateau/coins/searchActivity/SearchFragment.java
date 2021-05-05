@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -105,7 +106,7 @@ public class SearchFragment extends Fragment {
     {
         ContextWrapper contextWrapper = new ContextWrapper(getActivity().getApplicationContext());
         try {
-            List<JSONObject> resources = FileManager.loadFile(contextWrapper.getDir("jsonDir", Context.MODE_PRIVATE).toString());
+            List<JSONObject> resources = FileManager.loadFile(contextWrapper.getDir("jsonDir", Context.MODE_PRIVATE).toString(),FileManager.SPOT);
             elements = JsonFilter.filterJsonObjects(resources, String::equals,  String.valueOf(BateauApplication.typeUtilisateurs.ordinal()),"type");
         } catch (IOException ioException) { ioException.printStackTrace(); }
     }
@@ -114,7 +115,7 @@ public class SearchFragment extends Fragment {
         adapter = new ItemListViewAdapter(getActivity().getApplicationContext(), R.layout.search_activity, fillListView());
         listView = (ListView) v.findViewById(R.id.result_activity_listView);
         listView.setAdapter(adapter);
-        listView.setOnItemClickListener(((parent, view, position, id) -> launchResearchSelected()));
+        listView.setOnItemClickListener(((parent, view, position, id) -> launchResearchSelected((ItemListView) parent.getItemAtPosition(position))));
     }
 
 
@@ -129,7 +130,13 @@ public class SearchFragment extends Fragment {
 
     private ItemListView createItemListView(JSONObject jsonObject) throws JSONException
     {
-        return new ItemListView(setTitleItemListView(jsonObject),BateauApplication.typeUtilisateurs.getIcon(), jsonObject.get("description").toString());
+        ItemListView itemListView = new ItemListView(setTitleItemListView(jsonObject),BateauApplication.typeUtilisateurs.getIcon(), jsonObject.get("description").toString());
+
+        if(!jsonObject.isNull("image")) itemListView.setUrl((String)jsonObject.get("image").toString());
+        if(!jsonObject.isNull("depth")) itemListView.setDepth((String)jsonObject.get("depth").toString());
+        if(!jsonObject.isNull("fishingM")) itemListView.setFishingWay((String) jsonObject.get("fishingM").toString());
+        if(!jsonObject.isNull("hours"))  itemListView.setHour((String) jsonObject.get("hours").toString());
+        return itemListView;
     }
 
 
@@ -142,8 +149,12 @@ public class SearchFragment extends Fragment {
 
 
     }
-    void launchResearchSelected() {
-            startActivity(new Intent(getContext(), ResultActivity.class));
+    void launchResearchSelected(ItemListView item) {
+            startActivity(new Intent(getContext(), ResultActivity.class)
+                    .putExtra("url",item.getUrl())
+                    .putExtra("description",item.getDescription())
+                    .putExtra("titre",item.getNom())
+            );
     }
 
     private String setTitleItemListView(JSONObject json ) throws JSONException {
@@ -159,6 +170,10 @@ public class SearchFragment extends Fragment {
         if (advanced) {
             getFragmentManager().beginTransaction().remove(spinnerFragment).commit();
             currentView.findViewById(R.id.result_activity_linearLayout).setVisibility(View.VISIBLE);
+            try {
+                updateView(elements);
+            }catch (JSONException exception){}
+
         }
         else {
             getFragmentManager().beginTransaction().replace(R.id.frame_test, spinnerFragment).commit();

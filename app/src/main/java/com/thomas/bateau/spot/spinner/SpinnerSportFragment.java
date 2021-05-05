@@ -1,6 +1,7 @@
 package com.thomas.bateau.spot.spinner;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +24,7 @@ public class SpinnerSportFragment extends SpinnerFragment  {
     }
     @Override
     public String dataToJson() {
-        return super.dataToJson()+","+convertJson("title",text.getText().toString());
+        return super.dataToJson()+","+convertJson("title",text.getText().toString().equals("null")?"Aucun Nom":text.getText().toString());
     }
     private String  convertJson(String key, String element)
     {
