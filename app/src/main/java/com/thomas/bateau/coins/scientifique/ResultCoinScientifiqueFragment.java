@@ -29,14 +29,7 @@ public class ResultCoinScientifiqueFragment extends ResultCoinFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         fragView=inflater.inflate(R.layout.coin_scientifique_result_fragment, container, false);
 
-        Button button = fragView.findViewById(R.id.LeCoinDesScientifiquesClubResul);
-        button.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(fragView.getContext(), ClubSearchActivity.class));
-            }
-        });
+
         return fragView;
     }
 }
